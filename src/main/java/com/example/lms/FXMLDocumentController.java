@@ -108,7 +108,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public void mimimize() {
+    public void minimize() {
         Stage stage = (Stage) minimize.getScene().getWindow();
         stage.setIconified(true);
     }
