@@ -12,16 +12,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="691.0" styleClass="login-form" stylesheets="@../../../designLogin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lms.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="login-form" stylesheets="@../../../designLogin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lms.FXMLDocumentController">
    <children>
-      <AnchorPane layoutX="102.0" layoutY="63.0" prefHeight="344.0" prefWidth="487.0" styleClass="card-form" stylesheets="@../../../designLogin.css">
+      <AnchorPane layoutX="640.0" prefHeight="720.0" prefWidth="640.0" styleClass="card-form" stylesheets="@../../../designLogin.css">
          <children>
-            <Label layoutX="180.0" layoutY="147.0" text="Đăng Nhập" textFill="WHITE">
+            <Label layoutX="84.0" layoutY="161.0" text="Đăng Nhập" textFill="WHITE">
                <font>
                   <Font name="Microsoft Sans Serif" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="studentid" layoutX="168.0" layoutY="179.0" onKeyTyped="#numbersOnly" prefHeight="42.0" prefWidth="162.0" promptText="StudentID" styleClass="textfield" stylesheets="@../../../designLogin.css">
+            <TextField fx:id="studentid" layoutX="257.0" layoutY="339.0" onKeyTyped="#numbersOnly" prefHeight="42.0" prefWidth="162.0" promptText="StudentID" styleClass="textfield" stylesheets="@../../../designLogin.css">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -29,20 +29,20 @@
                   <Font name="Microsoft Sans Serif" size="12.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="password" layoutX="168.0" layoutY="225.0" prefHeight="42.0" prefWidth="162.0" promptText="Password" styleClass="textfield" stylesheets="@../../../designLogin.css">
+            <PasswordField fx:id="password" layoutX="258.0" layoutY="424.0" prefHeight="42.0" prefWidth="162.0" promptText="Password" styleClass="textfield" stylesheets="@../../../designLogin.css">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </PasswordField>
-            <Button fx:id="login_Btn" layoutX="196.0" layoutY="282.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="95.0" styleClass="login-btn" stylesheets="@../../../designLogin.css" text="Login" />
-            <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="180.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="login_Btn" layoutX="291.0" layoutY="558.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="95.0" styleClass="login-btn" stylesheets="@../../../designLogin.css" text="Login" />
+            <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="275.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Logo.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <Button fx:id="close" layoutX="646.0" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="45.0" styleClass="close">
+      <Button fx:id="close" layoutX="1235.0" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="45.0" styleClass="close">
          <graphic>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER">
                <font>
@@ -55,7 +55,7 @@
             </Text>
          </graphic>
       </Button>
-      <Button fx:id="minimize" layoutX="601.0" mnemonicParsing="false" onAction="#mimimize" prefHeight="30.0" prefWidth="45.0" styleClass="minimize">
+      <Button fx:id="minimize" layoutX="1190.0" mnemonicParsing="false" onAction="#mimimize" prefHeight="30.0" prefWidth="45.0" styleClass="minimize">
          <graphic>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="minimize" text="-" textAlignment="CENTER">
                <font>
