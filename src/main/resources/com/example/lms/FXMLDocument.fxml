@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="691.0" styleClass="login-form" stylesheets="@../../../designLogin.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lms.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="691.0" styleClass="login-form" stylesheets="@../../../designLogin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lms.FXMLDocumentController">
    <children>
       <AnchorPane layoutX="102.0" layoutY="63.0" prefHeight="344.0" prefWidth="487.0" styleClass="card-form" stylesheets="@../../../designLogin.css">
          <children>
@@ -35,9 +35,9 @@
                </cursor>
             </PasswordField>
             <Button fx:id="login_Btn" layoutX="196.0" layoutY="282.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="95.0" styleClass="login-btn" stylesheets="@../../../designLogin.css" text="Login" />
-            <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="206.0" layoutY="36.0" pickOnBounds="true">
+            <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="180.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@logo.png" />
+                  <Image url="@Logo.png" />
                </image>
             </ImageView>
          </children>
