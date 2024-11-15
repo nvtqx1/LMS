@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 public class Database {
     public static Connection connectDB() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/LMS", "root", "190305");
             return connect;
 

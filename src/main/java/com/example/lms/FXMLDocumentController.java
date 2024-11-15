@@ -50,16 +50,16 @@ public class FXMLDocumentController implements Initializable {
             Alert alert;
             if (studentid.getText().isEmpty() || password.getText().isEmpty()) {
                 alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Lỗi!");
+                alert.setTitle("Thông báo!");
                 alert.setHeaderText(null);
                 alert.setContentText("Vui lòng điền các trường trống.");
                 alert.showAndWait();
             } else {
                 if (result.next()) {
                     alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Lỗi!");
+                    alert.setTitle("Thông báo");
                     alert.setHeaderText(null);
-                    alert.setContentText("Đăng nhập thành công!");
+                    alert.setContentText("Đăng nhập thành công");
                     alert.showAndWait();
 
                     login_Btn.getScene().getWindow().hide();
@@ -71,7 +71,7 @@ public class FXMLDocumentController implements Initializable {
                     stage.show();
                 } else {
                     alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Lỗi!");
+                    alert.setTitle("Thông báo");
                     alert.setHeaderText(null);
                     alert.setContentText("Tài Khoản hoặc Mật Khẩu không chính xác");
                     alert.showAndWait();
