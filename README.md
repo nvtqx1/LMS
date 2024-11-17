@@ -1,3 +1,3 @@
-Demo account 
-Admin : admin-password
-User : user-password
+Update database for LMS
+Admin : admin-admin  
+User : user1/100-1
