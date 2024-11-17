@@ -8,7 +8,7 @@
 }
 
 .close{
-    -fx-background-color:transparent;
+    -fx-background-color:#559bc9;
     -fx-cursor:hand;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .minimize{
-    -fx-background-color:transparent;
+    -fx-background-color:#559bc9;
     -fx-cursor:hand;
 }
 
