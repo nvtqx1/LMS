@@ -67,4 +67,25 @@ public class DatabaseHelper {
 
         return null; // Trả về null nếu đăng nhập thất bại
     }
+
+    // Phương thức lấy danh sách người dùng từ cơ sở dữ liệu
+    public static List<User> getUsers() {
+        List<User> users = new ArrayList<>();
+        String query = "SELECT username, role FROM users"; // Câu lệnh SQL lấy username và role của người dùng
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                String username = rs.getString("username");
+                String role = rs.getString("role");
+                users.add(new User(username, role)); // Tạo đối tượng User và thêm vào danh sách
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users; // Trả về danh sách người dùng
+    }
 }
