@@ -17,10 +17,13 @@ public class Admin extends User {
         Label headerLabel = new Label("Chào mừng Admin!");
         Button manageBooksButton = new Button("Quản lý sách");
 
+        // Tạo đối tượng LibraryDashboard để quản lý quay lại
+        LibraryDashboard dashboard = new LibraryDashboard("admin");
+
         // Chuyển đến giao diện quản lý sách
         manageBooksButton.setOnAction(e -> {
             ManageBooks manageBooks = new ManageBooks();
-            manageBooks.start(primaryStage);
+            manageBooks.start(primaryStage, "admin", dashboard); // Truyền thêm tham số
         });
 
         layout.getChildren().addAll(headerLabel, manageBooksButton);
