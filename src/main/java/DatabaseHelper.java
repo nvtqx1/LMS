@@ -5,7 +5,29 @@ import java.util.List;
 public class DatabaseHelper {
     private static final String DB_URL = "jdbc:sqlite:library.db";
 
-    // Phương thức lấy danh sách sách từ cơ sở dữ liệu
+    // Phương thức lấy danh sách sách đang được mượn
+    public static List<Book> getBorrowedBooks() {
+        List<Book> borrowedBooks = new ArrayList<>();
+        String query = "SELECT id, title, author FROM books WHERE is_borrowed = 1"; // Lọc sách đang được mượn
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String author = rs.getString("author");
+                borrowedBooks.add(new Book(id, title, author));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return borrowedBooks;
+    }
+
+    // Các phương thức khác trong DatabaseHelper (giữ nguyên từ trước)
     public static List<Book> getBooks() {
         List<Book> books = new ArrayList<>();
         String query = "SELECT id, title, author FROM books";
@@ -27,7 +49,6 @@ public class DatabaseHelper {
         return books;
     }
 
-    // Phương thức thêm sách vào cơ sở dữ liệu
     public static boolean addBook(String title, String author) {
         String query = "INSERT INTO books (title, author) VALUES (?, ?)";
 
@@ -46,7 +67,41 @@ public class DatabaseHelper {
         return false;
     }
 
-    // Phương thức kiểm tra đăng nhập
+    public static boolean deleteBook(int bookId) {
+        String query = "DELETE FROM books WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, bookId);
+            stmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static boolean updateBookStatus(int bookId, boolean isBorrowed) {
+        String query = "UPDATE books SET is_borrowed = ? WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setBoolean(1, isBorrowed);
+            stmt.setInt(2, bookId);
+            stmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
     public static User login(String username, String password) {
         String query = "SELECT role FROM users WHERE username = ? AND password = ?";
 
@@ -59,19 +114,18 @@ public class DatabaseHelper {
 
             if (rs.next()) {
                 String role = rs.getString("role");
-                return new User(username, role); // Trả về đối tượng User nếu đăng nhập thành công
+                return new User(username, role);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return null; // Trả về null nếu đăng nhập thất bại
+        return null;
     }
 
-    // Phương thức lấy danh sách người dùng từ cơ sở dữ liệu
     public static List<User> getUsers() {
         List<User> users = new ArrayList<>();
-        String query = "SELECT username, role FROM users"; // Câu lệnh SQL lấy username và role của người dùng
+        String query = "SELECT username, role FROM users";
 
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement();
@@ -80,12 +134,48 @@ public class DatabaseHelper {
             while (rs.next()) {
                 String username = rs.getString("username");
                 String role = rs.getString("role");
-                users.add(new User(username, role)); // Tạo đối tượng User và thêm vào danh sách
+                users.add(new User(username, role));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return users; // Trả về danh sách người dùng
+        return users;
+    }
+
+    public static boolean addUser(String username, String password, String role) {
+        String query = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            stmt.setString(3, role);
+            stmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static boolean deleteUser(String username) {
+        String query = "DELETE FROM users WHERE username = ?";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            stmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }
