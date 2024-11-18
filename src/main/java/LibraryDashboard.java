@@ -33,10 +33,11 @@ public class LibraryDashboard {
 
         // Tùy theo quyền hiển thị chức năng
         if ("admin".equals(userRole)) {
-            manageMembersButton.setOnAction(e -> {
-                ManageUsers manageUsers = new ManageUsers();
-                manageUsers.start(primaryStage, userRole, this);  // Truyền LibraryDashboard để quay lại
+            // Nút Quản lý sách
+            manageBooksButton.setOnAction(e -> {
+                showManageBooksScreen(primaryStage);
             });
+
             layout.getChildren().addAll(roleLabel, manageBooksButton, manageMembersButton);
         } else if ("reader".equals(userRole)) {
             layout.getChildren().addAll(roleLabel, viewBooksButton, borrowBookButton, returnBookButton);
@@ -60,5 +61,44 @@ public class LibraryDashboard {
         if (!sceneStack.isEmpty()) {
             primaryStage.setScene(sceneStack.pop()); // Quay lại scene trước đó
         }
+    }
+
+    // Phương thức hiển thị màn hình quản lý sách
+    private void showManageBooksScreen(Stage primaryStage) {
+        VBox manageBooksLayout = new VBox(20);
+        manageBooksLayout.setPadding(new Insets(10));
+        manageBooksLayout.setAlignment(Pos.TOP_CENTER);
+
+        // Nút chức năng trong màn hình Quản lý sách
+        Button addBookButton = new Button("Thêm sách");
+        Button deleteBookButton = new Button("Xóa sách");
+
+        // Sự kiện cho các nút
+        addBookButton.setOnAction(e -> {
+            // Bạn có thể thêm mã để chuyển tới màn hình thêm sách tại đây
+            System.out.println("Chuyển tới màn hình thêm sách...");
+        });
+
+        deleteBookButton.setOnAction(e -> {
+            // Bạn có thể thêm mã để chuyển tới màn hình xóa sách tại đây
+            System.out.println("Chuyển tới màn hình xóa sách...");
+        });
+
+        // Nút quay lại màn hình chính
+        Button backButton = new Button("Quay lại");
+
+        backButton.setOnAction(e -> {
+            start(primaryStage);  // Quay lại màn hình chính
+        });
+
+        manageBooksLayout.getChildren().addAll(addBookButton, deleteBookButton, backButton);
+
+        // Hiển thị màn hình quản lý sách
+        Scene manageBooksScene = new Scene(manageBooksLayout, 400, 300);
+        primaryStage.setScene(manageBooksScene);
+        primaryStage.setTitle("Quản lý sách");
+        primaryStage.show();
+
+        sceneStack.push(manageBooksScene); // Lưu scene quản lý sách vào ngăn xếp
     }
 }
