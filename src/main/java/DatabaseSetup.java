@@ -8,7 +8,7 @@ public class DatabaseSetup {
              Statement stmt = conn.createStatement()) {
 
             // Tạo bảng 'users'
-            String createTableSQL = """
+            String createUsersTableSQL = """
                 CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     username TEXT NOT NULL UNIQUE,
@@ -16,7 +16,7 @@ public class DatabaseSetup {
                     role TEXT NOT NULL
                 );
             """;
-            stmt.execute(createTableSQL);
+            stmt.execute(createUsersTableSQL);
 
             // Thêm tài khoản admin
             String insertAdminSQL = """
@@ -33,6 +33,36 @@ public class DatabaseSetup {
                     pstmt.setString(2, "1");       // password: "1"
                     pstmt.executeUpdate();
                 }
+            }
+
+            // Tạo bảng 'books'
+            String createBooksTableSQL = """
+                CREATE TABLE IF NOT EXISTS books (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    title TEXT NOT NULL,
+                    author TEXT NOT NULL,
+                    is_borrowed BOOLEAN DEFAULT 0
+                );
+            """;
+            stmt.execute(createBooksTableSQL);
+
+            // Thêm sách mẫu
+            String insertBooksSQL = "INSERT OR IGNORE INTO books (title, author, is_borrowed) VALUES (?, ?, ?)";
+            try (PreparedStatement pstmt = conn.prepareStatement(insertBooksSQL)) {
+                pstmt.setString(1, "Sách A");
+                pstmt.setString(2, "Tác giả A");
+                pstmt.setBoolean(3, false);
+                pstmt.executeUpdate();
+
+                pstmt.setString(1, "Sách B");
+                pstmt.setString(2, "Tác giả B");
+                pstmt.setBoolean(3, false);
+                pstmt.executeUpdate();
+
+                pstmt.setString(1, "Sách C");
+                pstmt.setString(2, "Tác giả C");
+                pstmt.setBoolean(3, true); // Sách đang được mượn
+                pstmt.executeUpdate();
             }
 
             System.out.println("Database and users setup complete!");
