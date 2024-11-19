@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 import java.util.Stack;
 
 public class LibraryDashboard {
@@ -26,7 +27,7 @@ public class LibraryDashboard {
         Button manageBooksButton = new Button("Quản lý sách");
         Button manageMembersButton = new Button("Quản lý thành viên");
 
-        // Nút chức năng cho user
+        // Nút chức năng cho reader
         Button viewBooksButton = new Button("Xem sách");
         Button borrowBookButton = new Button("Mượn sách");
         Button returnBookButton = new Button("Trả sách");
@@ -34,12 +35,32 @@ public class LibraryDashboard {
         // Tùy theo quyền hiển thị chức năng
         if ("admin".equals(userRole)) {
             // Nút Quản lý sách
-            manageBooksButton.setOnAction(e -> {
-                showManageBooksScreen(primaryStage);
+            manageBooksButton.setOnAction(e -> showManageBooksScreen(primaryStage));
+
+            // Nút Quản lý thành viên
+            manageMembersButton.setOnAction(e -> {
+                ManageUsers manageUsers = new ManageUsers();
+                manageUsers.start(primaryStage, this);
             });
 
             layout.getChildren().addAll(roleLabel, manageBooksButton, manageMembersButton);
         } else if ("reader".equals(userRole)) {
+            // Xử lý các nút cho reader
+            viewBooksButton.setOnAction(e -> {
+                ViewBooks viewBooks = new ViewBooks();
+                viewBooks.start(primaryStage, this);
+            });
+
+            borrowBookButton.setOnAction(e -> {
+                BorrowBooks borrowBooks = new BorrowBooks();
+                borrowBooks.start(primaryStage, this);
+            });
+
+            returnBookButton.setOnAction(e -> {
+                ReturnBooks returnBooks = new ReturnBooks();
+                returnBooks.start(primaryStage, this);
+            });
+
             layout.getChildren().addAll(roleLabel, viewBooksButton, borrowBookButton, returnBookButton);
         }
 
@@ -57,6 +78,7 @@ public class LibraryDashboard {
         return sceneStack;
     }
 
+    // Phương thức quay lại màn hình trước đó
     public void goBack(Stage primaryStage) {
         if (!sceneStack.isEmpty()) {
             primaryStage.setScene(sceneStack.pop()); // Quay lại scene trước đó
@@ -75,21 +97,16 @@ public class LibraryDashboard {
 
         // Sự kiện cho các nút
         addBookButton.setOnAction(e -> {
-            // Bạn có thể thêm mã để chuyển tới màn hình thêm sách tại đây
             System.out.println("Chuyển tới màn hình thêm sách...");
         });
 
         deleteBookButton.setOnAction(e -> {
-            // Bạn có thể thêm mã để chuyển tới màn hình xóa sách tại đây
             System.out.println("Chuyển tới màn hình xóa sách...");
         });
 
         // Nút quay lại màn hình chính
         Button backButton = new Button("Quay lại");
-
-        backButton.setOnAction(e -> {
-            start(primaryStage);  // Quay lại màn hình chính
-        });
+        backButton.setOnAction(e -> goBack(primaryStage));
 
         manageBooksLayout.getChildren().addAll(addBookButton, deleteBookButton, backButton);
 
