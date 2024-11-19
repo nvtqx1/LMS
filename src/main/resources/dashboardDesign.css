@@ -5,7 +5,7 @@
 }
 
 .semiTop_form{
-    -fx-background-color:#dddddd
+    -fx-background-color:#d6d6d6;
     -fx-border-color:#000;
     -fx-border-width:0px 0px .5px 0px;
 }
@@ -25,7 +25,7 @@
 }
 
 .minimize-btn:hover{
-    -fx-background-color:#dddddd;
+    -fx-background-color:#f13f57;
 }
 
 .bars{
