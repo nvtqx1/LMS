@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 import java.io.IOException;
@@ -54,6 +55,8 @@ public class FXMLDocumentController implements Initializable {
     private Statement statement;
     private ResultSet result;
     private boolean switched = false;
+    private double x = 0;
+    private double y = 0;
 
     public void login() {
         //String sql = "SELECT * FROM accounts WHERE studentid = ? and password = ?";
@@ -83,7 +86,19 @@ public class FXMLDocumentController implements Initializable {
                     Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
+                    root.setOnMousePressed((MouseEvent event) -> {
 
+                        x = event.getSceneX();
+                        y = event.getSceneY();
+
+                    });
+                    root.setOnMouseDragged((MouseEvent event) -> {
+
+                        stage.setX(event.getScreenX() - x);
+                        stage.setY(event.getScreenY() - y);
+                    });
+
+                    stage.initStyle(StageStyle.TRANSPARENT);
                     stage.setScene(scene);
                     stage.show();
                 } else {
@@ -98,11 +113,12 @@ public class FXMLDocumentController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void numbersOnly(KeyEvent event){
-        if(event.getCharacter().matches("[^\\e\t\r\\d+$]")){
+
+    public void numbersOnly(KeyEvent event) {
+        if (event.getCharacter().matches("[^\\e\t\r\\d+$]")) {
             event.consume();
             studentid.setStyle("-fx-border-color:#e04040");
-        }else{
+        } else {
             studentid.setStyle("-fx-border-color:#fff");
         }
     }
@@ -137,6 +153,7 @@ public class FXMLDocumentController implements Initializable {
             login_Btn.setText("LOGIN");
         }
     }
+
     public void initialize() throws IOException {
         createAccount.hoverProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -154,7 +171,6 @@ public class FXMLDocumentController implements Initializable {
     public void exit() {
         System.exit(0);
     }
-
 
 
     @Override
