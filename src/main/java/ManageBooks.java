@@ -6,6 +6,9 @@ import javafx.stage.Stage;
 
 public class ManageBooks {
     public void start(Stage primaryStage, String userRole, LibraryDashboard dashboard) {
+        // Đẩy scene hiện tại vào stack trước khi chuyển scene
+        dashboard.getSceneStack().push(primaryStage.getScene());
+
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(10));
 
