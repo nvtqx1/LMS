@@ -8,7 +8,7 @@ public class DatabaseHelper {
     // Phương thức lấy danh sách sách đang được mượn
     public static List<Book> getBorrowedBooks() {
         List<Book> borrowedBooks = new ArrayList<>();
-        String query = "SELECT id, title, author FROM books WHERE is_borrowed = 1"; // Lọc sách đang được mượn
+        String query = "SELECT id, title, author FROM books WHERE is_borrowed = 1";
 
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement();
@@ -27,7 +27,17 @@ public class DatabaseHelper {
         return borrowedBooks;
     }
 
-    // Các phương thức khác trong DatabaseHelper (giữ nguyên từ trước)
+    // Phương thức mượn sách
+    public static boolean borrowBook(int bookId) {
+        return updateBookStatus(bookId, true); // Đặt trạng thái is_borrowed = true
+    }
+
+    // Phương thức trả sách
+    public static boolean returnBook(int bookId) {
+        return updateBookStatus(bookId, false); // Đặt trạng thái is_borrowed = false
+    }
+
+    // Các phương thức khác trong DatabaseHelper
     public static List<Book> getBooks() {
         List<Book> books = new ArrayList<>();
         String query = "SELECT id, title, author FROM books";
@@ -178,4 +188,46 @@ public class DatabaseHelper {
 
         return false;
     }
+
+    public static boolean returnBook(Book selectedBook) {
+        if (selectedBook == null) return false; // Kiểm tra đối tượng null
+
+        String query = "UPDATE books SET is_borrowed = 0 WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, selectedBook.getId()); // Lấy id từ đối tượng Book
+            int rowsUpdated = stmt.executeUpdate();
+
+            return rowsUpdated > 0; // Trả về true nếu cập nhật thành công
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Trả về false nếu xảy ra lỗi
+    }
+
+
+    public static boolean borrowBook(Book selectedBook) {
+        if (selectedBook == null) return false; // Kiểm tra đối tượng null
+
+        String query = "UPDATE books SET is_borrowed = 1 WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, selectedBook.getId()); // Lấy id từ đối tượng Book
+            int rowsUpdated = stmt.executeUpdate();
+
+            return rowsUpdated > 0; // Trả về true nếu cập nhật thành công
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Trả về false nếu xảy ra lỗi
+    }
+
 }
