@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -12,16 +10,40 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="691.0" styleClass="login-form" stylesheets="@../../../designLogin.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lms.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="login-form" stylesheets="@../../../designLogin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lms.FXMLDocumentController">
    <children>
-      <AnchorPane layoutX="102.0" layoutY="63.0" prefHeight="344.0" prefWidth="487.0" styleClass="card-form" stylesheets="@../../../designLogin.css">
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/backLogin.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="minimize" layoutX="1180.0" mnemonicParsing="false" onAction="#minimize" prefHeight="30.0" prefWidth="50.0" styleClass="minimize" stylesheets="@../../../designLogin.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@image/minibtn.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="close" layoutX="1230.0" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../designLogin.css" textAlignment="CENTER">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@image/closebtn.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <AnchorPane layoutX="360.0" layoutY="150.0" prefHeight="420.0" prefWidth="560.0" styleClass="card-form" stylesheets="@../../../designLogin.css">
          <children>
-            <Label layoutX="180.0" layoutY="147.0" text="Đăng Nhập" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="25.0" />
-               </font>
-            </Label>
-            <TextField fx:id="studentid" layoutX="168.0" layoutY="179.0" onKeyTyped="#numbersOnly" prefHeight="42.0" prefWidth="162.0" promptText="StudentID" styleClass="textfield" stylesheets="@../../../designLogin.css">
+            <TextField fx:id="studentid" layoutX="140.0" layoutY="244.0" onKeyTyped="#numbersOnly" prefHeight="35.0" prefWidth="280.0" promptText="StudentID" styleClass="textfield" stylesheets="@../../../designLogin.css">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -29,40 +51,33 @@
                   <Font name="Microsoft Sans Serif" size="12.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="password" layoutX="168.0" layoutY="225.0" prefHeight="42.0" prefWidth="162.0" promptText="Password" styleClass="textfield" stylesheets="@../../../designLogin.css">
+            <PasswordField fx:id="password" layoutX="140.0" layoutY="291.0" prefHeight="35.0" prefWidth="280.0" promptText="Password" styleClass="textfield" stylesheets="@../../../designLogin.css">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </PasswordField>
-            <Button fx:id="login_Btn" layoutX="196.0" layoutY="282.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="95.0" styleClass="login-btn" stylesheets="@../../../designLogin.css" text="Login" />
-            <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="206.0" layoutY="36.0" pickOnBounds="true">
+            <Button fx:id="login_Btn" layoutX="319.0" layoutY="337.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="95.0" styleClass="login-btn" stylesheets="@../../../designLogin.css" text="Login" />
+            <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="216.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@logo.png" />
+                  <Image url="@image/Logo.png" />
                </image>
             </ImageView>
+            <Text fx:id="logIntoText" fill="WHITE" layoutX="140.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN TO" wrappingWidth="128.0">
+               <font>
+                  <Font name="Wingdings" size="25.0" />
+               </font>
+            </Text>
+            <Text fx:id="logIntoText1" fill="WHITE" layoutX="216.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOUR ACCOUNT" wrappingWidth="200.0">
+               <font>
+                  <Font name="Wingdings" size="25.0" />
+               </font>
+            </Text>
+            <Text fx:id="createAccount" fill="WHITE" layoutX="302.0" layoutY="228.0" onMouseClicked="#createAnAccountClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="or Create an Account now!" wrappingWidth="179.0">
+               <font>
+                  <Font name="Wingdings" size="15.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
-      <Button fx:id="close" layoutX="646.0" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="45.0" styleClass="close">
-         <graphic>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="20.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="close" />
-                  <String fx:value="close" />
-               </styleClass>
-            </Text>
-         </graphic>
-      </Button>
-      <Button fx:id="minimize" layoutX="601.0" mnemonicParsing="false" onAction="#mimimize" prefHeight="30.0" prefWidth="45.0" styleClass="minimize">
-         <graphic>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="minimize" text="-" textAlignment="CENTER">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="20.0" />
-               </font>
-            </Text>
-         </graphic>
-      </Button>
    </children>
 </AnchorPane>
