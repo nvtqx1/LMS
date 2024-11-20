@@ -108,3 +108,26 @@
 .take-btn:hover{
     -fx-background-color:#b356bb;
 }
+
+.textfield_take{
+    -fx-background-color:#fff;
+    -fx-background-radius:5px;
+    -fx-border-color:#000;
+    -fx-border-radius:5px;
+    -fx-border-width:.4px;
+    -fx-font-size:15px;
+}
+
+.textfield_take:focused{
+    -fx-border-width:.8px;
+}
+
+.label_take{
+    -fx-background-color:#fff;
+    -fx-padding:0px 0px 0px 5px;
+    -fx-font-size:14px;
+    -fx-border-color:#000;
+    -fx-border-radius:5px;
+    -fx-border-width:.4px;
+    -fx-background-radius:5px;
+}

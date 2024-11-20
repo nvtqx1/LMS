@@ -21,6 +21,7 @@ import javafx.util.Duration;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Stack;
 
@@ -36,7 +37,7 @@ public class dashboardController implements Initializable {
     private ImageView availableBooks_image;
 
     @FXML
-    private TableView<?> availableBooks_table;
+    private TableView<availableBooks> availableBooks_tableView;
 
     @FXML
     private Label availableBooks_title;
@@ -45,16 +46,16 @@ public class dashboardController implements Initializable {
     private Circle circle_image;
 
     @FXML
-    private TableColumn<?, ?> col_ab_author;
+    private TableColumn<availableBooks, String > col_ab_author;
 
     @FXML
-    private TableColumn<?, ?> col_ab_bookTitle;
+    private TableColumn<availableBooks, String> col_ab_bookTitle;
 
     @FXML
-    private TableColumn<?, ?> col_ab_bookType;
+    private TableColumn<availableBooks, String > col_ab_bookType;
 
     @FXML
-    private TableColumn<?, ?> col_ab_publishedDate;
+    private TableColumn<availableBooks, String> col_ab_publishedDate;
 
     @FXML
     private Button edit_btn;
@@ -119,6 +120,7 @@ public class dashboardController implements Initializable {
 
     private double x = 0;
     private double y = 0;
+
 
 
     public void sliderArrow() {
