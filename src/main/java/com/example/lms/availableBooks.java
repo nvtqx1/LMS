@@ -3,11 +3,11 @@ package com.example.lms;
 import java.sql.Date;
 
 public class availableBooks {
-    private final String  title;
-    private final String  author;
-    private final String genre;
-    private final String  image;
-    private final Date date;
+    private String  title;
+    private String  author;
+    private String genre;
+    private String  image;
+    private Date date;
 
     public availableBooks(String title, String author, String genre, String image, Date date) {
         this.title = title;
