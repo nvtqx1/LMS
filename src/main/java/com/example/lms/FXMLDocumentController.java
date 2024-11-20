@@ -1,7 +1,9 @@
+
 package com.example.lms;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,10 +20,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class FXMLDocumentController implements Initializable {
@@ -51,7 +50,6 @@ public class FXMLDocumentController implements Initializable {
     private Text logIntoText1;
 
     private Connection connect;
-    private PreparedStatement prepare;
     private Statement statement;
     private ResultSet result;
     private boolean switched = false;
@@ -59,58 +57,113 @@ public class FXMLDocumentController implements Initializable {
     private double y = 0;
 
     public void login() {
-        //String sql = "SELECT * FROM accounts WHERE studentid = ? and password = ?";
-        String sql = "SELECT * FROM student WHERE studentNumber = ? and password = ?";
-        connect = Database.connectDB();
-        try {
-            prepare = connect.prepareStatement(sql);
-            prepare.setString(1, studentid.getText());
-            prepare.setString(2, password.getText());
-            result = prepare.executeQuery();
-            Alert alert;
-            if (studentid.getText().isEmpty() || password.getText().isEmpty()) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Thông báo!");
-                alert.setHeaderText(null);
-                alert.setContentText("Vui lòng điền các trường trống.");
-                alert.showAndWait();
-            } else {
-                if (result.next()) {
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Thông báo");
+        if (login_Btn.getText().equals("LOGIN")) {
+            String sql = "SELECT * FROM student WHERE studentNumber = ? and password = ?";
+            connect = Database.connectDB();
+            try {
+                PreparedStatement prepare = connect.prepareStatement(sql);
+                prepare.setString(1, studentid.getText());
+                prepare.setString(2, password.getText());
+                result = prepare.executeQuery();
+                Alert alert;
+                if (studentid.getText().isEmpty() || password.getText().isEmpty()) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Thông báo!");
                     alert.setHeaderText(null);
-                    alert.setContentText("Đăng nhập thành công");
+                    alert.setContentText("Vui lòng điền các trường trống.");
                     alert.showAndWait();
-
-                    login_Btn.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
-                    Stage stage = new Stage();
-                    Scene scene = new Scene(root);
-                    root.setOnMousePressed((MouseEvent event) -> {
-
-                        x = event.getSceneX();
-                        y = event.getSceneY();
-
-                    });
-                    root.setOnMouseDragged((MouseEvent event) -> {
-
-                        stage.setX(event.getScreenX() - x);
-                        stage.setY(event.getScreenY() - y);
-                    });
-
-                    stage.initStyle(StageStyle.TRANSPARENT);
-                    stage.setScene(scene);
-                    stage.show();
                 } else {
+                    if (result.next()) {
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Thông báo");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Đăng nhập thành công");
+                        alert.showAndWait();
+
+                        login_Btn.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+                        Stage stage = new Stage();
+                        Scene scene = new Scene(root);
+                        root.setOnMousePressed((MouseEvent event) -> {
+
+                            x = event.getSceneX();
+                            y = event.getSceneY();
+
+                        });
+                        root.setOnMouseDragged((MouseEvent event) -> {
+
+                            stage.setX(event.getScreenX() - x);
+                            stage.setY(event.getScreenY() - y);
+                        });
+
+                        stage.initStyle(StageStyle.TRANSPARENT);
+                        stage.setScene(scene);
+                        stage.show();
+                    } else {
+                        alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Thông báo");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Tài Khoản hoặc Mật Khẩu không chính xác");
+                        alert.showAndWait();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+
+            try {
+                Alert alert;
+                String sql = "INSERT INTO `student` (`studentNumber`, `password`,`image`) VALUES(?, ?,'null');";
+                String sql1 = "SELECT * FROM student WHERE studentNumber = ?";
+                connect = Database.connectDB();
+                PreparedStatement prepare = connect.prepareStatement(sql);
+                PreparedStatement statement = connect.prepareStatement(sql1);
+                statement.setString(1, studentid.getText());
+                ResultSet resultSet = statement.executeQuery();
+                prepare.setString(1, studentid.getText());
+                prepare.setString(2, password.getText());
+                int rowsInserted = prepare.executeUpdate();
+                if (resultSet.next()) {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Thông báo");
                     alert.setHeaderText(null);
-                    alert.setContentText("Tài Khoản hoặc Mật Khẩu không chính xác");
+                    alert.setContentText("Tài khoản đã tồn tại");
+                    alert.showAndWait();
+                } else if (studentid.getText().length() <= 3) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Thông báo");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Tài khoản quá ngắn");
+                    alert.showAndWait();
+                } else if (studentid.getText().contains(" ")) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Thông báo");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Tài khoản không được chứa dấu cách");
+                    alert.showAndWait();
+                } else if (password.getText().contains(" ")) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Thông báo");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Mật khẩu không được chứa dấu cách");
+                    alert.showAndWait();
+                } else if (password.getText().length() <= 3) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Thông báo");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Mật khẩu quá ngắn");
+                    alert.showAndWait();
+                } else if (rowsInserted >= 1) {
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Thông báo");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Tạo Tài Khoản Thành Công");
                     alert.showAndWait();
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -131,12 +184,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void createAnAccountClicked(MouseEvent mouseEvent) {
-
         // clear the text fields if changing scenes
         studentid.clear();
         password.clear();
-        //errorMessage.setVisible(false);
-
         switched = !switched;
 
         if (switched) {
@@ -166,6 +216,7 @@ public class FXMLDocumentController implements Initializable {
             }
         });
     }
+
 
     @FXML
     public void exit() {

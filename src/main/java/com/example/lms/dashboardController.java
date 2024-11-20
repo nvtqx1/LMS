@@ -1,7 +1,6 @@
 package com.example.lms;
 
 import javafx.animation.TranslateTransition;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,9 +20,7 @@ import javafx.util.Duration;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 public class dashboardController implements Initializable {
 
@@ -46,13 +43,13 @@ public class dashboardController implements Initializable {
     private Circle circle_image;
 
     @FXML
-    private TableColumn<availableBooks, String > col_ab_author;
+    private TableColumn<availableBooks, String> col_ab_author;
 
     @FXML
     private TableColumn<availableBooks, String> col_ab_bookTitle;
 
     @FXML
-    private TableColumn<availableBooks, String > col_ab_bookType;
+    private TableColumn<availableBooks, String> col_ab_bookType;
 
     @FXML
     private TableColumn<availableBooks, String> col_ab_publishedDate;
@@ -121,6 +118,38 @@ public class dashboardController implements Initializable {
     private double x = 0;
     private double y = 0;
 
+    public void logout(javafx.event.ActionEvent event) {
+        try {
+            if (event.getSource() == logout_btn) {
+                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+
+                root.setOnMousePressed((MouseEvent e) -> {
+                    x = e.getSceneX();
+                    y = e.getSceneY();
+                });
+
+                root.setOnMouseDragged((MouseEvent e) -> {
+
+                    stage.setX(e.getScreenX() - x);
+                    stage.setY(e.getScreenY() - y);
+
+                });
+
+                stage.initStyle(StageStyle.TRANSPARENT);
+
+                stage.setScene(scene);
+                stage.show();
+
+                logout_btn.getScene().getWindow().hide();
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void sliderArrow() {
@@ -178,36 +207,6 @@ public class dashboardController implements Initializable {
         slide.play();
     }
 
-    @FXML
-    public void logout(ActionEvent event) {
-        try {
-            if (event.getSource() == logout_btn) {
-                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-                root.setOnMousePressed((MouseEvent e) -> {
-
-                    x = e.getSceneX();
-                    y = e.getSceneY();
-
-                });
-
-                root.setOnMouseDragged((MouseEvent e) -> {
-
-                    stage.setX(e.getScreenX() - x);
-                    stage.setY(e.getScreenY() - y);
-                });
-
-                stage.initStyle(StageStyle.TRANSPARENT);
-
-                stage.setScene(scene);
-                stage.show();
-                logout_btn.getScene().getWindow().hide();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     public void exit() {
         System.exit(0);
