@@ -74,6 +74,8 @@ public class FXMLDocumentController implements Initializable {
                     alert.showAndWait();
                 } else {
                     if (result.next()) {
+                        getData.studentId=studentid.getText();
+
                         alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Thông báo");
                         alert.setHeaderText(null);
