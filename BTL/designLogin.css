@@ -1,0 +1,56 @@
+.login-form{
+    -fx-background-color:linear-gradient(to bottom right, #00CCCC, #0066FF, #66CCFF);
+}
+
+.card-form {
+  -fx-background-color: #999900;
+  -fx-opacity: 0.85;
+}
+
+.close{
+    -fx-background-color:#559bc9;
+    -fx-cursor:hand;
+}
+
+.close:hover{
+    -fx-background-color:#f13f57;
+}
+
+.minimize{
+    -fx-background-color:#559bc9;
+    -fx-cursor:hand;
+}
+
+.minimize:hover{
+    -fx-background-color:#5481ab;
+}
+
+.textfield{
+    -fx-background-color:#000000;
+    -fx-text-inner-color:#99FFFF;
+    -fx-background-radius:10px;
+    -fx-border-color:#fff;
+    -fx-border-width:0px 0px .4px 0px;
+    -fx-font-size:15px;
+}
+
+.textfield:focused{
+    -fx-border-width:0px 0px 0px 0px;
+}
+
+.login-btn{
+    -fx-background-color:#FF0000;
+    -fx-background-radius:15px;
+    -fx-text-fill:#fff;
+    -fx-font-size:15px;
+}
+
+.login-btn:hover{
+    -fx-background-color:#559bc9;
+}
+
+#createAccount {
+    -fx-font-family: 'JetBrains Mono NL';
+    -fx-font-size: 10px;
+    -fx-background: none;
+}
