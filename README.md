@@ -1,6 +1,4 @@
-Move to BTL folder
-Update: Savebook, returnbook, availablebook 
-Add this to pom.xml
+Add this to pom.xml:
 <dependencies>
         <!-- Thư viện Gson -->
         <dependency>
