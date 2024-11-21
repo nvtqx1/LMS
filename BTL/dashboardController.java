@@ -1,6 +1,8 @@
 package com.example.lms;
 
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -18,8 +22,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class dashboardController implements Initializable {
@@ -31,7 +35,7 @@ public class dashboardController implements Initializable {
     private AnchorPane availableBooks_form;
 
     @FXML
-    private ImageView availableBooks_image;
+    private ImageView availableBooks_imageView;
 
     @FXML
     private TableView<availableBooks> availableBooks_tableView;
@@ -115,6 +119,64 @@ public class dashboardController implements Initializable {
     @FXML
     private Circle smallCircle_image;
 
+    private Image image;
+
+    private Connection connect;
+    private PreparedStatement prepare;
+    private Statement statement;
+    private ResultSet result;
+
+    public ObservableList<availableBooks> dataList() {
+
+        ObservableList<availableBooks> listBooks = FXCollections.observableArrayList();
+        String sql = " Select * from book";
+
+        connect = Database.connectDB();
+        try {
+            availableBooks aBooks;
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            while (result.next()) {
+                aBooks = new availableBooks(result.getString("bookTitle"),
+                        result.getString("author"), result.getString("bookType"),
+                        result.getString("image"), result.getDate("date"));
+                listBooks.add(aBooks);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+
+        }
+        return listBooks;
+    }
+
+
+    private ObservableList<availableBooks> listBook;
+
+    public void showAvailableBooks() {
+        listBook = dataList();
+        //col_ab_bookTitle.getCellValueFactory(new PropertyValueFactory(""))
+        col_ab_bookTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col_ab_author.setCellValueFactory(new PropertyValueFactory<>("author"));
+        col_ab_bookType.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        col_ab_publishedDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        availableBooks_tableView.setItems(listBook);
+    }
+
+    public void selectionAvailableBooks(){
+        availableBooks bookData = availableBooks_tableView.getSelectionModel().getSelectedItem();
+        int num = availableBooks_tableView.getSelectionModel().getFocusedIndex();
+        if((num-1)<-1){
+            return;
+        }
+        availableBooks_title.setText(bookData.getTitle());
+        String uri = "file" + bookData.getImage();
+        image = new javafx.scene.image.Image(uri,170,220,false,true);
+        availableBooks_imageView.setImage(image);
+    }
+
+    public void studentId(){
+        studentId_label.setText(getData.studentId);
+    }
     private double x = 0;
     private double y = 0;
 
@@ -219,7 +281,7 @@ public class dashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
+        showAvailableBooks();
+        studentId();
     }
 }
