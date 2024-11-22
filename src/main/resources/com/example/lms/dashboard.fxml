@@ -133,7 +133,7 @@
                               <Font name="Microsoft Sans Serif" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="studentId_label" alignment="CENTER" layoutX="70.0" layoutY="256.0" prefHeight="23.0" prefWidth="220.0" text="2022024" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="studentId_label" alignment="CENTER" layoutX="70.0" layoutY="256.0" prefHeight="23.0" prefWidth="220.0" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Microsoft Sans Serif" size="20.0" />
                            </font>
@@ -193,7 +193,7 @@
                      <children>
                         <AnchorPane layoutX="390.0" layoutY="5.0" prefHeight="580.0" prefWidth="520.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css">
                            <children>
-                              <TableView fx:id="availableBooks_tableView" layoutX="14.0" layoutY="14.0" prefHeight="552.0" prefWidth="492.0">
+                              <TableView fx:id="availableBooks_tableView" layoutX="14.0" layoutY="14.0" onMouseClicked="#selectionAvailableBooks" prefHeight="552.0" prefWidth="492.0">
                                 <columns>
                                   <TableColumn fx:id="col_ab_bookTitle" prefWidth="123.0" text="Book Title" />
                                   <TableColumn fx:id="col_ab_author" prefWidth="123.0" text="Author" />
@@ -207,12 +207,12 @@
                            <children>
                               <AnchorPane layoutX="95.0" layoutY="14.0" prefHeight="220.0" prefWidth="170.0" styleClass="image-card" stylesheets="@../../../dashboardDesign.css">
                                  <children>
-                                    <ImageView fx:id="availableBooks_image" fitHeight="220.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="availableBooks_imageView" fitHeight="220.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
                               <Button fx:id="take_btn" layoutX="240.0" layoutY="320.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" styleClass="take-btn" stylesheets="@../../../dashboardDesign.css" text="Take" />
                               <Button fx:id="save_btn" layoutX="48.0" layoutY="320.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" styleClass="save-btn" stylesheets="@../../../dashboardDesign.css" text="Save" />
-                              <Label fx:id="availableBooks_title" layoutX="53.0" layoutY="250.0" prefHeight="20.0" prefWidth="255.0" text="             Book_Name">
+                              <Label fx:id="availableBooks_title" alignment="CENTER" layoutX="55.0" layoutY="245.0" prefHeight="25.0" prefWidth="250.0">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="20.0" />
                                  </font>
