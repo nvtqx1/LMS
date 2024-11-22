@@ -24,6 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `adminID` int AUTO_INCREMENT PRIMARY KEY,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`username`, `password`) VALUES
+('admin', 'admin');
+
+
+
+--
 -- Table structure for table `book`
 --
 
@@ -126,6 +145,8 @@ INSERT INTO `take` (`studentNumber`, `firstName`, `lastName`, `gender`, `bookTit
 ('2022024', 'Marco', 'Man', 'Male', 'Programming Language', 'Thumbnail_01', 'Non-fiction', 'C:\\Users\\WINDOWS 10\\Documents\\NetBeansProjects\\libraryManagement\\src\\image\\programming language book.jpg', '2022-08-05', 'Not Return'),
 ('2022024', 'Marco', 'Man', 'Male', 'Python Tutorial', 'Thumbnail_05', 'Non-fiction', 'C:\\Users\\WINDOWS 10\\Documents\\NetBeansProjects\\libraryManagement\\src\\image\\python tutorial.jpg', '2022-08-05', 'Returned'),
 ('2022024', 'Marco', 'Man', 'Male', 'C# Tutorial', 'Thumbnail_03', 'Non-fiction', 'C:\\Users\\WINDOWS 10\\Documents\\NetBeansProjects\\libraryManagement\\src\\image\\c#  tutorial book.jpg', '2022-08-05', 'Not Return');
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
