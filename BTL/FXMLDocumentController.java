@@ -70,7 +70,7 @@ public class FXMLDocumentController implements Initializable {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Thông báo!");
                     alert.setHeaderText(null);
-                    alert.setContentText("Vui lòng điền các trường trống.");
+                    alert.setContentText("Vui lòng điền đầy đủ thông tin.");
                     alert.showAndWait();
                 } else {
                     if (result.next()) {
