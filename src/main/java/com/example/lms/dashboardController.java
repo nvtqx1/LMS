@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
@@ -173,6 +172,27 @@ public class dashboardController implements Initializable {
     @FXML
     private Label take_titleLabel;
 
+    @FXML
+    private TableColumn<returnBook, String> return_Author;
+
+    @FXML
+    private TableColumn<returnBook, String> return_BookType;
+
+    @FXML
+    private Button return_Button;
+
+    @FXML
+    private TableColumn<returnBook, String> return_DateIssue;
+
+    @FXML
+    private TableColumn<returnBook, String> return_BookTitle;
+
+    @FXML
+    private ImageView return_imageView;
+
+    @FXML
+    private TableView<returnBook> return_tableView;
+
 
     private Image image;
 
@@ -196,7 +216,7 @@ public class dashboardController implements Initializable {
     public void takeBook() {
         Date date = new Date();
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-        String sql = "insert into take VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "insert into take VALUES(?,?,?,?,?,?,?,?,?,?)";
         connect = Database.connectDB();
         try {
             Alert alert;
@@ -221,12 +241,14 @@ public class dashboardController implements Initializable {
                 prepare.setString(3, take_lastName.getText());
                 prepare.setString(4, (String) take_Gender.getSelectionModel().getSelectedItem());
                 prepare.setString(5, take_titleLabel.getText());
-                prepare.setString(6, getData.path);
-                prepare.setDate(7, sqlDate);
+                prepare.setString(6, take_authorLabel.getText());
+                prepare.setString(7, take_genreLabel.getText());
+                prepare.setString(8, getData.path);
+                prepare.setDate(9, sqlDate);
 
                 String check = "Not Return";
 
-                prepare.setString(8, check);
+                prepare.setString(10, check);
                 prepare.executeUpdate();
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Thông Báo");
@@ -314,6 +336,83 @@ public class dashboardController implements Initializable {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String date = format.format(new Date());
         take_issueDate.setText(date);
+    }
+
+    public ObservableList<returnBook> returnBook() {
+        ObservableList<returnBook> bookReturnData = FXCollections.observableArrayList();
+        String check = "Not Return";
+        String sql = "select * from take where checkReturn ='" + check + "'and studentNumber ='" +
+                getData.studentId + "'";
+        connect = Database.connectDB();
+        Alert alert;
+        try {
+            returnBook rBooks;
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            while (result.next()) {
+                rBooks = new returnBook(result.getString("bookTitle"),
+                        result.getString("author"), result.getString("bookType"),
+                        result.getString("image"), result.getDate("date"));
+                bookReturnData.add(rBooks);
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bookReturnData;
+    }
+
+    public void returnBooks() {
+        String sql = "UPDATE take set checkReturn='Returned' Where bookTitle ='" + getData.takeBookTitle + "'";
+        connect = Database.connectDB();
+        Alert alert;
+        try {
+            if (return_imageView.getImage() == null) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Thông Báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Vui lòng thao tác lại!");
+                alert.showAndWait();
+            } else {
+                statement = connect.createStatement();
+                statement.executeUpdate(sql);
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Thông Báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Thành Công");
+                alert.showAndWait();
+                showReturnBooks();
+                return_imageView.setImage(null);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private ObservableList<returnBook> retBook;
+
+    public void showReturnBooks() {
+        retBook = returnBook();
+        return_BookTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        return_Author.setCellValueFactory(new PropertyValueFactory<>("author"));
+        return_BookType.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        return_DateIssue.setCellValueFactory(new PropertyValueFactory<>("date"));
+        return_tableView.setItems(retBook);
+    }
+
+    public void selectReturnBook() {
+        returnBook rBook = return_tableView.getSelectionModel().getSelectedItem();
+        int num = return_tableView.getSelectionModel().getFocusedIndex();
+        if ((num - 1) < -1) {
+            return;
+        }
+        String uri = "file" + rBook.getImage();
+        image = new Image(uri, 150, 200, false, true);
+        return_imageView.setImage(image);
+        getData.takeBookTitle = rBook.getTitle();
     }
 
     public ObservableList<availableBooks> dataList() {
@@ -442,6 +541,7 @@ public class dashboardController implements Initializable {
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Return Books");
+            showReturnBooks();
         } else if (event.getSource() == halfNav_saveBtn) {
             issue_form.setVisible(false);
             availableBooks_form.setVisible(false);
@@ -514,6 +614,7 @@ public class dashboardController implements Initializable {
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Return Books");
+            showReturnBooks();
         } else if (event.getSource() == savedBooks_btn) {
             issue_form.setVisible(false);
             availableBooks_form.setVisible(false);
@@ -643,6 +744,7 @@ public class dashboardController implements Initializable {
         studentIdLabel();
         displayDate();
         gender();
+        showReturnBooks();
 
     }
 }

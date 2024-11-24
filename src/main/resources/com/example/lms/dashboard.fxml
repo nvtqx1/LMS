@@ -330,7 +330,7 @@
                         <Separator layoutX="375.0" layoutY="15.0" orientation="VERTICAL" prefHeight="560.0" prefWidth="12.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="returnBook_form" layoutX="245.0" layoutY="161.0" prefHeight="590.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="returnBook_form" layoutX="245.0" layoutY="161.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="390.0" layoutY="5.0" prefHeight="580.0" prefWidth="520.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css">
                            <children>
@@ -339,10 +339,12 @@
                                     <Font name="Berlin Sans FB" size="25.0" />
                                  </font>
                               </Label>
-                              <TableView layoutX="15.0" layoutY="45.0" prefHeight="525.0" prefWidth="490.0">
+                              <TableView fx:id="return_tableView" layoutX="15.0" layoutY="45.0" onMouseClicked="#selectReturnBook" prefHeight="525.0" prefWidth="490.0">
                                 <columns>
-                                  <TableColumn prefWidth="245.0" text="Book Title" />
-                                    <TableColumn prefWidth="231.0" text="Date Issued" />
+                                  <TableColumn fx:id="return_BookTitle" prefWidth="123.0" text="Book Title" />
+                                    <TableColumn fx:id="return_Author" prefWidth="123.0" text="Author" />
+                                    <TableColumn fx:id="return_BookType" prefWidth="123.0" text="Book Type" />
+                                    <TableColumn fx:id="return_DateIssue" prefWidth="126.0" text="Date Issued" />
                                 </columns>
                               </TableView>
                            </children>
@@ -351,10 +353,10 @@
                            <children>
                               <AnchorPane layoutX="105.0" layoutY="15.0" prefHeight="200.0" prefWidth="150.0" styleClass="image-card" stylesheets="@../../../dashboardDesign.css">
                                  <children>
-                                    <ImageView fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="return_imageView" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
-                              <Button layoutX="140.0" layoutY="266.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="81.0" styleClass="return-btn" stylesheets="@../../../dashboardDesign.css" text="Return">
+                              <Button fx:id="return_Button" layoutX="140.0" layoutY="266.0" mnemonicParsing="false" onAction="#returnBooks" prefHeight="48.0" prefWidth="81.0" styleClass="return-btn" stylesheets="@../../../dashboardDesign.css" text="Return">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="15.0" />
                                  </font>
@@ -364,7 +366,7 @@
                         <Separator layoutX="375.0" layoutY="15.0" orientation="VERTICAL" prefHeight="560.0" prefWidth="12.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="saveBook_form" layoutX="311.0" layoutY="183.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane fx:id="saveBook_form" layoutX="311.0" layoutY="183.0" prefHeight="590.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </center>
