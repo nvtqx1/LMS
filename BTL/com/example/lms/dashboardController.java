@@ -83,6 +83,9 @@ public class dashboardController implements Initializable {
     private Label studentId_label;
 
     @FXML
+    private Label take_studentId;
+
+    @FXML
     private Button take_btn;
 
     @FXML
@@ -164,8 +167,7 @@ public class dashboardController implements Initializable {
     @FXML
     private TextField take_lastName;
 
-    @FXML
-    private Label take_studentId;
+
 
     @FXML
     private Button take_takeBtn;
