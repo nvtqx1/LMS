@@ -294,8 +294,9 @@ public class dashboardController implements Initializable {
 
                     getData.path = result.getString("image");
 
-                    String uri = "file" + getData.path;
-                    image = new javafx.scene.image.Image(uri, 150, 200, false, true);
+                    String uri = "file:" + getData.path;
+
+                    image = new Image(uri, 150, 200, false, true);
                     take_imageView.setImage(image);
                     check = true;
                 }
@@ -409,9 +410,11 @@ public class dashboardController implements Initializable {
         if ((num - 1) < -1) {
             return;
         }
-        String uri = "file" + rBook.getImage();
+        String uri = "file:" + rBook.getImage();
+
         image = new Image(uri, 150, 200, false, true);
         return_imageView.setImage(image);
+
         getData.takeBookTitle = rBook.getTitle();
     }
 
@@ -457,10 +460,13 @@ public class dashboardController implements Initializable {
         if ((num - 1) < -1) {
             return;
         }
-        availableBooks_title.setText(bookData.getTitle());
-        String uri = "file" + bookData.getImage();
-        image = new javafx.scene.image.Image(uri, 170, 220, false, true);
+        String uri = "file:" + bookData.getImage();
+
+        image = new Image(uri, 150, 200, false, true);
+
         availableBooks_imageView.setImage(image);
+
+        getData.takeBookTitle = bookData.getTitle();
     }
 
     public void abTakeButton(ActionEvent event) {
