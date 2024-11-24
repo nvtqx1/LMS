@@ -15,11 +15,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import javax.swing.*;
+import java.io.File;
 import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -125,9 +130,6 @@ public class dashboardController implements Initializable {
     private AnchorPane issue_form;
 
     @FXML
-    private AnchorPane saveBook_form;
-
-    @FXML
     private AnchorPane returnBook_form;
 
     @FXML
@@ -192,6 +194,30 @@ public class dashboardController implements Initializable {
 
     @FXML
     private TableView<returnBook> return_tableView;
+
+    @FXML
+    private TableColumn<saveBook, String> col_saveAuthor;
+
+    @FXML
+    private TableColumn<saveBook, String> col_saveDate;
+
+    @FXML
+    private TableColumn<String, String> col_saveGenre;
+
+    @FXML
+    private TableColumn<String, String> col_saveTitle;
+
+    @FXML
+    private TableView<saveBook> save_tableView;
+
+    @FXML
+    private Button unsaveBtn;
+
+    @FXML
+    private ImageView save_imageView;
+
+    @FXML
+    private AnchorPane saveBook_form;
 
 
     private Image image;
@@ -275,7 +301,7 @@ public class dashboardController implements Initializable {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Thông Báo");
                 alert.setHeaderText(null);
-                alert.setContentText("Vui lòng điền đầy đủ thông tin.");
+                alert.setContentText("Vui lòng điền đầy đủ thông tin!");
                 alert.showAndWait();
             } /*else if (take_firstName.getText().isEmpty() ||
                     take_lastName.getText().isEmpty() ||
@@ -441,12 +467,156 @@ public class dashboardController implements Initializable {
         return listBooks;
     }
 
+    public ObservableList<saveBook> savedBooksData() {
+
+        ObservableList<saveBook> listSaveData = FXCollections.observableArrayList();
+
+        String sql = "SELECT * FROM save WHERE studentNumber = '" + getData.studentId + "'";
+
+        connect = Database.connectDB();
+
+        try {
+            saveBook sBook;
+
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+
+                sBook = new saveBook(result.getString("bookTitle"), result.getString("author"),
+                        result.getString("bookType"), result.getString("image"), result.getDate("date"));
+
+                listSaveData.add(sBook);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listSaveData;
+    }
+
+    private ObservableList<saveBook> sBookList;
+
+    public void showSavedBooks() {
+
+        sBookList = savedBooksData();
+
+        col_saveTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col_saveAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
+        col_saveGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        col_saveDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        save_tableView.setItems(sBookList);
+
+    }
+
+    public void selectSavedBooks() {
+
+        saveBook sBook = save_tableView.getSelectionModel().getSelectedItem();
+        int num = save_tableView.getSelectionModel().getFocusedIndex();
+
+        if ((num - 1) < -1) {
+            return;
+        }
+
+        String uri = "file:" + sBook.getImage();
+
+        image = new Image(uri, 150, 200, false, true);
+        save_imageView.setImage(image);
+
+        getData.savedImage = sBook.getImage();
+        getData.savedTitle = sBook.getTitle();
+
+    }
+
+    public void saveBooks() {
+
+        String sql = "INSERT INTO save VALUES (?,?,?,?,?,?)";
+
+        connect = Database.connectDB();
+
+        try {
+
+            Alert alert;
+
+            if (availableBooks_title.getText().isEmpty()) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please select the book");
+                alert.showAndWait();
+            } else {
+                prepare = connect.prepareStatement(sql);
+                prepare.setString(1, getData.studentId);
+                prepare.setString(2, getData.savedTitle);
+                prepare.setString(3, getData.savedAuthor);
+                prepare.setString(4, getData.savedGenre);
+                prepare.setString(5, getData.savedImage);
+                prepare.setDate(6, getData.savedDate);
+                prepare.executeUpdate();
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully Saved.");
+                alert.showAndWait();
+
+                showSavedBooks();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void unsaveBooks() {
+
+        String sql = "DELETE FROM save WHERE bookTitle = '" + getData.savedTitle + "'"
+                + " and studentNumber = '" + getData.studentId + "'";
+
+        connect = Database.connectDB();
+
+        try {
+
+            Alert alert;
+
+            if (save_imageView.getImage() == null) {
+
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Thông Báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Vui lòng điền đầy đủ thông tin!");
+                alert.showAndWait();
+
+            } else {
+
+                statement = connect.createStatement();
+                statement.executeUpdate(sql);
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Thông Báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Bỏ Lưu Thành Công.");
+                alert.showAndWait();
+
+                showSavedBooks();
+
+                save_imageView.setImage(null);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     private ObservableList<availableBooks> listBook;
 
     public void showAvailableBooks() {
         listBook = dataList();
-        //col_ab_bookTitle.getCellValueFactory(new PropertyValueFactory(""))
         col_ab_bookTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         col_ab_author.setCellValueFactory(new PropertyValueFactory<>("author"));
         col_ab_bookType.setCellValueFactory(new PropertyValueFactory<>("genre"));
@@ -455,11 +625,17 @@ public class dashboardController implements Initializable {
     }
 
     public void selectionAvailableBooks() {
+
         availableBooks bookData = availableBooks_tableView.getSelectionModel().getSelectedItem();
+
         int num = availableBooks_tableView.getSelectionModel().getFocusedIndex();
+
         if ((num - 1) < -1) {
             return;
         }
+
+        availableBooks_title.setText(bookData.getTitle());
+
         String uri = "file:" + bookData.getImage();
 
         image = new Image(uri, 150, 200, false, true);
@@ -467,6 +643,13 @@ public class dashboardController implements Initializable {
         availableBooks_imageView.setImage(image);
 
         getData.takeBookTitle = bookData.getTitle();
+
+        getData.savedTitle = bookData.getTitle();
+        getData.savedAuthor = bookData.getAuthor();
+        getData.savedGenre = bookData.getGenre();
+        getData.savedImage = bookData.getImage();
+        getData.savedDate = bookData.getDate();
+
     }
 
     public void abTakeButton(ActionEvent event) {
@@ -493,6 +676,56 @@ public class dashboardController implements Initializable {
 
     public void studentId() {
         studentId_label.setText(getData.studentId);
+    }
+
+    public void changeProfile() {
+
+        String uri = getData.path;
+        uri = uri.replace("\\", "\\\\");
+
+        String sql = "UPDATE student SET image = '" + uri + "' WHERE studentNumber = '" + getData.studentId + "'";
+
+        connect = Database.connectDB();
+
+        try {
+
+            statement = connect.createStatement();
+            statement.executeUpdate(sql);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void showProfile() {
+            String uri = "file:" + getData.path;
+
+            image = new Image(uri, 180, 114, false, true);
+            circle_image.setFill(new ImagePattern(image));
+            smallCircle_image.setFill(new ImagePattern(image));
+    }
+
+    public void insertImage() {
+
+        FileChooser open = new FileChooser();
+        open.setTitle("Image File");
+        open.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image file", "*png", "*jpg"));
+        Stage stage = (Stage) nav_form.getScene().getWindow();
+
+        File file = open.showOpenDialog(stage);
+
+        if (file != null) {
+
+            image = new Image(file.toURI().toString(), 180, 114, false, true);
+            circle_image.setFill(new ImagePattern(image));
+            smallCircle_image.setFill(new ImagePattern(image));
+
+            getData.path = file.getAbsolutePath();
+
+            changeProfile();
+
+        }
     }
 
     public void sideNavButtonDesign(ActionEvent event) {
@@ -565,6 +798,8 @@ public class dashboardController implements Initializable {
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Saved Books");
+
+            showSavedBooks();
         }
     }
 
@@ -638,6 +873,8 @@ public class dashboardController implements Initializable {
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Saved Books");
+
+            showSavedBooks();
         }
     }
 
@@ -745,12 +982,13 @@ public class dashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        showProfile();
         showAvailableBooks();
         studentId();
         studentIdLabel();
         displayDate();
         gender();
         showReturnBooks();
-
+        showSavedBooks();
     }
 }

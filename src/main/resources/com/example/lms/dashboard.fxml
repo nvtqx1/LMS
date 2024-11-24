@@ -20,11 +20,11 @@
    <children>
       <BorderPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane prefHeight="130.0" prefWidth="1280.0" styleClass="semiTop_form" stylesheets="@../../../dashboardDesign.css" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="109.0" prefWidth="1280.0" styleClass="semiTop_form" stylesheets="@../../../dashboardDesign.css" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane prefHeight="40.0" prefWidth="1280.0" styleClass="semiTop_form" stylesheets="@../../../dashboardDesign.css" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane prefHeight="40.0" prefWidth="1280.0" styleClass="top-form" stylesheets="@../../../dashboardDesign.css" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button fx:id="minimize" layoutX="1180.0" mnemonicParsing="false" onAction="#minimize" prefHeight="30.0" prefWidth="50.0" styleClass="minimize-btn" stylesheets="@../../../dashboardDesign.css">
+                        <Button fx:id="minimize" layoutX="1160.0" mnemonicParsing="false" onAction="#minimize" prefHeight="40.0" prefWidth="60.0" styleClass="minimize-btn" stylesheets="@../../../dashboardDesign.css">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -33,7 +33,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="close" layoutX="1230.0" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="50.0" styleClass="close-btn" stylesheets="@../../../dashboardDesign.css">
+                        <Button fx:id="close" layoutX="1220.0" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="60.0" styleClass="close-btn" stylesheets="@../../../dashboardDesign.css">
                            <graphic>
                            </graphic>
                            <graphic>
@@ -69,25 +69,26 @@
                         <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@image/menu2.png" />
-                           </image></ImageView>
+                           </image>
+                        </ImageView>
                      </graphic>
                   </Button>
-                  <Label layoutX="146.0" layoutY="77.0" text="Library Management">
+                  <Label layoutX="123.0" layoutY="70.0" text="Library Management" translateZ="-1.0">
                      <font>
                         <Font name="Segoe UI Black" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="currentForm_label" alignment="CENTER_RIGHT" layoutX="1127.0" layoutY="85.0" prefHeight="22.0" prefWidth="139.0" text="Available Books">
+                  <Label fx:id="currentForm_label" alignment="CENTER_RIGHT" layoutX="1049.0" layoutY="70.0" prefHeight="30.0" prefWidth="211.0" text="Available Books">
                      <font>
-                        <Font name="Berlin Sans FB" size="20.0" />
+                        <Font name="Segoe UI Black" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="407.0" layoutY="88.0" text="Student Portal">
+                  <Label layoutX="388.0" layoutY="70.0" text="Student Portal">
                      <font>
-                        <Font name="Berlin Sans FB" size="20.0" />
+                        <Font name="Segoe UI Black" size="20.0" />
                      </font>
                   </Label>
-                  <Line endX="-100.0" endY="-57.0" layoutX="482.0" layoutY="120.0" startX="-100.0" />
+                  <Line endX="-100.0" endY="-73.0" layoutX="459.0" layoutY="122.0" startX="-100.0" />
                </children>
             </AnchorPane>
          </top>
@@ -161,15 +162,19 @@
                         <Button fx:id="issueBooks_btn" layoutX="70.0" layoutY="352.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="35.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css" text="Issue Books" />
                         <Button fx:id="returnBooks_btn" layoutX="70.0" layoutY="398.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="35.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css" text="Return Books" />
                         <Button fx:id="savedBooks_btn" layoutX="70.0" layoutY="444.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="35.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css" text="Saved Books" />
-                        <Button fx:id="edit_btn" layoutX="109.0" layoutY="48.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="125.0" styleClass="edit-btn" stylesheets="@../../../dashboardDesign.css">
+                        <Button fx:id="edit_btn" layoutX="107.0" layoutY="45.0" mnemonicParsing="false" onAction="#insertImage" prefHeight="138.0" prefWidth="146.0" styleClass="edit-btn" stylesheets="@../../../dashboardDesign.css">
                            <graphic>
-                           </graphic>
-                           <graphic>
-                              <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <graphic>
+                              <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/edit.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
                         <Line endX="160.0" layoutX="180.0" layoutY="295.0" startX="-160.0" />
                         <Button fx:id="logout_btn" layoutX="28.0" layoutY="527.0" mnemonicParsing="false" onAction="#logout" prefHeight="30.0" prefWidth="30.0" styleClass="logout-btn" stylesheets="@../../../dashboardDesign.css">
@@ -200,7 +205,7 @@
          <center>
             <AnchorPane fx:id="mainCenter_form" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="availableBooks_form" layoutY="-2.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="availableBooks_form" layoutY="-2.0" prefHeight="590.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="390.0" layoutY="5.0" prefHeight="580.0" prefWidth="520.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css">
                            <children>
@@ -216,21 +221,16 @@
                         </AnchorPane>
                         <AnchorPane layoutX="10.0" layoutY="5.0" prefHeight="580.0" prefWidth="360.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css">
                            <children>
-                              <AnchorPane layoutX="95.0" layoutY="14.0" prefHeight="220.0" prefWidth="170.0" styleClass="image-card" stylesheets="@../../../dashboardDesign.css">
+                              <AnchorPane layoutX="104.0" layoutY="14.0" prefHeight="200.0" prefWidth="150.0" styleClass="image-card" stylesheets="@../../../dashboardDesign.css">
                                  <children>
-                                    <ImageView fx:id="availableBooks_imageView" fitHeight="220.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="availableBooks_imageView" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
-                              <Button fx:id="take_btn" layoutX="240.0" layoutY="320.0" mnemonicParsing="false" onAction="#abTakeButton" prefHeight="50.0" prefWidth="70.0" styleClass="take-btn" stylesheets="@../../../dashboardDesign.css" text="Take" />
-                              <Button fx:id="save_btn" layoutX="48.0" layoutY="320.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" styleClass="save-btn" stylesheets="@../../../dashboardDesign.css" text="Save" />
+                              <Button fx:id="take_btn" layoutX="215.0" layoutY="266.0" mnemonicParsing="false" onAction="#abTakeButton" prefHeight="55.0" prefWidth="90.0" styleClass="take-btn" stylesheets="@../../../dashboardDesign.css" text="Take" />
+                              <Button fx:id="save_btn" layoutX="55.0" layoutY="266.0" mnemonicParsing="false" onAction="#saveBooks" prefHeight="55.0" prefWidth="90.0" styleClass="save-btn" stylesheets="@../../../dashboardDesign.css" text="Save" />
                               <Label fx:id="availableBooks_title" alignment="CENTER" layoutX="55.0" layoutY="245.0" prefHeight="25.0" prefWidth="250.0">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="166.0" layoutY="282.0" text="Title">
-                                 <font>
-                                    <Font name="Microsoft Sans Serif" size="15.0" />
                                  </font>
                               </Label>
                            </children>
@@ -366,7 +366,37 @@
                         <Separator layoutX="375.0" layoutY="15.0" orientation="VERTICAL" prefHeight="560.0" prefWidth="12.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="saveBook_form" layoutX="311.0" layoutY="183.0" prefHeight="590.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane fx:id="saveBook_form" layoutX="311.0" layoutY="183.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="300.0" prefWidth="892.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css">
+                           <children>
+                              <TableView fx:id="save_tableView" layoutX="350.0" layoutY="15.0" onMouseClicked="#selectSavedBooks" prefHeight="270.0" prefWidth="530.0">
+                                <columns>
+                                  <TableColumn fx:id="col_saveTitle" prefWidth="123.0" text="Book Title" />
+                                  <TableColumn fx:id="col_saveAuthor" prefWidth="123.0" text="Author" />
+                                    <TableColumn fx:id="col_saveGenre" prefWidth="123.0" text="Book Type" />
+                                    <TableColumn fx:id="col_saveDate" prefWidth="160.0" text="Published Date" />
+                                </columns>
+                              </TableView>
+                              <AnchorPane layoutX="100.0" layoutY="15.0" prefHeight="200.0" prefWidth="150.0" styleClass="image-card" stylesheets="@../../../dashboardDesign.css">
+                                 <children>
+                                    <ImageView fx:id="save_imageView" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <Button fx:id="unsaveBtn" layoutX="136.0" layoutY="235.0" mnemonicParsing="false" onAction="#unsaveBooks" prefHeight="50.0" prefWidth="80.0" styleClass="unsave-btn" stylesheets="@../../../dashboardDesign.css" text="Unsaved" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="14.0" layoutY="330.0" prefHeight="250.0" prefWidth="892.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css">
+                           <children>
+                              <ImageView fitHeight="220.0" fitWidth="864.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../image/quotes.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Separator layoutX="20.0" layoutY="318.0" prefHeight="2.0" prefWidth="880.0" />
+                     </children></AnchorPane>
                </children>
             </AnchorPane>
          </center>

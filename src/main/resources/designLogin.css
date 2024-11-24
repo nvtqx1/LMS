@@ -4,25 +4,27 @@
 
 .card-form {
   -fx-background-color: #999900;
-  -fx-opacity: 0.85;
+  -fx-opacity: 0.9;
 }
 
 .close{
-    -fx-background-color:#559bc9;
+    -fx-background-color:#EE0000;
     -fx-cursor:hand;
+    -fx-opacity: 0.6;
 }
 
 .close:hover{
-    -fx-background-color:#f13f57;
+    -fx-background-color:#FF0000;
 }
 
 .minimize{
-    -fx-background-color:#559bc9;
+    -fx-background-color:#BBBBBB;
     -fx-cursor:hand;
+    -fx-opacity: 0.6;
 }
 
 .minimize:hover{
-    -fx-background-color:#5481ab;
+    -fx-background-color:#fff;
 }
 
 .textfield{
@@ -54,3 +56,8 @@
     -fx-font-size: 10px;
     -fx-background: none;
 }
+.top-form{
+     -fx-background-color:#660033;
+     -fx-border-color:#000;
+     -fx-border-width:.2px .2px .5px .2px;
+ }
