@@ -74,7 +74,8 @@ public class FXMLDocumentController implements Initializable {
                     alert.showAndWait();
                 } else {
                     if (result.next()) {
-                        getData.studentId=studentid.getText();
+                        getData.studentId = studentid.getText();
+                        getData.path = result.getString("image");
 
                         alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Thông báo");
@@ -116,7 +117,7 @@ public class FXMLDocumentController implements Initializable {
 
             try {
                 Alert alert;
-                String sql = "INSERT INTO `student` (`studentNumber`, `password`,`image`) VALUES(?, ?,'null');";
+                String sql = "INSERT INTO `student` (`studentNumber`, `password`,`image`) VALUES(?, ?, ?);";
                 String sql1 = "SELECT * FROM student WHERE studentNumber = ?";
                 connect = Database.connectDB();
                 PreparedStatement prepare = connect.prepareStatement(sql);
@@ -125,6 +126,7 @@ public class FXMLDocumentController implements Initializable {
                 ResultSet resultSet = statement.executeQuery();
                 prepare.setString(1, studentid.getText());
                 prepare.setString(2, password.getText());
+                prepare.setString(3,"E:\\LMS\\src\\main\\resources\\com\\example\\lms\\image\\ava.png");
                 int rowsInserted = prepare.executeUpdate();
                 if (resultSet.next()) {
                     alert = new Alert(Alert.AlertType.ERROR);

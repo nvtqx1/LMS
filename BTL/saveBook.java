@@ -1,42 +1,59 @@
+package com.example.lms;
 
-package librarymanagement;
 import java.sql.Date;
 
-/**
- *Constructor
- */
 public class saveBook {
+    private String title;
+    private String author;
+    private String genre;
+    private String image;
+    private Date date;
 
-    private final String title;
-    private final String author;
-    private final String genre;
-    private final Date date;
-    private final String image;
-
-    public saveBook(String title, String author, String genre, String image, Date date){
-
+    public saveBook(String title, String author, String genre, String image, Date date) {
         this.title = title;
         this.author = author;
         this.genre = genre;
-        this.date = date;
         this.image = image;
-
+        this.date = date;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
-    public String getAuthor(){
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
         return author;
     }
-    public String getGenre(){
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getGenre() {
         return genre;
     }
-    public Date getDate(){
-        return date;
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
-    public String getImage(){
+
+    public String getImage() {
         return image;
     }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }
