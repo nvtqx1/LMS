@@ -5,4 +5,4 @@ Add this to pom.xml:
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.9</version>
-        </dependency>
+        </dependency> //test
