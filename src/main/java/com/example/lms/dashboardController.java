@@ -1,5 +1,8 @@
 package com.example.lms;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -18,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
@@ -28,6 +32,8 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import javax.sound.sampled.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import java.sql.*;
@@ -39,6 +45,8 @@ import javax.swing.SwingUtilities;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 
 public class dashboardController implements Initializable {
@@ -1133,7 +1141,6 @@ public class dashboardController implements Initializable {
         });
     }
 
-
     public void exit() {
         System.exit(0);
     }
@@ -1177,7 +1184,6 @@ public class dashboardController implements Initializable {
             Platform.runLater(() -> swingNode.requestFocus());
         });
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

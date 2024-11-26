@@ -16,6 +16,7 @@ module com.example.lms {
 //    //requires eu.hansolo.tilesfx;
 //    requires com.almasb.fxgl.all;
     requires java.sql;
+    requires jdk.accessibility;
 
     opens com.example.lms to javafx.fxml;
     exports com.example.lms;
