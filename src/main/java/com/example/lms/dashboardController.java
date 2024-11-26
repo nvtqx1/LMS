@@ -4,6 +4,7 @@ import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,38 +28,17 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import javax.sound.sampled.*;
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.*;
 import java.util.Date;
 import java.util.List;
 
-import javafx.fxml.Initializable;
+import javax.swing.SwingUtilities;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.ResourceBundle;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 
 public class dashboardController implements Initializable {
@@ -867,6 +847,7 @@ public class dashboardController implements Initializable {
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
             game_form.setVisible(true);
+            loadGame();
 
             game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
@@ -881,7 +862,6 @@ public class dashboardController implements Initializable {
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Game");
-            game_tab();
         }
 
     }
@@ -976,6 +956,7 @@ public class dashboardController implements Initializable {
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
             game_form.setVisible(true);
+            loadGame();
 
             game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
@@ -990,7 +971,6 @@ public class dashboardController implements Initializable {
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Game");
-            game_tab();
         }
 
     }
@@ -1153,12 +1133,6 @@ public class dashboardController implements Initializable {
         });
     }
 
-    public Game game = new Game();
-
-    public void game_tab() {
-
-    }
-
 
     public void exit() {
         System.exit(0);
@@ -1169,9 +1143,42 @@ public class dashboardController implements Initializable {
         stage.setIconified(true);
     }
 
-    public void initialize() throws IOException{
+    public void loadGame() {
+        SwingNode swingNode = new SwingNode();
+        createSwingContent(swingNode);
 
+        // Đặt kích thước cho SwingNode
+        swingNode.setManaged(false);
+        swingNode.setLayoutX(0);
+        swingNode.setLayoutY(0);
+        swingNode.resize(game_form.getWidth(), game_form.getHeight());
+
+        game_form.widthProperty().addListener((obs, oldVal, newVal) -> swingNode.prefWidth(newVal.doubleValue()));
+        game_form.heightProperty().addListener((obs, oldVal, newVal) -> swingNode.prefHeight(newVal.doubleValue()));
+
+        game_form.getChildren().clear();
+        game_form.getChildren().add(swingNode);
+
+        // Ép lấy focus ngay khi JavaFX xử lý giao diện
+        Platform.runLater(() -> swingNode.requestFocus());
     }
+
+    private void createSwingContent(SwingNode swingNode) {
+        SwingUtilities.invokeLater(() -> {
+            Game game = new Game();
+
+            // Ép nhận focus và vẽ lại
+            game.requestFocusInWindow();
+            game.repaint();
+
+            swingNode.setContent(game);
+
+            // Cập nhật focus trên JavaFX thread
+            Platform.runLater(() -> swingNode.requestFocus());
+        });
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         audio();

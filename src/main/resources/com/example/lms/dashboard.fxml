@@ -434,7 +434,7 @@
                         </AnchorPane>
                         <Separator layoutX="20.0" layoutY="318.0" prefHeight="2.0" prefWidth="880.0" />
                      </children></AnchorPane>
-                  <AnchorPane fx:id="game_form" layoutX="214.0" layoutY="52.0" prefHeight="592.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane fx:id="game_form" layoutX="209.0" layoutY="208.0" prefHeight="592.0" prefWidth="920.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </center>

@@ -5,12 +5,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Game extends JPanel {
+    private int highestScore = 0;
+
     private static final Color BG_COLOR = new Color(0xbbada0);
     private static final String FONT_NAME = "Arial";
     private static final int TILE_SIZE = 64;
@@ -22,6 +28,8 @@ public class Game extends JPanel {
     int myScore = 0;
 
     public Game() {
+        loadHighestScore();
+        setPreferredSize(new Dimension(480, 480));
         setFocusable(true);
         addKeyListener(new KeyAdapter() {
             @Override
@@ -58,6 +66,10 @@ public class Game extends JPanel {
             }
         });
         resetGame();
+        Timer timer = new Timer(50, e -> repaint());
+        timer.setRepeats(false);
+        timer.start();
+
     }
 
     public void resetGame() {
@@ -211,6 +223,11 @@ public class Game extends JPanel {
             if (i < 3 && oldLine[i].value == oldLine[i + 1].value) {
                 num *= 2;
                 myScore += num;
+                // Cập nhật điểm cao
+                if (myScore > highestScore) {
+                    highestScore = myScore;
+                    saveHighestScore(); // Lưu điểm cao vào file
+                }
                 int ourTarget = 2048;
                 if (num == ourTarget) {
                     myWin = true;
@@ -255,6 +272,9 @@ public class Game extends JPanel {
                 drawTile(g, myTiles[x + y * 4], x, y);
             }
         }
+        // Hiển thị điểm hiện tại
+        g.setFont(new Font(FONT_NAME, Font.PLAIN, 26));
+        g.drawString("Điểm cao nhất: " + highestScore, 55, 450);
     }
 
     private void drawTile(Graphics g2, Tile tile, int x, int y) {
@@ -293,13 +313,13 @@ public class Game extends JPanel {
                 g.drawString("Bạn thua!", 64, 200);
             }
             if (myWin || myLose) {
-                g.setFont(new Font(FONT_NAME, Font.PLAIN, 16));
+                g.setFont(new Font(FONT_NAME, Font.PLAIN, 22));
                 g.setColor(new Color(128, 128, 128, 128));
-                g.drawString("Nhấn ESC để chơi lại", 80, getHeight() - 40);
+                g.drawString("Nhấn ESC để chơi lại", 70, 520);
             }
         }
-        g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
-        g.drawString("Điểm: " + myScore, 200, 365);
+        g.setFont(new Font(FONT_NAME, Font.PLAIN, 22));
+        g.drawString("Điểm: " + myScore, 115, 380);
 
     }
 
@@ -343,17 +363,48 @@ public class Game extends JPanel {
             return new Color(0xcdc1b4);
         }
     }
+    private static final String HIGH_SCORE_FILE = "highscore.txt";
 
-    public static void main(String[] args) {
-        JFrame game = new JFrame();
-        game.setTitle("Game 2048");
-        game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        game.setSize(340, 400);
-        game.setResizable(false);
-
-        game.add(new Game());
-
-        game.setLocationRelativeTo(null);
-        game.setVisible(true);
+    // Đọc điểm cao từ file
+    private void loadHighestScore() {
+        try {
+            File file = new File(HIGH_SCORE_FILE);
+            if (file.exists()) {
+                Scanner scanner = new Scanner(file);
+                if (scanner.hasNextInt()) {
+                    highestScore = scanner.nextInt();
+                }
+                scanner.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    // Lưu điểm cao vào file
+    private void saveHighestScore() {
+        try {
+            FileWriter writer = new FileWriter(HIGH_SCORE_FILE);
+            writer.write(String.valueOf(highestScore));
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+//    public static void main(String[] args) {
+//        JFrame game = new JFrame();
+//        game.setTitle("Game 2048");
+//        game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        game.setSize(340, 400);
+//        game.setResizable(false);
+//
+//        game.add(new Game());
+//
+//        game.setLocationRelativeTo(null);
+//        game.setVisible(true);
+//    }
 }
