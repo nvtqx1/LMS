@@ -1,8 +1,13 @@
 package com.example.lms;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,12 +15,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
@@ -23,20 +31,31 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import javax.swing.*;
+import javax.sound.sampled.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.swing.SwingUtilities;
+
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
+
 
 public class dashboardController implements Initializable {
 
     @FXML
     private Button availableBooks_btn;
+
+    @FXML
+    private AnchorPane game_form;
 
     @FXML
     private AnchorPane availableBooks_form;
@@ -219,6 +238,20 @@ public class dashboardController implements Initializable {
     @FXML
     private AnchorPane saveBook_form;
 
+    @FXML
+    private Button music_off_btn;
+
+    @FXML
+    private Button music_on_btn;
+
+    @FXML
+    private Button game_Btn;
+
+    @FXML
+    private Button halfNav_gameBtn;
+
+    @FXML
+    private Button half_logout_btn;
 
     private Image image;
 
@@ -658,16 +691,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Issue Books");
         }
@@ -698,12 +734,13 @@ public class dashboardController implements Initializable {
 
     }
 
-    public void showProfile() {
-            String uri = "file:" + getData.path;
 
-            image = new Image(uri, 180, 114, false, true);
-            circle_image.setFill(new ImagePattern(image));
-            smallCircle_image.setFill(new ImagePattern(image));
+    public void showProfile() {
+        String uri = "file:" + getData.path;
+
+        image = new Image(uri, 180, 114, false, true);
+        circle_image.setFill(new ImagePattern(image));
+        smallCircle_image.setFill(new ImagePattern(image));
     }
 
     public void insertImage() {
@@ -734,16 +771,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(true);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Available Books");
         } else if (event.getSource() == halfNav_takeBtn) {
@@ -751,16 +791,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Issue Books");
         } else if (event.getSource() == halfNav_returnBtn) {
@@ -768,16 +811,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(true);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Return Books");
             showReturnBooks();
@@ -786,21 +832,46 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(true);
+            game_form.setVisible(false);
 
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Saved Books");
 
             showSavedBooks();
+        } else if (event.getSource() == halfNav_gameBtn) {
+            issue_form.setVisible(false);
+            availableBooks_form.setVisible(false);
+            returnBook_form.setVisible(false);
+            saveBook_form.setVisible(false);
+            game_form.setVisible(true);
+            loadGame();
+
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
+            availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            save_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
+            halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+
+            currentForm_label.setText("Game");
         }
+
     }
 
     public void navButtonDesign(ActionEvent event) {
@@ -809,16 +880,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(true);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Available Books");
         } else if (event.getSource() == issueBooks_btn) {
@@ -826,16 +900,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Issue Books");
         } else if (event.getSource() == returnBooks_btn) {
@@ -843,16 +920,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(true);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Return Books");
             showReturnBooks();
@@ -861,21 +941,46 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(true);
+            game_form.setVisible(false);
 
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Saved Books");
 
             showSavedBooks();
+        } else if (event.getSource() == game_Btn) {
+            issue_form.setVisible(false);
+            availableBooks_form.setVisible(false);
+            returnBook_form.setVisible(false);
+            saveBook_form.setVisible(false);
+            game_form.setVisible(true);
+            loadGame();
+
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
+            availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
+            halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+
+            currentForm_label.setText("Game");
         }
+
     }
 
     private double x = 0;
@@ -914,6 +1019,38 @@ public class dashboardController implements Initializable {
         }
     }
 
+    public void half_logout(javafx.event.ActionEvent event) {
+        try {
+            if (event.getSource() == half_logout_btn) {
+                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+
+                root.setOnMousePressed((MouseEvent e) -> {
+                    x = e.getSceneX();
+                    y = e.getSceneY();
+                });
+
+                root.setOnMouseDragged((MouseEvent e) -> {
+
+                    stage.setX(e.getScreenX() - x);
+                    stage.setY(e.getScreenY() - y);
+
+                });
+
+                stage.initStyle(StageStyle.TRANSPARENT);
+
+                stage.setScene(scene);
+                stage.show();
+
+                half_logout_btn.getScene().getWindow().hide();
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void sliderArrow() {
 
@@ -970,6 +1107,39 @@ public class dashboardController implements Initializable {
         slide.play();
     }
 
+    Clip clip;
+
+    public void audio() {
+        try {
+            File musicPath = new File("E:\\LMS\\src\\main\\resources\\com\\example\\lms\\image\\music.wav");
+            if (musicPath.exists()) {
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void music_off() {
+        Platform.runLater(() -> {
+            music_on_btn.setVisible(true);
+            music_off_btn.setVisible(false);
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-80.0f);
+        });
+    }
+
+    public void music_on() {
+        Platform.runLater(() -> {
+            music_on_btn.setVisible(false);
+            music_off_btn.setVisible(true);
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(0);
+        });
+    }
 
     public void exit() {
         System.exit(0);
@@ -980,8 +1150,44 @@ public class dashboardController implements Initializable {
         stage.setIconified(true);
     }
 
+    public void loadGame() {
+        SwingNode swingNode = new SwingNode();
+        createSwingContent(swingNode);
+
+        // Đặt kích thước cho SwingNode
+        swingNode.setManaged(false);
+        swingNode.setLayoutX(0);
+        swingNode.setLayoutY(0);
+        swingNode.resize(game_form.getWidth(), game_form.getHeight());
+
+        game_form.widthProperty().addListener((obs, oldVal, newVal) -> swingNode.prefWidth(newVal.doubleValue()));
+        game_form.heightProperty().addListener((obs, oldVal, newVal) -> swingNode.prefHeight(newVal.doubleValue()));
+
+        game_form.getChildren().clear();
+        game_form.getChildren().add(swingNode);
+
+        // Ép lấy focus ngay khi JavaFX xử lý giao diện
+        Platform.runLater(() -> swingNode.requestFocus());
+    }
+
+    private void createSwingContent(SwingNode swingNode) {
+        SwingUtilities.invokeLater(() -> {
+            Game game = new Game();
+
+            // Ép nhận focus và vẽ lại
+            game.requestFocusInWindow();
+            game.repaint();
+
+            swingNode.setContent(game);
+
+            // Cập nhật focus trên JavaFX thread
+            Platform.runLater(() -> swingNode.requestFocus());
+        });
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        audio();
         showProfile();
         showAvailableBooks();
         studentId();
@@ -990,5 +1196,6 @@ public class dashboardController implements Initializable {
         gender();
         showReturnBooks();
         showSavedBooks();
+
     }
 }

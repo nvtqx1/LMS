@@ -43,20 +43,6 @@
       </Button>
       <AnchorPane layoutX="360.0" layoutY="150.0" prefHeight="420.0" prefWidth="560.0" styleClass="card-form" stylesheets="@../../../designLogin.css">
          <children>
-            <TextField fx:id="studentid" layoutX="140.0" layoutY="244.0" onKeyTyped="#numbersOnly" prefHeight="35.0" prefWidth="280.0" promptText="StudentID" styleClass="textfield" stylesheets="@../../../designLogin.css">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="Microsoft Sans Serif" size="12.0" />
-               </font>
-            </TextField>
-            <PasswordField fx:id="password" layoutX="140.0" layoutY="291.0" prefHeight="35.0" prefWidth="280.0" promptText="Password" styleClass="textfield" stylesheets="@../../../designLogin.css">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </PasswordField>
-            <Button fx:id="login_Btn" layoutX="319.0" layoutY="337.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="95.0" styleClass="login-btn" stylesheets="@../../../designLogin.css" text="LOGIN" />
             <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="216.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/Logo.png" />
@@ -77,6 +63,20 @@
                   <Font name="Wingdings" size="15.0" />
                </font>
             </Text>
+            <TextField fx:id="studentid" layoutX="140.0" layoutY="244.0" onKeyTyped="#numbersOnly" prefHeight="35.0" prefWidth="280.0" promptText="StudentID" styleClass="textfield" stylesheets="@../../../designLogin.css">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="password" layoutX="140.0" layoutY="291.0" prefHeight="35.0" prefWidth="280.0" promptText="Password" styleClass="textfield" stylesheets="@../../../designLogin.css">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </PasswordField>
+            <Button fx:id="login_Btn" layoutX="319.0" layoutY="337.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="95.0" styleClass="login-btn" stylesheets="@../../../designLogin.css" text="LOGIN" />
          </children>
       </AnchorPane>
    </children>
