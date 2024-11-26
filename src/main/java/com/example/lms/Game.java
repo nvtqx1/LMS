@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class Game extends JFrame implements Initializable {
+public class Game extends JFrame implements Initializable{
     private static final Color BG_COLOR = new Color(0xbbada0);
     private static final String FONT_NAME = "Arial";
     private static final int TILE_SIZE = 64;
@@ -313,6 +313,13 @@ public class Game extends JFrame implements Initializable {
         return arg * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        JFrame game = new JFrame();
+        game.add(new Game());
+        game.setLocationRelativeTo(null);
+        game.setVisible(true);
+    }
 
 
     static class Tile {
@@ -361,16 +368,6 @@ public class Game extends JFrame implements Initializable {
             }
             return new Color(0xcdc1b4);
         }
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-    public static void main(String[] args) {
-        JFrame game = new JFrame();
-        game.add(new Game());
-        game.setLocationRelativeTo(null);
-        game.setVisible(true);
     }
 }
 

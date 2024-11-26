@@ -40,6 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 import java.util.List;
+
 import javafx.fxml.Initializable;
 
 import javax.swing.*;
@@ -59,9 +60,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
-import static sun.swing.SwingUtilities2.getFontMetrics;
 
 public class dashboardController implements Initializable {
 
@@ -258,6 +256,14 @@ public class dashboardController implements Initializable {
     @FXML
     private Button music_on_btn;
 
+    @FXML
+    private Button game_Btn;
+
+    @FXML
+    private Button halfNav_gameBtn;
+
+    @FXML
+    private Button half_logout_btn;
 
     private Image image;
 
@@ -697,16 +703,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Issue Books");
         }
@@ -736,7 +745,6 @@ public class dashboardController implements Initializable {
         }
 
     }
-
 
 
     public void showProfile() {
@@ -775,16 +783,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(true);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Available Books");
         } else if (event.getSource() == halfNav_takeBtn) {
@@ -792,16 +803,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Issue Books");
         } else if (event.getSource() == halfNav_returnBtn) {
@@ -809,16 +823,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(true);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Return Books");
             showReturnBooks();
@@ -827,21 +844,46 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(true);
+            game_form.setVisible(false);
 
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Saved Books");
 
             showSavedBooks();
+        } else if (event.getSource() == halfNav_gameBtn) {
+            issue_form.setVisible(false);
+            availableBooks_form.setVisible(false);
+            returnBook_form.setVisible(false);
+            saveBook_form.setVisible(false);
+            game_form.setVisible(true);
+
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
+            availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            save_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
+            halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+
+            currentForm_label.setText("Game");
+            game_tab();
         }
+
     }
 
     public void navButtonDesign(ActionEvent event) {
@@ -850,16 +892,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(true);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Available Books");
         } else if (event.getSource() == issueBooks_btn) {
@@ -867,16 +912,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Issue Books");
         } else if (event.getSource() == returnBooks_btn) {
@@ -884,16 +932,19 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(true);
             saveBook_form.setVisible(false);
+            game_form.setVisible(false);
 
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Return Books");
             showReturnBooks();
@@ -902,21 +953,46 @@ public class dashboardController implements Initializable {
             availableBooks_form.setVisible(false);
             returnBook_form.setVisible(false);
             saveBook_form.setVisible(true);
+            game_form.setVisible(false);
 
             savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
             halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
             halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Saved Books");
 
             showSavedBooks();
+        } else if (event.getSource() == game_Btn) {
+            issue_form.setVisible(false);
+            availableBooks_form.setVisible(false);
+            returnBook_form.setVisible(false);
+            saveBook_form.setVisible(false);
+            game_form.setVisible(true);
+
+            game_Btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
+            availableBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            returnBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            issueBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            savedBooks_btn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+
+            halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #46589a, #4278a7);");
+            halfNav_availableBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_returnBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_takeBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+            halfNav_saveBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
+
+            currentForm_label.setText("Game");
+            game_tab();
         }
+
     }
 
     private double x = 0;
@@ -948,6 +1024,39 @@ public class dashboardController implements Initializable {
                 stage.show();
 
                 logout_btn.getScene().getWindow().hide();
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void half_logout(javafx.event.ActionEvent event) {
+        try {
+            if (event.getSource() == half_logout_btn) {
+                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+
+                root.setOnMousePressed((MouseEvent e) -> {
+                    x = e.getSceneX();
+                    y = e.getSceneY();
+                });
+
+                root.setOnMouseDragged((MouseEvent e) -> {
+
+                    stage.setX(e.getScreenX() - x);
+                    stage.setY(e.getScreenY() - y);
+
+                });
+
+                stage.initStyle(StageStyle.TRANSPARENT);
+
+                stage.setScene(scene);
+                stage.show();
+
+                half_logout_btn.getScene().getWindow().hide();
 
             }
         } catch (Exception e) {
@@ -1011,6 +1120,7 @@ public class dashboardController implements Initializable {
     }
 
     Clip clip;
+
     public void audio() {
         try {
             File musicPath = new File("E:\\LMS\\src\\main\\resources\\com\\example\\lms\\image\\music.wav");
@@ -1027,7 +1137,6 @@ public class dashboardController implements Initializable {
 
     public void music_off() {
         Platform.runLater(() -> {
-            // Code để tắt nhạc và cập nhật giao diện
             music_on_btn.setVisible(true);
             music_off_btn.setVisible(false);
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -1037,7 +1146,6 @@ public class dashboardController implements Initializable {
 
     public void music_on() {
         Platform.runLater(() -> {
-            // Code để tắt nhạc và cập nhật giao diện
             music_on_btn.setVisible(false);
             music_off_btn.setVisible(true);
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -1045,350 +1153,11 @@ public class dashboardController implements Initializable {
         });
     }
 
-    private static final Color BG_COLOR = new Color(0xbbada0);
-    private static final String FONT_NAME = "Arial";
-    private static final int TILE_SIZE = 64;
-    private static final int TILES_MARGIN = 16;
+    Game game;
 
-    private Game.Tile[] myTiles;
-    boolean myWin = false;
-    boolean myLose = false;
-    int myScore = 0;
+    public void game_tab() {
+    }
 
-    public void gameDemo() {
-            setFocusable(true);
-            addKeyListener(new KeyAdapter() {
-                @Override
-                public void keyPressed(KeyEvent e) {
-                    if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                        resetGame();
-                    }
-                    if (!canMove()) {
-                        myLose = true;
-                    }
-
-                    if (!myWin && !myLose) {
-                        switch (e.getKeyCode()) {
-                            case KeyEvent.VK_LEFT:
-                                left();
-                                break;
-                            case KeyEvent.VK_RIGHT:
-                                right();
-                                break;
-                            case KeyEvent.VK_DOWN:
-                                down();
-                                break;
-                            case KeyEvent.VK_UP:
-                                up();
-                                break;
-                        }
-                    }
-
-                    if (!myWin && !canMove()) {
-                        myLose = true;
-                    }
-
-                    repaint();
-                }
-            });
-            resetGame();
-        }
-
-        public void resetGame () {
-            myScore = 0;
-            myWin = false;
-            myLose = false;
-            myTiles = new Game.Tile[4 * 4];
-            for (int i = 0; i < myTiles.length; i++) {
-                myTiles[i] = new Game.Tile();
-            }
-            addTile();
-            addTile();
-        }
-
-
-        public void left () {
-            boolean needAddTile = false;
-            for (int i = 0; i < 4; i++) {
-                Game.Tile[] line = getLine(i);
-                Game.Tile[] merged = mergeLine(moveLine(line));
-                setLine(i, merged);
-                if (!needAddTile && !compare(line, merged)) {
-                    needAddTile = true;
-                }
-            }
-
-            if (needAddTile) {
-                addTile();
-            }
-        }
-
-        public void right () {
-            myTiles = rotate(180);
-            left();
-            myTiles = rotate(180);
-        }
-
-        public void up () {
-            myTiles = rotate(270);
-            left();
-            myTiles = rotate(90);
-        }
-
-        public void down () {
-            myTiles = rotate(90);
-            left();
-            myTiles = rotate(270);
-        }
-
-        private Game.Tile tileAt ( int x, int y){
-            return myTiles[x + y * 4];
-        }
-
-        private void addTile () {
-            List<Game.Tile> list = availableSpace();
-            if (!availableSpace().isEmpty()) {
-                int index = (int) (Math.random() * list.size()) % list.size();
-                Game.Tile emptyTime = list.get(index);
-                emptyTime.value = Math.random() < 0.9 ? 2 : 4;
-            }
-        }
-
-        private List<Game.Tile> availableSpace () {
-            final List<Game.Tile> list = new ArrayList<Game.Tile>(16);
-            for (Game.Tile t : myTiles) {
-                if (t.isEmpty()) {
-                    list.add(t);
-                }
-            }
-            return list;
-        }
-
-        private boolean isFull () {
-            return availableSpace().size() == 0;
-        }
-
-        boolean canMove () {
-            if (!isFull()) {
-                return true;
-            }
-            for (int x = 0; x < 4; x++) {
-                for (int y = 0; y < 4; y++) {
-                    Game.Tile t = tileAt(x, y);
-                    if ((x < 3 && t.value == tileAt(x + 1, y).value)
-                            || ((y < 3) && t.value == tileAt(x, y + 1).value)) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        private boolean compare (Game.Tile[]line1, Game.Tile[]line2){
-            if (line1 == line2) {
-                return true;
-            } else if (line1.length != line2.length) {
-                return false;
-            }
-
-            for (int i = 0; i < line1.length; i++) {
-                if (line1[i].value != line2[i].value) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private Game.Tile[] rotate ( int angle){
-            Game.Tile[] newTiles = new Game.Tile[4 * 4];
-            int offsetX = 3, offsetY = 3;
-            if (angle == 90) {
-                offsetY = 0;
-            } else if (angle == 270) {
-                offsetX = 0;
-            }
-
-            double rad = Math.toRadians(angle);
-            int cos = (int) Math.cos(rad);
-            int sin = (int) Math.sin(rad);
-            for (int x = 0; x < 4; x++) {
-                for (int y = 0; y < 4; y++) {
-                    int newX = (x * cos) - (y * sin) + offsetX;
-                    int newY = (x * sin) + (y * cos) + offsetY;
-                    newTiles[(newX) + (newY) * 4] = tileAt(x, y);
-                }
-            }
-            return newTiles;
-        }
-
-        private Game.Tile[] moveLine (Game.Tile[]oldLine){
-            LinkedList<Game.Tile> l = new LinkedList<Game.Tile>();
-            for (int i = 0; i < 4; i++) {
-                if (!oldLine[i].isEmpty())
-                    l.addLast(oldLine[i]);
-            }
-            if (l.size() == 0) {
-                return oldLine;
-            } else {
-                Game.Tile[] newLine = new Game.Tile[4];
-                ensureSize(l, 4);
-                for (int i = 0; i < 4; i++) {
-                    newLine[i] = l.removeFirst();
-                }
-                return newLine;
-            }
-        }
-
-        private Game.Tile[] mergeLine (Game.Tile[]oldLine){
-            LinkedList<Game.Tile> list = new LinkedList<Game.Tile>();
-            for (int i = 0; i < 4 && !oldLine[i].isEmpty(); i++) {
-                int num = oldLine[i].value;
-                if (i < 3 && oldLine[i].value == oldLine[i + 1].value) {
-                    num *= 2;
-                    myScore += num;
-                    int ourTarget = 2048;
-                    if (num == ourTarget) {
-                        myWin = true;
-                    }
-                    i++;
-                }
-                list.add(new Game.Tile(num));
-            }
-            if (list.size() == 0) {
-                return oldLine;
-            } else {
-                ensureSize(list, 4);
-                return list.toArray(new Game.Tile[4]);
-            }
-        }
-
-        private static void ensureSize (java.util.List < Game.Tile > l,int s){
-            while (l.size() != s) {
-                l.add(new Game.Tile());
-            }
-        }
-
-        private Game.Tile[] getLine ( int index){
-            Game.Tile[] result = new Game.Tile[4];
-            for (int i = 0; i < 4; i++) {
-                result[i] = tileAt(i, index);
-            }
-            return result;
-        }
-
-        private void setLine ( int index, Tile[] re){
-            System.arraycopy(re, 0, myTiles, index * 4, 4);
-        }
-
-        public void paint (Graphics g){
-            super.paint(g);
-            g.setColor(BG_COLOR);
-            g.fillRect(0, 0, this.getSize().width, this.getSize().height);
-            for (int y = 0; y < 4; y++) {
-                for (int x = 0; x < 4; x++) {
-                    drawTile(g, myTiles[x + y * 4], x, y);
-                }
-            }
-        }
-
-        private void drawTile (Graphics g2, Game.Tile tile,int x, int y){
-            Graphics2D g = ((Graphics2D) g2);
-            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-            int value = tile.value;
-            int xOffset = offsetCoors(x);
-            int yOffset = offsetCoors(y);
-            g.setColor(tile.getBackground());
-            g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
-            g.setColor(tile.getForeground());
-            final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
-            final Font font = new Font(FONT_NAME, Font.BOLD, size);
-            g.setFont(font);
-
-            String s = String.valueOf(value);
-            final FontMetrics fm = getFontMetrics(font);
-
-            final int w = fm.stringWidth(s);
-            final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
-
-            if (value != 0)
-                g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
-
-            if (myWin || myLose) {
-                g.setColor(new Color(255, 255, 255, 30));
-                g.fillRect(0, 0, getWidth(), getHeight());
-                g.setColor(new Color(78, 139, 202));
-                g.setFont(new Font(FONT_NAME, Font.BOLD, 48));
-                if (myWin) {
-                    g.drawString("Chiến thắng!", 68, 150);
-                }
-                if (myLose) {
-                    g.drawString("Game over!", 50, 130);
-                    g.drawString("Bạn thua!", 64, 200);
-                }
-                if (myWin || myLose) {
-                    g.setFont(new Font(FONT_NAME, Font.PLAIN, 16));
-                    g.setColor(new Color(128, 128, 128, 128));
-                    g.drawString("Nhấn ESC để chơi lại", 80, getHeight() - 40);
-                }
-            }
-            g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
-            g.drawString("Điểm: " + myScore, 200, 365);
-
-        }
-
-        private static int offsetCoors ( int arg){
-            return arg * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
-        }
-
-
-        static class Tile {
-            int value;
-
-            public Tile() {
-                this(0);
-            }
-
-            public Tile(int num) {
-                value = num;
-            }
-
-            public boolean isEmpty() {
-                return value == 0;
-            }
-
-            public Color getForeground() {
-                return value < 16 ? new Color(0x776e65) : new Color(0xf9f6f2);
-            }
-
-            public Color getBackground() {
-                switch (value) {
-                    case 2:
-                        return new Color(0xeee4da);
-                    case 4:
-                        return new Color(0xede0c8);
-                    case 8:
-                        return new Color(0xf2b179);
-                    case 16:
-                        return new Color(0xf59563);
-                    case 32:
-                        return new Color(0xf67c5f);
-                    case 64:
-                        return new Color(0xf65e3b);
-                    case 128:
-                        return new Color(0xedcf72);
-                    case 256:
-                        return new Color(0xedcc61);
-                    case 512:
-                        return new Color(0xedc850);
-                    case 1024:
-                        return new Color(0xedc53f);
-                    case 2048:
-                        return new Color(0xedc22e);
-                }
-                return new Color(0xcdc1b4);
-            }
-        }
 
     public void exit() {
         System.exit(0);
