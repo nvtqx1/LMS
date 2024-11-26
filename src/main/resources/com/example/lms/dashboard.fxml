@@ -164,7 +164,7 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="nav_form" layoutX="80.0" prefHeight="590.0" prefWidth="360.0" styleClass="nav-form" stylesheets="@../../../dashboardDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="nav_form" layoutX="80.0" prefHeight="590.0" prefWidth="360.0" styleClass="nav-form" stylesheets="@../../../dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Circle fx:id="circle_image" fill="#322020" layoutX="180.0" layoutY="114.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
                         <Label layoutX="138.0" layoutY="223.0" text="Welcome" textFill="WHITE">
@@ -425,7 +425,7 @@
                         </AnchorPane>
                         <Separator layoutX="20.0" layoutY="318.0" prefHeight="2.0" prefWidth="880.0" />
                      </children></AnchorPane>
-                  <AnchorPane layoutX="214.0" layoutY="52.0" prefHeight="592.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane fx:id="game_form" layoutX="214.0" layoutY="52.0" prefHeight="592.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </center>
