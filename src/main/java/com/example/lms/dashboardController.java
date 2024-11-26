@@ -1,6 +1,7 @@
 package com.example.lms;
 
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +16,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
@@ -23,9 +23,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import javax.swing.*;
+import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -218,6 +221,12 @@ public class dashboardController implements Initializable {
 
     @FXML
     private AnchorPane saveBook_form;
+
+    @FXML
+    private Button music_off_btn;
+
+    @FXML
+    private Button music_on_btn;
 
 
     private Image image;
@@ -698,12 +707,28 @@ public class dashboardController implements Initializable {
 
     }
 
-    public void showProfile() {
-            String uri = "file:" + getData.path;
+    Clip clip;
 
-            image = new Image(uri, 180, 114, false, true);
-            circle_image.setFill(new ImagePattern(image));
-            smallCircle_image.setFill(new ImagePattern(image));
+    public void audio() {
+        try {
+            File musicPath = new File("E:\\LMS\\src\\main\\resources\\com\\example\\lms\\image\\music.wav");
+            if (musicPath.exists()) {
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showProfile() {
+        String uri = "file:" + getData.path;
+
+        image = new Image(uri, 180, 114, false, true);
+        circle_image.setFill(new ImagePattern(image));
+        smallCircle_image.setFill(new ImagePattern(image));
     }
 
     public void insertImage() {
@@ -914,6 +939,26 @@ public class dashboardController implements Initializable {
         }
     }
 
+    public void music_off() {
+        Platform.runLater(() -> {
+            // Code để tắt nhạc và cập nhật giao diện
+            music_on_btn.setVisible(true);
+            music_off_btn.setVisible(false);
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-80.0f);
+        });
+    }
+
+    public void music_on() {
+        Platform.runLater(() -> {
+            // Code để tắt nhạc và cập nhật giao diện
+            music_on_btn.setVisible(false);
+            music_off_btn.setVisible(true);
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(0);
+        });
+    }
+
 
     public void sliderArrow() {
 
@@ -982,6 +1027,7 @@ public class dashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        audio();
         showProfile();
         showAvailableBooks();
         studentId();
@@ -990,5 +1036,6 @@ public class dashboardController implements Initializable {
         gender();
         showReturnBooks();
         showSavedBooks();
+
     }
 }
