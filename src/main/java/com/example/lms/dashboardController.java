@@ -1153,9 +1153,10 @@ public class dashboardController implements Initializable {
         });
     }
 
-    Game game;
+    public Game game = new Game();
 
     public void game_tab() {
+
     }
 
 
@@ -1168,6 +1169,9 @@ public class dashboardController implements Initializable {
         stage.setIconified(true);
     }
 
+    public void initialize() throws IOException{
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         audio();
