@@ -135,6 +135,15 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Button fx:id="halfNav_saveBtn1" layoutX="12.0" layoutY="404.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="40.0" prefWidth="40.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/game_btn.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="nav_form" layoutX="80.0" prefHeight="590.0" prefWidth="360.0" styleClass="nav-form" stylesheets="@../../../dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -177,7 +186,7 @@
                            </graphic>
                         </Button>
                         <Line endX="160.0" layoutX="180.0" layoutY="295.0" startX="-160.0" />
-                        <Button fx:id="logout_btn" layoutX="28.0" layoutY="527.0" mnemonicParsing="false" onAction="#logout" prefHeight="30.0" prefWidth="30.0" styleClass="logout-btn" stylesheets="@../../../dashboardDesign.css">
+                        <Button fx:id="logout_btn" layoutX="28.0" layoutY="539.0" mnemonicParsing="false" onAction="#logout" prefHeight="30.0" prefWidth="30.0" styleClass="logout-btn" stylesheets="@../../../dashboardDesign.css">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -186,11 +195,12 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label layoutX="95.0" layoutY="538.0" text="Sign Out" textFill="WHITE">
+                        <Label layoutX="95.0" layoutY="548.0" text="Sign Out" textFill="WHITE">
                            <font>
                               <Font name="Microsoft Sans Serif" size="15.0" />
                            </font>
                         </Label>
+                        <Button fx:id="savedBooks_btn1" layoutX="70.0" layoutY="490.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="35.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css" text="Game" />
                      </children>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -205,7 +215,7 @@
          <center>
             <AnchorPane fx:id="mainCenter_form" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="availableBooks_form" layoutY="-2.0" prefHeight="590.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="availableBooks_form" layoutY="-2.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="390.0" layoutY="5.0" prefHeight="580.0" prefWidth="520.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css">
                            <children>
@@ -397,6 +407,7 @@
                         </AnchorPane>
                         <Separator layoutX="20.0" layoutY="318.0" prefHeight="2.0" prefWidth="880.0" />
                      </children></AnchorPane>
+                  <AnchorPane layoutX="214.0" layoutY="52.0" prefHeight="592.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </center>
