@@ -336,15 +336,7 @@ public class dashboardController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Vui lòng điền đầy đủ thông tin!");
                 alert.showAndWait();
-            } /*else if (take_firstName.getText().isEmpty() ||
-                    take_lastName.getText().isEmpty() ||
-                    take_Gender.getSelectionModel().isEmpty()) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Thông Báo");
-                alert.setHeaderText(null);
-                alert.setContentText("Vui lòng điền đầy đủ thông tin.");
-                alert.showAndWait();
-            } */ else {
+            } else {
                 while (result.next()) {
                     take_titleLabel.setText(result.getString("bookTitle"));
                     take_authorLabel.setText(result.getString("author"));
@@ -706,6 +698,8 @@ public class dashboardController implements Initializable {
             halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Issue Books");
+
+            take_bookTitle.setText(getData.savedTitle);
         }
 
     }
