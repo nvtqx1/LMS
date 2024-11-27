@@ -1,6 +1,6 @@
 package BTL.DatabaseClasses;
 
-import BTL.Exceptions.InputException;
+import src.Exceptions.InputException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
