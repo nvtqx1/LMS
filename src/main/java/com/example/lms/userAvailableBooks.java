@@ -1,19 +1,19 @@
 package com.example.lms;
 
-import java.util.Date;
+import java.sql.Date;
 
-public class returnBook {
-    private String title;
-    private String author;
+public class userAvailableBooks {
+    private String  title;
+    private String  author;
     private String genre;
-    private String image;
+    private String  image;
     private Date date;
 
-    public returnBook(String title, String author, String genre, String image, Date date) {
+    public userAvailableBooks(String title, String author, String genre, String image, Date date) {
         this.title = title;
         this.author = author;
         this.genre = genre;
-        this.image = image;
+        this.image= image;
         this.date = date;
     }
 
@@ -56,6 +56,5 @@ public class returnBook {
     public void setDate(Date date) {
         this.date = date;
     }
-
 
 }

@@ -2,14 +2,14 @@ package com.example.lms;
 
 import java.sql.Date;
 
-public class saveBook {
+public class userSaveBook {
     private String title;
     private String author;
     private String genre;
     private String image;
     private Date date;
 
-    public saveBook(String title, String author, String genre, String image, Date date) {
+    public userSaveBook(String title, String author, String genre, String image, Date date) {
         this.title = title;
         this.author = author;
         this.genre = genre;

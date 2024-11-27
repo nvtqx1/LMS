@@ -2,14 +2,12 @@ package com.example.lms;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -23,7 +21,7 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class FXMLDocumentController implements Initializable {
+public class loginSignUpController implements Initializable {
 
     @FXML
     private Button close;
@@ -84,7 +82,7 @@ public class FXMLDocumentController implements Initializable {
                         alert.showAndWait();
 
                         login_Btn.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("userDashboard.fxml"));
                         Stage stage = new Stage();
                         Scene scene = new Scene(root);
                         root.setOnMousePressed((MouseEvent event) -> {

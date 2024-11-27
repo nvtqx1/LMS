@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class Game extends JPanel {
+public class userGame extends JPanel {
     private int highestScore = 0;
 
     private static final Color BG_COLOR = new Color(0xbbada0);
@@ -27,7 +27,7 @@ public class Game extends JPanel {
     boolean myLose = false;
     int myScore = 0;
 
-    public Game() {
+    public userGame() {
         loadHighestScore();
         setPreferredSize(new Dimension(480, 480));
         setFocusable(true);

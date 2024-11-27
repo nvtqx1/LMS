@@ -26,7 +26,7 @@ public class LibraryManagement extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("loginSignUp.fxml"));
 
         Scene scene = new Scene(root);
 

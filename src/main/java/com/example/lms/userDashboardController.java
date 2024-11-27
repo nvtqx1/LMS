@@ -1,8 +1,5 @@
 package com.example.lms;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -21,7 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
@@ -32,8 +28,6 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import javax.sound.sampled.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import java.sql.*;
@@ -46,10 +40,8 @@ import javax.swing.SwingUtilities;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
-
-public class dashboardController implements Initializable {
+public class userDashboardController implements Initializable {
 
     @FXML
     private Button availableBooks_btn;
@@ -64,7 +56,7 @@ public class dashboardController implements Initializable {
     private ImageView availableBooks_imageView;
 
     @FXML
-    private TableView<availableBooks> availableBooks_tableView;
+    private TableView<userAvailableBooks> availableBooks_tableView;
 
     @FXML
     private Label availableBooks_title;
@@ -73,16 +65,16 @@ public class dashboardController implements Initializable {
     private Circle circle_image;
 
     @FXML
-    private TableColumn<availableBooks, String> col_ab_author;
+    private TableColumn<userAvailableBooks, String> col_ab_author;
 
     @FXML
-    private TableColumn<availableBooks, String> col_ab_bookTitle;
+    private TableColumn<userAvailableBooks, String> col_ab_bookTitle;
 
     @FXML
-    private TableColumn<availableBooks, String> col_ab_bookType;
+    private TableColumn<userAvailableBooks, String> col_ab_bookType;
 
     @FXML
-    private TableColumn<availableBooks, String> col_ab_publishedDate;
+    private TableColumn<userAvailableBooks, String> col_ab_publishedDate;
 
     @FXML
     private Button edit_btn;
@@ -194,31 +186,31 @@ public class dashboardController implements Initializable {
     private Label take_titleLabel;
 
     @FXML
-    private TableColumn<returnBook, String> return_Author;
+    private TableColumn<userReturnBook, String> return_Author;
 
     @FXML
-    private TableColumn<returnBook, String> return_BookType;
+    private TableColumn<userReturnBook, String> return_BookType;
 
     @FXML
     private Button return_Button;
 
     @FXML
-    private TableColumn<returnBook, String> return_DateIssue;
+    private TableColumn<userReturnBook, String> return_DateIssue;
 
     @FXML
-    private TableColumn<returnBook, String> return_BookTitle;
+    private TableColumn<userReturnBook, String> return_BookTitle;
 
     @FXML
     private ImageView return_imageView;
 
     @FXML
-    private TableView<returnBook> return_tableView;
+    private TableView<userReturnBook> return_tableView;
 
     @FXML
-    private TableColumn<saveBook, String> col_saveAuthor;
+    private TableColumn<userSaveBook, String> col_saveAuthor;
 
     @FXML
-    private TableColumn<saveBook, String> col_saveDate;
+    private TableColumn<userSaveBook, String> col_saveDate;
 
     @FXML
     private TableColumn<String, String> col_saveGenre;
@@ -227,7 +219,7 @@ public class dashboardController implements Initializable {
     private TableColumn<String, String> col_saveTitle;
 
     @FXML
-    private TableView<saveBook> save_tableView;
+    private TableView<userSaveBook> save_tableView;
 
     @FXML
     private Button unsaveBtn;
@@ -398,19 +390,19 @@ public class dashboardController implements Initializable {
         take_issueDate.setText(date);
     }
 
-    public ObservableList<returnBook> returnBook() {
-        ObservableList<returnBook> bookReturnData = FXCollections.observableArrayList();
+    public ObservableList<userReturnBook> returnBook() {
+        ObservableList<userReturnBook> bookReturnData = FXCollections.observableArrayList();
         String check = "Not Return";
         String sql = "select * from take where checkReturn ='" + check + "'and studentNumber ='" +
                 getData.studentId + "'";
         connect = Database.connectDB();
         Alert alert;
         try {
-            returnBook rBooks;
+            userReturnBook rBooks;
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             while (result.next()) {
-                rBooks = new returnBook(result.getString("bookTitle"),
+                rBooks = new userReturnBook(result.getString("bookTitle"),
                         result.getString("author"), result.getString("bookType"),
                         result.getString("image"), result.getDate("date"));
                 bookReturnData.add(rBooks);
@@ -452,7 +444,7 @@ public class dashboardController implements Initializable {
 
     }
 
-    private ObservableList<returnBook> retBook;
+    private ObservableList<userReturnBook> retBook;
 
     public void showReturnBooks() {
         retBook = returnBook();
@@ -464,7 +456,7 @@ public class dashboardController implements Initializable {
     }
 
     public void selectReturnBook() {
-        returnBook rBook = return_tableView.getSelectionModel().getSelectedItem();
+        userReturnBook rBook = return_tableView.getSelectionModel().getSelectedItem();
         int num = return_tableView.getSelectionModel().getFocusedIndex();
         if ((num - 1) < -1) {
             return;
@@ -477,18 +469,18 @@ public class dashboardController implements Initializable {
         getData.takeBookTitle = rBook.getTitle();
     }
 
-    public ObservableList<availableBooks> dataList() {
+    public ObservableList<userAvailableBooks> dataList() {
 
-        ObservableList<availableBooks> listBooks = FXCollections.observableArrayList();
+        ObservableList<userAvailableBooks> listBooks = FXCollections.observableArrayList();
         String sql = " Select * from book";
 
         connect = Database.connectDB();
         try {
-            availableBooks aBooks;
+            userAvailableBooks aBooks;
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
             while (result.next()) {
-                aBooks = new availableBooks(result.getString("bookTitle"),
+                aBooks = new userAvailableBooks(result.getString("bookTitle"),
                         result.getString("author"), result.getString("bookType"),
                         result.getString("image"), result.getDate("date"));
                 listBooks.add(aBooks);
@@ -500,23 +492,23 @@ public class dashboardController implements Initializable {
         return listBooks;
     }
 
-    public ObservableList<saveBook> savedBooksData() {
+    public ObservableList<userSaveBook> savedBooksData() {
 
-        ObservableList<saveBook> listSaveData = FXCollections.observableArrayList();
+        ObservableList<userSaveBook> listSaveData = FXCollections.observableArrayList();
 
         String sql = "SELECT * FROM save WHERE studentNumber = '" + getData.studentId + "'";
 
         connect = Database.connectDB();
 
         try {
-            saveBook sBook;
+            userSaveBook sBook;
 
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
 
             while (result.next()) {
 
-                sBook = new saveBook(result.getString("bookTitle"), result.getString("author"),
+                sBook = new userSaveBook(result.getString("bookTitle"), result.getString("author"),
                         result.getString("bookType"), result.getString("image"), result.getDate("date"));
 
                 listSaveData.add(sBook);
@@ -530,7 +522,7 @@ public class dashboardController implements Initializable {
         return listSaveData;
     }
 
-    private ObservableList<saveBook> sBookList;
+    private ObservableList<userSaveBook> sBookList;
 
     public void showSavedBooks() {
 
@@ -547,7 +539,7 @@ public class dashboardController implements Initializable {
 
     public void selectSavedBooks() {
 
-        saveBook sBook = save_tableView.getSelectionModel().getSelectedItem();
+        userSaveBook sBook = save_tableView.getSelectionModel().getSelectedItem();
         int num = save_tableView.getSelectionModel().getFocusedIndex();
 
         if ((num - 1) < -1) {
@@ -646,7 +638,7 @@ public class dashboardController implements Initializable {
     }
 
 
-    private ObservableList<availableBooks> listBook;
+    private ObservableList<userAvailableBooks> listBook;
 
     public void showAvailableBooks() {
         listBook = dataList();
@@ -659,7 +651,7 @@ public class dashboardController implements Initializable {
 
     public void selectionAvailableBooks() {
 
-        availableBooks bookData = availableBooks_tableView.getSelectionModel().getSelectedItem();
+        userAvailableBooks bookData = availableBooks_tableView.getSelectionModel().getSelectedItem();
 
         int num = availableBooks_tableView.getSelectionModel().getFocusedIndex();
 
@@ -989,7 +981,7 @@ public class dashboardController implements Initializable {
     public void logout(javafx.event.ActionEvent event) {
         try {
             if (event.getSource() == logout_btn) {
-                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("loginSignUp.fxml"));
 
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
@@ -1022,7 +1014,7 @@ public class dashboardController implements Initializable {
     public void half_logout(javafx.event.ActionEvent event) {
         try {
             if (event.getSource() == half_logout_btn) {
-                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("loginSignUp.fxml"));
 
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
@@ -1172,7 +1164,7 @@ public class dashboardController implements Initializable {
 
     private void createSwingContent(SwingNode swingNode) {
         SwingUtilities.invokeLater(() -> {
-            Game game = new Game();
+            userGame game = new userGame();
 
             // Ép nhận focus và vẽ lại
             game.requestFocusInWindow();
