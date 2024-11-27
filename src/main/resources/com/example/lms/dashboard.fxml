@@ -270,6 +270,7 @@
                                     <Font name="Microsoft Sans Serif" size="20.0" />
                                  </font>
                               </Label>
+                              <Button fx:id="take_btn1" layoutX="135.0" layoutY="405.0" mnemonicParsing="false" onAction="#abTakeButton" prefHeight="55.0" prefWidth="90.0" styleClass="clear-btn" stylesheets="@../../../dashboardDesign.css" text="Add Book" />
                            </children>
                         </AnchorPane>
                         <Separator layoutX="375.0" layoutY="15.0" orientation="VERTICAL" prefHeight="560.0" prefWidth="12.0" />

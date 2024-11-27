@@ -929,6 +929,7 @@ public class dashboardController implements Initializable {
             halfNav_gameBtn.setStyle("-fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);");
 
             currentForm_label.setText("Return Books");
+
             showReturnBooks();
         } else if (event.getSource() == savedBooks_btn) {
             issue_form.setVisible(false);
