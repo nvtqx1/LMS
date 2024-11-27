@@ -1,14 +1,251 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.lms.AdminDashBoard"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lms.userDashboardController">
+    <children>
+        <BorderPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <AnchorPane prefHeight="109.0" prefWidth="1280.0" styleClass="semiTop_form" stylesheets="@../../../dashboardDesign.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane prefHeight="40.0" prefWidth="1280.0" styleClass="top-form" stylesheets="@../../../dashboardDesign.css" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Button fx:id="minimize" layoutX="1160.0" mnemonicParsing="false" onAction="#minimize" prefHeight="40.0" prefWidth="60.0" styleClass="minimize-btn" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/minibtn.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="close" layoutX="1220.0" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="60.0" styleClass="close-btn" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                    </graphic>
+                                    <graphic>
+                                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/closebtn.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="music_on_btn" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#music_on" prefHeight="25.0" prefWidth="25.0" styleClass="bars" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/music_on.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="music_off_btn" layoutX="18.0" layoutY="4.0" minWidth="34.0" mnemonicParsing="false" onAction="#music_off" prefHeight="25.0" prefWidth="25.0">
+                                    <graphic>
+                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/music_off.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                        <Button fx:id="bars_btn" layoutX="45.0" layoutY="60.0" mnemonicParsing="false" onAction="#sliderBars" prefHeight="35.0" prefWidth="50.0" styleClass="bars" stylesheets="@../../../dashboardDesign.css">
+                            <graphic>
+                            </graphic>
+                            <cursor>
+                                <Cursor fx:constant="DEFAULT" />
+                            </cursor>
+                            <graphic>
+                                <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/menu.png" />
+                                    </image>
+                        </ImageView>
+                            </graphic>
+                        </Button>
+                        <Label layoutX="123.0" layoutY="70.0" text="Library Management" translateZ="-1.0">
+                            <font>
+                                <Font name="Segoe UI Black" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="currentForm_label" alignment="CENTER_RIGHT" layoutX="1049.0" layoutY="70.0" prefHeight="30.0" prefWidth="211.0" text="Available Books">
+                            <font>
+                                <Font name="Segoe UI Black" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="388.0" layoutY="70.0" text="Student Portal">
+                            <font>
+                                <Font name="Segoe UI Black" size="20.0" />
+                            </font>
+                        </Label>
+                        <Line endX="-100.0" endY="-73.0" layoutX="459.0" layoutY="122.0" startX="-100.0" />
+                        <Button fx:id="arrow_btn" layoutX="45.0" layoutY="60.0" mnemonicParsing="false" onAction="#sliderArrow" prefHeight="40.0" prefWidth="50.0">
+                            <graphic>
+                            </graphic>
+                            <cursor>
+                                <Cursor fx:constant="DEFAULT" />
+                            </cursor>
+                            <graphic>
+                                <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/menu2.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </top>
+            <left>
+                <AnchorPane prefHeight="680.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane fx:id="halfNav_form" prefHeight="592.0" prefWidth="85.0" styleClass="nav-form" stylesheets="@../../../dashboardDesign.css" translateZ="-1.0" AnchorPane.leftAnchor="0.0">
+                            <children>
+                                <Circle fx:id="smallCircle_image" fill="#434a51" layoutX="41.0" layoutY="41.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+                                <Line endX="60.0" layoutX="11.0" layoutY="87.0" startX="2.5" stroke="WHITE" />
+                                <Button fx:id="halfNav_availableBtn" layoutX="12.0" layoutY="154.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="40.0" prefWidth="40.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/clipboard.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="halfNav_takeBtn" layoutX="12.0" layoutY="216.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="40.0" prefWidth="40.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/book.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="halfNav_returnBtn" layoutX="12.0" layoutY="278.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="40.0" prefWidth="40.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/file.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="halfNav_saveBtn" layoutX="12.0" layoutY="340.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="40.0" prefWidth="40.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/bookmark.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="halfNav_gameBtn" layoutX="12.0" layoutY="404.0" mnemonicParsing="false" onAction="#sideNavButtonDesign" prefHeight="40.0" prefWidth="40.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/game_btn.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="half_logout_btn" layoutX="19.0" layoutY="532.0" mnemonicParsing="false" onAction="#half_logout" prefHeight="30.0" prefWidth="30.0" styleClass="logout-btn" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/sign_out.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="nav_form" layoutX="80.0" prefHeight="590.0" prefWidth="360.0" styleClass="nav-form" stylesheets="@../../../dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Circle fx:id="circle_image" fill="#322020" layoutX="180.0" layoutY="114.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+                                <Label layoutX="138.0" layoutY="223.0" text="Welcome" textFill="WHITE">
+                                    <font>
+                                        <Font name="Microsoft Sans Serif" size="20.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="studentId_label" alignment="CENTER" layoutX="70.0" layoutY="256.0" prefHeight="23.0" prefWidth="220.0" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Microsoft Sans Serif" size="20.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="38.0" layoutY="259.0" text="Student#:" textFill="WHITE">
+                                    <font>
+                                        <Font name="Microsoft Sans Serif" size="15.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="availableBooks_btn" layoutX="70.0" layoutY="306.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="35.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css" text="Books Management">
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor></Button>
+                                <Button fx:id="issueBooks_btn" layoutX="70.0" layoutY="352.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="35.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css" text="Issue Books" />
+                                <Button fx:id="returnBooks_btn" layoutX="70.0" layoutY="398.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="35.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css" text="Users Management" />
+                                <Button fx:id="edit_btn" layoutX="107.0" layoutY="45.0" mnemonicParsing="false" onAction="#insertImage" prefHeight="138.0" prefWidth="146.0" styleClass="edit-btn" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                    <graphic>
+                                        <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/edit.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Line endX="160.0" layoutX="180.0" layoutY="295.0" startX="-160.0" />
+                                <Button fx:id="logout_btn" layoutX="28.0" layoutY="539.0" mnemonicParsing="false" onAction="#logout" prefHeight="30.0" prefWidth="30.0" styleClass="logout-btn" stylesheets="@../../../dashboardDesign.css">
+                                    <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@image/sign_out.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Label layoutX="95.0" layoutY="548.0" text="Sign Out" textFill="WHITE">
+                                    <font>
+                                        <Font name="Microsoft Sans Serif" size="15.0" />
+                                    </font>
+                                </Label>
+                        <Button fx:id="returnBooks_btn1" layoutX="70.0" layoutY="444.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="35.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css" text="Add Books" />
+                        <Button fx:id="returnBooks_btn11" layoutX="70.0" layoutY="490.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="35.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../../../dashboardDesign.css" text="Remove Books" />
+                            </children>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+            </left>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <center>
+                <AnchorPane fx:id="mainCenter_form" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane fx:id="manage_book_form" layoutY="-2.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="issue_form" layoutX="5.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="users_management_form" layoutX="245.0" layoutY="161.0" prefHeight="590.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="add_books_form" layoutX="311.0" layoutY="183.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane fx:id="add_books_form1" layoutX="10.0" layoutY="10.0" prefHeight="590.0" prefWidth="920.0" visible="false" />
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
 </AnchorPane>
