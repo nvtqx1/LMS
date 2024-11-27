@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lms.addBookController">
+   <children>
+      <TextField fx:id="addBook_Author" layoutX="200.0" layoutY="100.0" prefHeight="40.0" prefWidth="360.0" />
+      <TextField fx:id="addBook_Author" layoutX="200.0" layoutY="200.0" prefHeight="40.0" prefWidth="360.0" />
+      <TextField fx:id="addBook_BookType" layoutX="200.0" layoutY="300.0" prefHeight="40.0" prefWidth="360.0" />
+      <Text layoutX="110.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Title" />
+      <Text layoutX="110.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author" textAlignment="CENTER" />
+      <Text layoutX="110.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Type" />
+      <Text layoutX="110.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image URL" />
+      <Hyperlink layoutX="560.0" layoutY="400.0" prefHeight="40.0" prefWidth="40.0" text=". . .">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Hyperlink>
+      <TextField fx:id="addBook_Image" layoutX="200.0" layoutY="400.0" prefHeight="40.0" prefWidth="360.0" />
+      <Label fx:id="addBook_Date" layoutX="200.0" layoutY="500.0" prefHeight="40.0" prefWidth="360.0" styleClass="label_take" stylesheets="@../../../designAddBook.css" text="Date" />
+      <Text layoutX="110.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <AnchorPane layoutX="855.0" layoutY="99.0" prefHeight="200.0" prefWidth="150.0" styleClass="image-card" stylesheets="@../../../designAddBook.css">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

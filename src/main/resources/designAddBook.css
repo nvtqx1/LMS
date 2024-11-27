@@ -1,0 +1,14 @@
+.image-card{
+    -fx-background-color:#fff;
+    -fx-border-color:#000;
+}
+
+.label_take{
+    -fx-background-color:#fff;
+    -fx-padding:0px 0px 0px 5px;
+    -fx-font-size:14px;
+    -fx-border-color:#000;
+    -fx-border-radius:5px;
+    -fx-border-width:.4px;
+    -fx-background-radius:5px;
+}
