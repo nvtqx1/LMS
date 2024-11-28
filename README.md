@@ -94,7 +94,10 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
   -  **Add Books**: thêm sách từ Google Books API.
   -  **Add Users**: thêm người dùng, mã sinh viên ( tên đăng nhập), mật khẩu và avatar.
 
-# 𒀱Hình ảnh chức năng và dự án:
+# 🦖Hình ảnh chức năng và dự án:
+Giao diện người dùng:
+<br> <br>
+<img src="image/backLogin.jpg" alt="Mô tả về ảnh">
 
 
 
