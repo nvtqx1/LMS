@@ -37,21 +37,27 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
     <!-- Java -->
     <td>
       <a href="https://www.java.com" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="60" height="60" />
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="70" height="70" />
       </a>
     </td>
     <td width="30"></td>
     <!-- CSS -->
     <td>
       <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="60" height="60" />
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="70" height="70" />
       </a>
     </td>
     <td width="30"></td>
     <!-- MySQL -->
     <td>
       <a href="https://www.mysql.com/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="60" height="60" />
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="70" height="70" />
+      </a>
+    </td>
+      <!-- JavaFx-->
+      <td>
+      <a href="https://www.oracle.com/java/technologies/javase/javafxscenebuilder-info.html" target="_blank" rel="noreferrer">
+        <img src="https://i0.wp.com/blog.knoldus.com/wp-content/uploads/2021/07/communityIcon_4v21sx0aiam41.png?fit=256%2C171&ssl=1" alt="javafx" width="70" height="70" />
       </a>
     </td>
   </tr>
