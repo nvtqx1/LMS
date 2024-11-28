@@ -17,6 +17,8 @@ module com.example.lms {
 //    requires com.almasb.fxgl.all;
     requires java.sql;
     requires jdk.accessibility;
+    requires java.net.http;
+    requires com.google.gson;
 
     opens com.example.lms to javafx.fxml;
     exports com.example.lms;

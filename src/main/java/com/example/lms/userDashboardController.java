@@ -1,7 +1,12 @@
 package com.example.lms;
 
+<<<<<<< HEAD
 //import com.google.gson.JsonArray;
 //import com.google.gson.JsonObject;
+=======
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+>>>>>>> 545b3b8dc61dee4fdc509ba80629279dd496b083
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -346,7 +351,11 @@ public class userDashboardController implements Initializable {
                     take_imageView.setImage(image);
                     check = true;
                 }
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> 545b3b8dc61dee4fdc509ba80629279dd496b083
                 // Nếu không tìm thấy trong cơ sở dữ liệu, dùng Google Books API
                 if (!check) {
                     // Tạo một instance của GoogleBooksAPI
@@ -376,11 +385,18 @@ public class userDashboardController implements Initializable {
                             // Nếu không tìm thấy trong Google Books
                             take_titleLabel.setText("Quyển sách này không tồn tại!");
                         }
+<<<<<<< HEAD
 
                     } catch (Exception apiException) {
                         apiException.printStackTrace();
                     }
                 }                */
+=======
+                    } catch (Exception apiException) {
+                        apiException.printStackTrace();
+                    }
+                }
+>>>>>>> 545b3b8dc61dee4fdc509ba80629279dd496b083
             }
         } catch (Exception e) {
             e.printStackTrace();
