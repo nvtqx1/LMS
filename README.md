@@ -8,12 +8,13 @@
   <a href="https://discord.gg/Cp2VmVn6"><img src="https://readme-typing-svg.herokuapp.com/?lines=🌐%20The%20Farmer%20OOP🔗;🔰%20Always%20learning%20new%20tech&font=Pacifico&center=true&width=650&height=120&color=58a6ff&vCenter=true&size=45%22"></a>
 </p>
 
-<img width="55%" align="right" alt="Github" src="https://raw.githubusercontent.com/onimur/.github/master/.resources/git-header.svg" />
-
 # ♠️ Contributer:
-1. Nguyễn Văn Trung - 23021745
-2. Nguyễn Trung Dũng - 21020724
+1. Nguyễn Văn Trung - 23021745  <img width="55%" align="right" alt="Github" src="https://raw.githubusercontent.com/onimur/.github/master/.resources/git-header.svg" />
+2. Nguyễn Trung Dũng - 21020724        
 3. Phạm Minh Quang - 21020601
+
+<br> <br>
+
 # ♦️ Mô tả:
 Phần mềm quản lý thư viện với giao diện thân thiện và dễ sử dụng, giúp cho việc quản lý thư viện trở nên dễ dàng hơn . Thay vì sử dụng bảng ghi chép thông thường, ở đây ta sử dụng công nghệ để làm điều đó.
 
@@ -76,7 +77,7 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
   <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://img.shields.io/badge/javafx-%23ED8B00.svg?style=for-the-badge&logo=javafx&logoColor=white" alt="JavaFX" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
   <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
@@ -104,6 +105,10 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
   -  **Issue Books**: mượn sách, điền thông tin của người dùng để mượn.
   -  **Return Books**: hiển thị danh sách đang mượn, và nút trả sách để người dùng trả.
   -  **Saved Books**: hiển thị danh sách sách đã lưu.
+<img align="right" src="/image/2048gif.gif" width="300px">
+
+<div align="left">
+    
 #### c. 2048
   - Sử dụng các phím mũi tên để đạt được 2048 .
 
