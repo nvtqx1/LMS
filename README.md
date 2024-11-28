@@ -2,10 +2,12 @@
     <img src="https://capsule-render.vercel.app/api?animation=fadeIn&type=waving&color=gradient&height=200&fontAlignY=40"/>
 </div>
 
-# The Farmer - Quản lý thư viện
+# The Farmer <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" height= "30" width="350"> Quản lý thư viện
+
 <p align="center">
   <a href="https://discord.gg/Cp2VmVn6"><img src="https://readme-typing-svg.herokuapp.com/?lines=🌐%20The%20Farmer%20OOP🔗;🔰%20Always%20learning%20new%20tech&font=Pacifico&center=true&width=650&height=120&color=58a6ff&vCenter=true&size=45%22"></a>
 </p>
+
 # ♠️ Contributer:
 1. Nguyễn Văn Trung - 23021745
 2. Nguyễn Trung Dũng - 21020724
@@ -110,14 +112,84 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
   -  **Add Users**: thêm người dùng, mã sinh viên ( tên đăng nhập), mật khẩu và avatar.
 
 # 🦖Hình ảnh chức năng và dự án:
-Giao diện người dùng:
-<br> <br>
-<img src="image/backLogin.jpg" alt="Mô tả về ảnh">
+
+## 1. Giao diện đăng nhập:
+<img src="image/login.png" alt="ảnh login">
+
+## 2. Chức năng người dùng:
+
+### a. Available Books:
+
+<img src="image/xemsach.png" alt="xem sách">
+
+### b. Issue Books:
+
+<img src="image/muonsach.png" alt="ảnh login">
+
+### c. Return Books:
+
+<img src="image/trasach.png" alt="ảnh login">
+
+### d. Saved Books:
+
+<img src="image/luusach.png" alt="ảnh login">
+
+### e. Game 
+
+<img src="image/gamr.png" alt="ảnh login">
+
+## 3. Chức năng Admin:
+
+### a. Books Management:
+
+<img src="image/quanlysach.png" alt="ảnh login">
+
+### b. Borrowed Management:
+
+<img src="image/quanlymuon.png" alt="ảnh login">
+
+### c. Users Management:
+
+<img src="image/quanlynguoidung.png" alt="ảnh login">
+
+#### Add / Remove Users:
+
+<img src="image/themnguoidung.png" alt="ảnh login">
+
+### d. Add books (Google Books API)
+
+<img src="image/themsachAPI.png" alt="ảnh login">
+
+<div align="center">
+  
+# 📧Liên hệ
+
+<div align="center">
+  <a>
+    <a href="https://discord.gg/Cp2VmVn6" target="_blank">
+    <img src="image/pngegg.png" height="80" />
+  </a>
+
+```bash
+
+   ____ _           _   _                   
+  / ___| | __ _  __| | | |_ ___             
+ | |  _| |/ _` |/ _` | | __/ _ \            
+ | |_| | | (_| | (_| | | || (_) |           
+  \____|_|\__,_|\__,_|  \__\___/            
+  ___  ___  ___                             
+ / __|/ _ \/ _ \                            
+ \__ \  __/  __/                            
+ |___/\___|\___|      _                   _ 
+  _   _  ___  _   _  | |__   ___ _ __ ___| |
+ | | | |/ _ \| | | | | '_ \ / _ \ '__/ _ \ |
+ | |_| | (_) | |_| | | | | |  __/ | |  __/_|
+  \__, |\___/ \__,_| |_| |_|\___|_|  \___(_)
+  |___/                                     
 
 
-
-
-
+```
+<br> <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" height= "50" width="600">
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=footer"/>
 </div>
