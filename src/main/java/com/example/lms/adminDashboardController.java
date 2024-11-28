@@ -1,5 +1,7 @@
 package com.example.lms;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -230,10 +232,15 @@ public class adminDashboardController implements Initializable {
 
     @FXML
     private TableView<adminBooksManagement> bookMng_tableView;
+
     @FXML
     private TableView<adminBorrowManagement> borrowMng_tableView;
+
     @FXML
     private TableView<adminUsersManagement> userMng_tableView;
+
+    @FXML
+    private TextField find_Api;
 
 
     @FXML
@@ -685,9 +692,9 @@ public class adminDashboardController implements Initializable {
         show_author.setText(bookData.getAuthor());
         show_BookType.setText(bookData.getBookType());
         show_date.setText(bookData.getDate().toString());
-        ;
 
-        String uri = "file:" + bookData.getImage();
+
+        String uri = bookData.getImage();
 
         image = new Image(uri, 150, 200, false, true);
 
@@ -930,20 +937,20 @@ public class adminDashboardController implements Initializable {
         }
     }
 
-    public void getImageURL() {
-        FileChooser open = new FileChooser();
-        open.setTitle("Image File");
-        open.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image file", "*png", "*jpg"));
-        Stage stage = (Stage) nav_form.getScene().getWindow();
-
-        File file = open.showOpenDialog(stage);
-
-        if (file != null) {
-            add_imageURL.setText(file.getAbsolutePath());
-            image = new Image(file.toURI().toString(), 150, 200, false, true);
-            add_imageView.setImage(image);
-        }
-    }
+//    public void getImageURL() {
+//        FileChooser open = new FileChooser();
+//        open.setTitle("Image File");
+//        open.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image file", "*png", "*jpg"));
+//        Stage stage = (Stage) nav_form.getScene().getWindow();
+//
+//        File file = open.showOpenDialog(stage);
+//
+//        if (file != null) {
+//            add_imageURL.setText(file.getAbsolutePath());
+//            image = new Image(file.toURI().toString(), 150, 200, false, true);
+//            add_imageView.setImage(image);
+//        }
+//    }
 
     public void addBook() {
         String sql = "INSERT INTO `book` (`bookTitle`, `author`, `bookType`, `image`, `date`) VALUES(?, ?, ?, ?, ? );";
@@ -1034,6 +1041,47 @@ public class adminDashboardController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void findBook(ActionEvent event) {
+
+                    // Tạo một instance của GoogleBooksAPI
+                    GoogleBooksAPI googleBooksAPI = new GoogleBooksAPI();
+                    try {
+                        JsonObject googleBookData = googleBooksAPI.searchBook(find_Api.getText());
+                        JsonArray items = googleBookData.getAsJsonArray("items");
+
+                        // Nếu tìm thấy sách trên Google Books
+                        if (items.size() > 0) {
+                            JsonObject bookInfo = items.get(0).getAsJsonObject().getAsJsonObject("volumeInfo");
+
+                            // Lấy các thông tin về sách
+                            String title = bookInfo.get("title").getAsString();
+                            String author = bookInfo.getAsJsonArray("authors").get(0).getAsString();
+                            String genre = bookInfo.getAsJsonArray("categories").get(0).getAsString();
+                            String publishedDate = bookInfo.get("publishedDate").getAsString();
+
+                            // Hiển thị thông tin sách
+                            add_title.setText(title);
+                            add_author.setText(author);
+                            add_bookType.setText(genre);
+                            add_date.setText(publishedDate);
+
+                            // Lấy ảnh bìa từ Google Books API
+                            if (bookInfo.has("imageLinks")) {
+                                String imageUrl = bookInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
+                                add_imageURL.setText(imageUrl);
+                                image = new Image(imageUrl, 150, 200, false, true);
+                                add_imageView.setImage(image);
+                            }
+                        } else {
+                            // Nếu không tìm thấy trong Google Books
+                            add_title.setText("Quyển sách này không tồn tại!");
+                        }
+
+                    } catch (Exception apiException) {
+                        apiException.printStackTrace();
+                    }
+            }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

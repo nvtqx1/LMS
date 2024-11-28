@@ -7,6 +7,8 @@ package com.example.lms;
 //import com.google.gson.JsonArray;
 //import com.google.gson.JsonObject;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -124,7 +126,6 @@ public class userDashboardController implements Initializable {
 
     @FXML
     private AnchorPane mainCenter_form;
-
 
     @FXML
     private Button halfNav_availableBtn;
@@ -352,7 +353,6 @@ public class userDashboardController implements Initializable {
                     check = true;
                 }
 
-/*
                 // Nếu không tìm thấy trong cơ sở dữ liệu, dùng Google Books API
                 if (!check) {
                     // Tạo một instance của GoogleBooksAPI
@@ -365,10 +365,17 @@ public class userDashboardController implements Initializable {
                         if (items.size() > 0) {
                             JsonObject bookInfo = items.get(0).getAsJsonObject().getAsJsonObject("volumeInfo");
 
-                            take_titleLabel.setText(bookInfo.get("title").getAsString());
-                            take_authorLabel.setText(bookInfo.get("authors").getAsJsonArray().get(0).getAsString());
-                            take_genreLabel.setText(bookInfo.get("categories").getAsJsonArray().get(0).getAsString());
-                            take_dateLabel.setText(bookInfo.get("publishedDate").getAsString());
+                            // Lấy các thông tin về sách
+                            String title = bookInfo.get("title").getAsString();
+                            String author = bookInfo.getAsJsonArray("authors").get(0).getAsString();
+                            String genre = bookInfo.getAsJsonArray("categories").get(0).getAsString();
+                            String publishedDate = bookInfo.get("publishedDate").getAsString();
+
+                            // Hiển thị thông tin sách
+                            take_titleLabel.setText(title);
+                            take_authorLabel.setText(author);
+                            take_genreLabel.setText(genre);
+                            take_dateLabel.setText(publishedDate);
 
                             // Lấy ảnh bìa từ Google Books API
                             if (bookInfo.has("imageLinks")) {
@@ -387,11 +394,6 @@ public class userDashboardController implements Initializable {
                         apiException.printStackTrace();
                     }
                 }
-
-                    } catch (Exception apiException) {
-                        apiException.printStackTrace();
-                    }
-                }  */
             }
         } catch (Exception e) {
             e.printStackTrace();
