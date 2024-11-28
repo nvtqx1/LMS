@@ -1,4 +1,7 @@
-# The Farmer- Quản lý thư viện
+# The Farmer - Quản lý thư viện
+<p align="center">
+  <a href="https://discord.gg/Cp2VmVn6"><img src="https://readme-typing-svg.herokuapp.com/?lines=🌐%20The%20Farmer%20OOP🔗;🔰%20Always%20learning%20new%20tech&font=Pacifico&center=true&width=650&height=120&color=58a6ff&vCenter=true&size=45%22"></a>
+</p>
 # ♠️ Contributer:
 1. Nguyễn Văn Trung - 23021745
 2. Nguyễn Trung Dũng - 21020724
@@ -29,22 +32,26 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
   <tr>
     <!-- Java -->
     <td>
-      <a href="https://www.java.com" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="60" height="60" />
+      <a href="https://www.java.com/en/" target="_blank" rel="noreferrer">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="javafx" width="80" height="80" />
       </a>
     </td>
-    <td width="30"></td>
+    <!-- JavaFx -->
+    <td>
+      <a href="https://www.oracle.com/java/technologies/javase/javafxscenebuilder-info.html" target="_blank" rel="noreferrer">
+        <img src="https://raw.githubusercontent.com/github/explore/00edd8b9cf9eb98be328184dcc257f3b1b930c6b/topics/javafx/javafx.png" alt="javafx" width="80" height="80" />
+      </a>
+    </td>
     <!-- CSS -->
     <td>
       <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="60" height="60" />
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="80" height="80" />
       </a>
     </td>
-    <td width="30"></td>
     <!-- MySQL -->
     <td>
       <a href="https://www.mysql.com/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="60" height="60" />
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="80" height="80" />
       </a>
     </td>
   </tr>
@@ -52,11 +59,15 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
 
 
 <p align="center">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://img.shields.io/badge/javafx-%23ED8B00.svg?style=for-the-badge&logo=javafx&logoColor=white" alt="JavaFX" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
   <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
 # ⚀⚁⚂⚃⚄⚅ Hướng dẫn cài đặt
