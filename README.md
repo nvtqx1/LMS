@@ -75,8 +75,27 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
     + Điền tên đăng nhập và mật khẩu để đăng ký tài khoản.
     + Sau khi hiện bảng thông tin " Tạo tài khoản thành công", người dùng tiến hành đăng nhập như bình thường.
     + Nếu quên mật khẩu, liên hệ Admin để lấy lại mật khẩu.
-#### b. Chức năng
-  -
+#### b. Chức năng của người dùng
+  - **Dashboard**: hiển thị thông tin người dùng, xem các sách hiện có, có thể lưu và mượn luôn ở trang Dashboard.
+  -  **Issue Books**: mượn sách, điền thông tin của người dùng để mượn.
+  -  **Return Books**: hiển thị danh sách đang mượn, và nút trả sách để người dùng trả.
+  -  **Saved Books**: hiển thị danh sách sách đã lưu.
+#### c. 2048
+  - Sử dụng các phím mũi tên để đạt được 2048 .
+
+### 2. Admin:
+#### a. Đăng nhập 
+  - Đăng nhập bằng tài khoản admin có sẵn.
+
+#### b. Chức năng của Admin
+  - **Books Management**: hiển thị thông tin các sách có sẵn.
+  -  **Borrowed Management**: quản lý mượn sách, ở trong đó hiển thị mã sinh viên, tên, loại sách, ngày mượn, trạng thái mượn/trả.
+  -  **Users Management**: hiển thị danh sách người dùng, tên đăng nhập và mật khẩu.
+  -  **Add Books**: thêm sách từ Google Books API.
+  -  **Add Users**: thêm người dùng, mã sinh viên ( tên đăng nhập), mật khẩu và avatar.
+
+# 𒀱Hình ảnh chức năng và dự án:
+
 
 
 
