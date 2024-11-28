@@ -497,11 +497,8 @@ public class userDashboardController implements Initializable {
         if ((num - 1) < -1) {
             return;
         }
-<<<<<<< HEAD
-        String uri = rBook.getImage();
-=======
         String uri =  rBook.getImage();
->>>>>>> 184cc4d709fd19ee0b44f95ff7a59c8995c9c095
+
 
         image = new Image(uri, 150, 200, false, true);
         return_imageView.setImage(image);
