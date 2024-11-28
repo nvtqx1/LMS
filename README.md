@@ -1,4 +1,8 @@
-# The Farmer- Quản lý thư viện
+<div align="center">
+    <img src="https://capsule-render.vercel.app/api?animation=fadeIn&type=waving&color=gradient&height=200&fontAlignY=40"/>
+</div>
+
+# The Farmer <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" height= "30" width="350"> Quản lý thư viện
 # ♠️ Contributer:
 1. Nguyễn Văn Trung - 23021745
 2. Nguyễn Trung Dũng - 21020724
@@ -25,26 +29,35 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
   - Thông tin người dùng, thêm/xóa người dùng.
   - Thêm sách ( thêm từ Google books API)
 # <img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" height="40" width="40"> Ngôn ngữ phát triển 
+ <p align="center">
+  <a href=""><img src="https://readme-typing-svg.herokuapp.com/?lines=🌐%20The%20Farmer%20OOP🔗;🔰%20Always%20learning%20new%20tech&font=Pacifico&center=true&width=650&height=120&color=58a6ff&vCenter=true&size=45%22"></a>
+</p>
 <table align="center">
   <tr>
     <!-- Java -->
     <td>
       <a href="https://www.java.com" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="60" height="60" />
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="70" height="70" />
       </a>
     </td>
     <td width="30"></td>
     <!-- CSS -->
     <td>
       <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="60" height="60" />
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="70" height="70" />
       </a>
     </td>
     <td width="30"></td>
     <!-- MySQL -->
     <td>
       <a href="https://www.mysql.com/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="60" height="60" />
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="70" height="70" />
+      </a>
+    </td>
+      <!-- JavaFx-->
+      <td>
+      <a href="https://www.oracle.com/java/technologies/javase/javafxscenebuilder-info.html" target="_blank" rel="noreferrer">
+        <img src="https://i0.wp.com/blog.knoldus.com/wp-content/uploads/2021/07/communityIcon_4v21sx0aiam41.png?fit=256%2C171&ssl=1" alt="javafx" width="70" height="70" />
       </a>
     </td>
   </tr>
@@ -95,10 +108,74 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
   -  **Add Users**: thêm người dùng, mã sinh viên ( tên đăng nhập), mật khẩu và avatar.
 
 # 🦖Hình ảnh chức năng và dự án:
-Giao diện người dùng:
+## 1. Giao diện người dùng:
 <br> <br>
-<img src="image/backLogin.jpg" alt="Mô tả về ảnh">
+<img src="image/login.png" alt="Mô tả về ảnh">
+<br> <br>
+## 2. Chức năng người dùng:
+### a. Available Books:
+<img src="image/xemsach.png" alt="Mô tả về ảnh">
 
+### b. Issue Books:
+<img src="image/muonsach.png" alt="Mô tả về ảnh">
+
+### c. Return Books:
+<img src="image/trasach.png" alt="Mô tả về ảnh">
+
+### d. Saved Books:
+<img src="image/luusach.png" alt="Mô tả về ảnh">
+
+### e. Game:
+<img src="image/gamr.png" alt="Mô tả về ảnh">
+
+## 3. Chức năng Admin:
+### a. Books Management:
+<img src="image/quanlysach.png" alt="Mô tả về ảnh">
+
+### b. Borrowed Books Management:
+<img src="image/quanlymuon.png" alt="Mô tả về ảnh">
+
+### c. Users Management:
+<img src="image/quanlynguoidung.png" alt="Mô tả về ảnh">
+
+#### Add / Reomve Users:
+<img src="image/themnguoidung.png" alt="Mô tả về ảnh">
+
+### d. Add Books: ( Google Books API )
+<img src="image/themsachAPI.png" alt="Mô tả về ảnh">
+
+<div align="center"> <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" height= "35" width="580">
+
+# 📧Liên hệ
+
+<div align="center">
+  <a>
+    <a href="https://discord.gg/Cp2VmVn6" target="_blank">
+    <img src="image/pngegg.png" height="100" alt="facebook logo" />
+  </a>
+
+```bash
+
+   ____ _           _   _                   
+  / ___| | __ _  __| | | |_ ___             
+ | |  _| |/ _` |/ _` | | __/ _ \            
+ | |_| | | (_| | (_| | | || (_) |           
+  \____|_|\__,_|\__,_|  \__\___/            
+  ___  ___  ___                             
+ / __|/ _ \/ _ \                            
+ \__ \  __/  __/                            
+ |___/\___|\___|      _                   _ 
+  _   _  ___  _   _  | |__   ___ _ __ ___| |
+ | | | |/ _ \| | | | | '_ \ / _ \ '__/ _ \ |
+ | |_| | (_) | |_| | | | | |  __/ | |  __/_|
+  \__, |\___/ \__,_| |_| |_|\___|_|  \___(_)
+  |___/                                     
+
+
+```
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=footer"/>
+</div>
 
 
 
