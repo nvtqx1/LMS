@@ -60,15 +60,15 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
 </p>
 
 # ⚀⚁⚂⚃⚄⚅ Hướng dẫn cài đặt
-1. Yêu cầu IDE cho JAVA, CSS và MySQL.
-2.  Clone dự án về máy tính.
-3.  Mở MySQL Workbench, tạo MySQL Connections mới, tạo tệp Query Tab mới. Copy nội dung file lms.txt để tạo database cho dự án.
-4.  Mở IDE Intellij, cài hết thư viện mở rộng.
-5.  Đổi đường dẫn trong file Database.java thành localhost của máy mình.
-6.  Chạy LibraryManagement.java và tận hưởng 🔥.
-
-# 🃏 Hướng dẫn sử dụng
-     
+### 1. User:
+#### a. Đăng ký và đăng nhập
+  - Nhập tên đăng nhập và mật khẩu rồi ấn đăng nhập để đăng nhập ứng dụng nếu đã có tài khoản trước.
+  - Nếu chưa có tài khoản, chọn Create new account để tạo tài khoản mới
+    + Điền tên đăng nhập và mật khẩu để đăng ký tài khoản.
+    + Sau khi hiện bảng thông tin " Tạo tài khoản thành công", người dùng tiến hành đăng nhập như bình thường.
+    + Nếu quên mật khẩu, liên hệ Admin để lấy lại mật khẩu.
+#### b. Chức năng
+  -
 
 
 
