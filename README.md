@@ -18,6 +18,11 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
 Ứng dụng được viết bằng ngôn ngữ Java, CSS, MySQL và tích hợp thư viện JavaFX.
 
 # 🚀 Chức năng:
+
+<img align="right" src="/image/chill guy.png" width="300px">
+
+<div align="left">
+    
 ### 1. User:
   - Tìm kiếm sách theo tên.
   - Nhạc.
