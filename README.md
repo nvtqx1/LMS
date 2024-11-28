@@ -1,3 +1,7 @@
+<div align="center">
+    <img src="https://capsule-render.vercel.app/api?animation=fadeIn&type=waving&color=gradient&height=200&fontAlignY=40"/>
+</div>
+
 # The Farmer <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" height= "30" width="350"> Quản lý thư viện
 # ♠️ Contributer:
 1. Nguyễn Văn Trung - 23021745
@@ -25,6 +29,9 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
   - Thông tin người dùng, thêm/xóa người dùng.
   - Thêm sách ( thêm từ Google books API)
 # <img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" height="40" width="40"> Ngôn ngữ phát triển 
+ <p align="center">
+  <a href=""><img src="https://readme-typing-svg.herokuapp.com/?lines=🌐%20The%20Farmer%20OOP🔗;🔰%20Always%20learning%20new%20tech&font=Pacifico&center=true&width=650&height=120&color=58a6ff&vCenter=true&size=45%22"></a>
+</p>
 <table align="center">
   <tr>
     <!-- Java -->
@@ -141,7 +148,6 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
     <img src="image/pngegg.png" height="100" alt="facebook logo" />
   </a>
 
-<div align="center">
 ```bash
 
    ____ _           _   _                   
@@ -161,7 +167,9 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
 
 
 ```
-
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=footer"/>
+</div>
 
 
 
