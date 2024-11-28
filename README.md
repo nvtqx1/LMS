@@ -8,6 +8,8 @@
   <a href="https://discord.gg/Cp2VmVn6"><img src="https://readme-typing-svg.herokuapp.com/?lines=🌐%20The%20Farmer%20OOP🔗;🔰%20Always%20learning%20new%20tech&font=Pacifico&center=true&width=650&height=120&color=58a6ff&vCenter=true&size=45%22"></a>
 </p>
 
+<img width="55%" align="right" alt="Github" src="https://raw.githubusercontent.com/onimur/.github/master/.resources/git-header.svg" />
+
 # ♠️ Contributer:
 1. Nguyễn Văn Trung - 23021745
 2. Nguyễn Trung Dũng - 21020724
