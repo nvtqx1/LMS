@@ -347,7 +347,7 @@ public class userDashboardController implements Initializable {
                     take_dateLabel.setText(result.getString("date"));
 
                     getData.path = result.getString("image");
-                    String uri = "file:" + getData.path;
+                    String uri = getData.path;
                     image = new Image(uri, 150, 200, false, true);
                     take_imageView.setImage(image);
                     check = true;
@@ -497,7 +497,7 @@ public class userDashboardController implements Initializable {
         if ((num - 1) < -1) {
             return;
         }
-        String uri = "file:" + rBook.getImage();
+        String uri =  rBook.getImage();
 
         image = new Image(uri, 150, 200, false, true);
         return_imageView.setImage(image);
@@ -582,7 +582,7 @@ public class userDashboardController implements Initializable {
             return;
         }
 
-        String uri = "file:" + sBook.getImage();
+        String uri = sBook.getImage();
 
         image = new Image(uri, 150, 200, false, true);
         save_imageView.setImage(image);
@@ -697,7 +697,7 @@ public class userDashboardController implements Initializable {
 
         availableBooks_title.setText(bookData.getTitle());
 
-        String uri = "file:" + bookData.getImage();
+        String uri = bookData.getImage();
 
         image = new Image(uri, 150, 200, false, true);
 
