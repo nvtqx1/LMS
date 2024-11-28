@@ -1,4 +1,4 @@
-# The Farmer <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" height= "35" width="300"> Quản lý thư viện
+# The Farmer <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" height= "30" width="350"> Quản lý thư viện
 # ♠️ Contributer:
 1. Nguyễn Văn Trung - 23021745
 2. Nguyễn Trung Dũng - 21020724
@@ -141,6 +141,7 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
     <img src="image/pngegg.png" height="100" alt="facebook logo" />
   </a>
 
+<div align="center">
 ```bash
 
    ____ _           _   _                   
