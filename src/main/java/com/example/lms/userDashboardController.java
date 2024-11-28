@@ -1,5 +1,7 @@
 package com.example.lms;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -322,21 +324,16 @@ public class userDashboardController implements Initializable {
             result = prepare.executeQuery();
             boolean check = false;
             Alert alert;
+
+            // Kiểm tra nếu người dùng không nhập tiêu đề sách
             if (take_bookTitle.getText().isEmpty()) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Thông Báo");
                 alert.setHeaderText(null);
                 alert.setContentText("Vui lòng điền đầy đủ thông tin!");
                 alert.showAndWait();
-            } /*else if (take_firstName.getText().isEmpty() ||
-                    take_lastName.getText().isEmpty() ||
-                    take_Gender.getSelectionModel().isEmpty()) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Thông Báo");
-                alert.setHeaderText(null);
-                alert.setContentText("Vui lòng điền đầy đủ thông tin.");
-                alert.showAndWait();
-            } */ else {
+            } else {
+                // Tìm trong cơ sở dữ liệu trước
                 while (result.next()) {
                     take_titleLabel.setText(result.getString("bookTitle"));
                     take_authorLabel.setText(result.getString("author"));
@@ -344,25 +341,51 @@ public class userDashboardController implements Initializable {
                     take_dateLabel.setText(result.getString("date"));
 
                     getData.path = result.getString("image");
-
                     String uri = "file:" + getData.path;
-
                     image = new Image(uri, 150, 200, false, true);
                     take_imageView.setImage(image);
                     check = true;
                 }
+
+                // Nếu không tìm thấy trong cơ sở dữ liệu, dùng Google Books API
                 if (!check) {
-                    take_titleLabel.setText("Quyển sách này không tồn tại!");
-                    take_authorLabel.setText(result.getString(""));
-                    take_genreLabel.setText(result.getString(""));
-                    take_dateLabel.setText(result.getString(""));
-                    take_imageView.setImage(null);
+                    // Tạo một instance của GoogleBooksAPI
+                    GoogleBooksAPI googleBooksAPI = new GoogleBooksAPI();
+                    try {
+                        JsonObject googleBookData = googleBooksAPI.searchBook(take_bookTitle.getText());
+                        JsonArray items = googleBookData.getAsJsonArray("items");
+
+                        // Nếu tìm thấy sách trên Google Books
+                        if (items.size() > 0) {
+                            JsonObject bookInfo = items.get(0).getAsJsonObject().getAsJsonObject("volumeInfo");
+
+                            take_titleLabel.setText(bookInfo.get("title").getAsString());
+                            take_authorLabel.setText(bookInfo.get("authors").getAsJsonArray().get(0).getAsString());
+                            take_genreLabel.setText(bookInfo.get("categories").getAsJsonArray().get(0).getAsString());
+                            take_dateLabel.setText(bookInfo.get("publishedDate").getAsString());
+
+                            // Lấy ảnh bìa từ Google Books API
+                            if (bookInfo.has("imageLinks")) {
+                                String imageUrl = bookInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
+                                image = new Image(imageUrl, 150, 200, false, true);
+                                take_imageView.setImage(image);
+                            }
+
+                            check = true;  // Đánh dấu đã tìm thấy sách trên Google Books
+                        } else {
+                            // Nếu không tìm thấy trong Google Books
+                            take_titleLabel.setText("Quyển sách này không tồn tại!");
+                        }
+                    } catch (Exception apiException) {
+                        apiException.printStackTrace();
+                    }
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     public void studentIdLabel() {
         take_studentId.setText(getData.studentId);
