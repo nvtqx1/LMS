@@ -13,4 +13,5 @@ public class getData {
     public static String savedGenre;
     public static String savedImage;
     public static Date savedDate;
+    public static String takeImage;
 }
