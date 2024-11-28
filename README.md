@@ -1,3 +1,6 @@
+<div align="center">
+    <img src="https://capsule-render.vercel.app/api?animation=fadeIn&type=waving&color=gradient&height=200&fontAlignY=40"/>
+</div>
 # The Farmer - Quản lý thư viện
 <p align="center">
   <a href="https://discord.gg/Cp2VmVn6"><img src="https://readme-typing-svg.herokuapp.com/?lines=🌐%20The%20Farmer%20OOP🔗;🔰%20Always%20learning%20new%20tech&font=Pacifico&center=true&width=650&height=120&color=58a6ff&vCenter=true&size=45%22"></a>
@@ -114,3 +117,6 @@ Giao diện người dùng:
 
 
 
+<div align="center">
+    <img src="https://capsule-render.vercel.app/api?animation=fadeIn&type=waving&color=gradient&height=200&fontAlignY=40"/>
+</div>
