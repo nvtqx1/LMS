@@ -64,7 +64,7 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="bars_btn" layoutX="45.0" layoutY="60.0" mnemonicParsing="false" onAction="#sliderBars" prefHeight="35.0" prefWidth="50.0" styleClass="bars" stylesheets="@../../../dashboardDesign.css">
+                  <Button fx:id="bars_btn" layoutX="45.0" layoutY="60.0" mnemonicParsing="false" onAction="#sliderBars" prefHeight="35.0" prefWidth="50.0" styleClass="bars" stylesheets="@../../../dashboardDesign.css" visible="false">
                      <graphic>
                      </graphic>
                      <cursor>
@@ -93,7 +93,7 @@
                      </font>
                   </Label>
                   <Line endX="-100.0" endY="-73.0" layoutX="459.0" layoutY="122.0" startX="-100.0" />
-                  <Button fx:id="arrow_btn" layoutX="45.0" layoutY="60.0" mnemonicParsing="false" onAction="#sliderArrow" prefHeight="40.0" prefWidth="50.0">
+                  <Button fx:id="arrow_btn" layoutX="45.0" layoutY="60.0" mnemonicParsing="false" onAction="#sliderArrow" prefHeight="40.0" prefWidth="50.0" styleClass="bars" stylesheets="@../../../dashboardDesign.css">
                      <graphic>
                      </graphic>
                      <cursor>

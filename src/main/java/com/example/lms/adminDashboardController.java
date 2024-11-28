@@ -40,7 +40,7 @@ public class adminDashboardController implements Initializable {
     private Button addUsers_btn;
 
     @FXML
-    private TableColumn<?, ?> Author;
+    private TableColumn<adminBooksManagement, String> Author;
 
     @FXML
     private Button borrowMng_btn;
@@ -100,10 +100,10 @@ public class adminDashboardController implements Initializable {
     private AnchorPane bookManage_form;
 
     @FXML
-    private TableColumn<?, ?> book_Title;
+    private TableColumn<adminBooksManagement, String> book_Title;
 
     @FXML
-    private TableColumn<?, ?> book_Type;
+    private TableColumn<adminBooksManagement, String> book_Type;
 
     @FXML
     private Button book_manage_btn;
@@ -112,28 +112,28 @@ public class adminDashboardController implements Initializable {
     private AnchorPane borrowManager_form;
 
     @FXML
-    private TableColumn<?, ?> borrow_Id;
+    private TableColumn<adminBorrowManagement, String> borrow_Id;
 
     @FXML
-    private TableColumn<?, ?> borrow_author;
+    private TableColumn<adminBorrowManagement, String> borrow_author;
 
     @FXML
-    private TableColumn<?, ?> borrow_bookTitle;
+    private TableColumn<adminBorrowManagement, String> borrow_bookTitle;
 
     @FXML
-    private TableColumn<?, ?> borrow_date;
+    private TableColumn<adminBorrowManagement, String> borrow_date;
 
     @FXML
-    private TableColumn<?, ?> borrow_firstName;
+    private TableColumn<adminBorrowManagement, String> borrow_firstName;
 
     @FXML
-    private TableColumn<?, ?> borrow_gender;
+    private TableColumn<adminBorrowManagement, String> borrow_gender;
 
     @FXML
-    private TableColumn<?, ?> borrow_lastName;
+    private TableColumn<adminBorrowManagement, String> borrow_lastName;
 
     @FXML
-    private TableColumn<?, ?> borrow_status;
+    private TableColumn<adminBorrowManagement, String> borrow_status;
 
     @FXML
     private Circle circle_image;
@@ -145,7 +145,7 @@ public class adminDashboardController implements Initializable {
     private Label currentForm_label;
 
     @FXML
-    private TableColumn<?, ?> date;
+    private TableColumn<adminBooksManagement, String> date;
 
     @FXML
     private Button edit_btn;
@@ -172,7 +172,7 @@ public class adminDashboardController implements Initializable {
     private Button half_logout_btn;
 
     @FXML
-    private TableColumn<?, ?> image_URL;
+    private TableColumn<adminBooksManagement, String> image_URL;
 
     @FXML
     private Button logout_btn;
@@ -185,9 +185,6 @@ public class adminDashboardController implements Initializable {
 
     @FXML
     private Button minimize;
-
-    @FXML
-    private Button music_on_btn;
 
     @FXML
     private AnchorPane nav_form;
@@ -217,16 +214,16 @@ public class adminDashboardController implements Initializable {
     private AnchorPane userManage_form;
 
     @FXML
-    private TableColumn<?, ?> user_ava;
+    private TableColumn<adminUsersManagement, String> user_ava;
 
     @FXML
     private Circle user_image;
 
     @FXML
-    private TableColumn<?, ?> user_pass;
+    private TableColumn<adminUsersManagement, String> user_pass;
 
     @FXML
-    private TableColumn<?, ?> user_studentID;
+    private TableColumn<adminUsersManagement, String> user_studentID;
 
     @FXML
     private AnchorPane addUser_form;
@@ -860,7 +857,6 @@ public class adminDashboardController implements Initializable {
         }
     }
 
-    // Phương thức tải lại dữ liệu
     private void loadTableData() {
         ObservableList<adminUsersManagement> dataList = FXCollections.observableArrayList();
 
@@ -885,16 +881,155 @@ public class adminDashboardController implements Initializable {
         }
     }
 
-    public void addBook() {
-        String sql = "INSERT INTO `book` (`bookTitle`, `author`, `bookType`, `image`, `date`) VALUES(?, ?, ?, ?, ? ,?);";
+    private void loadBookData() {
+        ObservableList<adminBooksManagement> dataList = FXCollections.observableArrayList();
+
+        String query = "SELECT * FROM book";
         connect = Database.connectDB();
-        try{
-            PreparedStatement prepare = connect.prepareStatement(sql);
-            prepare.setString(1, add_title.getText());
-            prepare.setString(2, add_author.getText());
-            prepare.setString(3, add_bookType.getText());
-            prepare.setString(4, add_imageURL.getText());
-            prepare.setDate(5, Date.valueOf(add_date.getText()));
+
+        try (PreparedStatement statement = connect.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                dataList.add(new adminBooksManagement(
+                        resultSet.getString("bookTitle"),
+                        resultSet.getString("author"),
+                        resultSet.getString("bookType"),
+                        resultSet.getString("image"),
+                        resultSet.getDate("date")
+                ));
+            }
+
+            bookMng_tableView.setItems(dataList);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadUserData() {
+        ObservableList<adminUsersManagement> dataList = FXCollections.observableArrayList();
+
+        String query = "SELECT * FROM student";
+        connect = Database.connectDB();
+
+        try (PreparedStatement statement = connect.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                dataList.add(new adminUsersManagement(
+                        resultSet.getString("studentNumber"),
+                        resultSet.getString("password"),
+                        resultSet.getString("image")));
+            }
+
+            userMng_tableView.setItems(dataList);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getImageURL() {
+        FileChooser open = new FileChooser();
+        open.setTitle("Image File");
+        open.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image file", "*png", "*jpg"));
+        Stage stage = (Stage) nav_form.getScene().getWindow();
+
+        File file = open.showOpenDialog(stage);
+
+        if (file != null) {
+            add_imageURL.setText(file.getAbsolutePath());
+            image = new Image(file.toURI().toString(), 150, 200, false, true);
+            add_imageView.setImage(image);
+        }
+    }
+
+    public void addBook() {
+        String sql = "INSERT INTO `book` (`bookTitle`, `author`, `bookType`, `image`, `date`) VALUES(?, ?, ?, ?, ? );";
+        connect = Database.connectDB();
+        try {
+            if (add_title.getText().isEmpty() ||
+                    add_author.getText().isEmpty() ||
+                    add_bookType.getText().isEmpty() ||
+                    add_imageURL.getText().isEmpty() ||
+                    add_date.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Thông báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Điền đầy đủ thông tin!");
+                alert.showAndWait();
+            } else {
+                PreparedStatement prepare = connect.prepareStatement(sql);
+                prepare.setString(1, add_title.getText());
+                prepare.setString(2, add_author.getText());
+                prepare.setString(3, add_bookType.getText());
+                prepare.setString(4, add_imageURL.getText());
+                prepare.setDate(5, Date.valueOf(add_date.getText()));
+                int rowsAffected = prepare.executeUpdate();
+                if (rowsAffected > 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Thông báo");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Thêm thành công");
+                    alert.showAndWait();
+                    loadBookData();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getAvaURL() {
+        FileChooser open = new FileChooser();
+        open.setTitle("Image File");
+        open.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image file", "*png", "*jpg"));
+        Stage stage = (Stage) nav_form.getScene().getWindow();
+
+        File file = open.showOpenDialog(stage);
+
+        if (file != null) {
+            addUser_URLimage.setText(file.getAbsolutePath());
+            image = new Image(file.toURI().toString(), 650, 160, false, true);
+            add_user_image.setFill(new ImagePattern(image));
+        }
+    }
+
+    public void addUser() {
+        String sql = "INSERT INTO `student` (`studentNumber`, `password`, `image`) VALUES(?, ?, ?);";
+        connect = Database.connectDB();
+        try {
+            if (add_ID.getText().isEmpty() ||
+                    add_pass.getText().isEmpty() ||
+                    addUser_URLimage.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Thông báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Điền đầy đủ thông tin!");
+                alert.showAndWait();
+            } else if (!add_ID.getText().matches("\\d+")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Thông báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Tài khoản chỉ được chứa chữ số");
+                alert.showAndWait();
+            } else {
+                prepare = connect.prepareStatement(sql);
+                prepare.setString(1, add_ID.getText());
+                prepare.setString(2, add_pass.getText());
+                prepare.setString(3, addUser_URLimage.getText());
+                int row = prepare.executeUpdate();
+                if (row > 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Thông báo");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Thêm thành công");
+                    alert.showAndWait();
+                    loadUserData();
+                }
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

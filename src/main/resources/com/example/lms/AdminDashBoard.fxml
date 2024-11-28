@@ -44,7 +44,7 @@
                                 </Button>
                             </children>
                         </AnchorPane>
-                        <Button fx:id="bars_btn" layoutX="45.0" layoutY="60.0" mnemonicParsing="false" onAction="#sliderBars" prefHeight="35.0" prefWidth="50.0" styleClass="bars" stylesheets="@../../../dashboardDesign.css">
+                        <Button fx:id="bars_btn" layoutX="45.0" layoutY="60.0" mnemonicParsing="false" onAction="#sliderBars" prefHeight="35.0" prefWidth="50.0" styleClass="bars" stylesheets="@../../../dashboardDesign.css" visible="false">
                             <graphic>
                             </graphic>
                             <cursor>
@@ -62,7 +62,7 @@
                                 <Font name="Segoe UI Black" size="20.0" />
                             </font>
                         </Label>
-                        <Label fx:id="currentForm_label" alignment="CENTER" layoutX="936.0" layoutY="70.0" prefHeight="30.0" prefWidth="324.0" text="Books Management">
+                        <Label fx:id="currentForm_label" alignment="TOP_RIGHT" layoutX="936.0" layoutY="70.0" prefHeight="30.0" prefWidth="324.0" text="Books Management">
                             <font>
                                 <Font name="Segoe UI Black" size="20.0" />
                             </font>
@@ -73,7 +73,7 @@
                             </font>
                         </Label>
                         <Line endX="-100.0" endY="-73.0" layoutX="459.0" layoutY="122.0" startX="-100.0" />
-                        <Button fx:id="arrow_btn" layoutX="45.0" layoutY="60.0" mnemonicParsing="false" onAction="#sliderArrow" prefHeight="40.0" prefWidth="50.0">
+                        <Button fx:id="arrow_btn" layoutX="45.0" layoutY="60.0" mnemonicParsing="false" onAction="#sliderArrow" prefHeight="40.0" prefWidth="50.0" styleClass="bars" stylesheets="@../../../dashboardDesign.css">
                             <graphic>
                             </graphic>
                             <cursor>
@@ -217,7 +217,7 @@
             <center>
                 <AnchorPane fx:id="mainCenter_form" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <children>
-                        <AnchorPane fx:id="bookManage_form" prefHeight="590.0" prefWidth="920.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="bookManage_form" prefHeight="590.0" prefWidth="920.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TableView fx:id="bookMng_tableView" layoutX="325.0" layoutY="5.0" onMouseClicked="#selectionBooksShow" prefHeight="580.0" prefWidth="590.0">
                           <columns>
@@ -290,7 +290,7 @@
                         <Button fx:id="userMng_addBtn" layoutX="195.0" layoutY="303.0" mnemonicParsing="false" onAction="#addUserBtn" prefHeight="45.0" prefWidth="90.0" styleClass="save-btn" stylesheets="@../../../dashboardDesign.css" text="ADD User" />
                         <Button fx:id="userMng_revBtn" layoutX="180.0" layoutY="389.0" mnemonicParsing="false" onAction="#removeUser" prefHeight="45.0" prefWidth="120.0" styleClass="return-btn" stylesheets="@../../../dashboardDesign.css" text="Remove User" />
                      </children></AnchorPane>
-                        <AnchorPane fx:id="addBook_form" layoutX="311.0" layoutY="183.0" prefHeight="590.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="addBook_form" layoutX="311.0" layoutY="183.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TextField fx:id="add_title" layoutX="150.0" layoutY="45.0" prefHeight="30.0" prefWidth="275.0" styleClass="textfield_take" stylesheets="@../../../dashboardDesign.css" />
                         <TextField fx:id="add_author" layoutX="150.0" layoutY="145.0" prefHeight="30.0" prefWidth="275.0" styleClass="textfield_take" stylesheets="@../../../dashboardDesign.css" />
@@ -307,8 +307,8 @@
                               <ImageView fx:id="add_imageView" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </AnchorPane>
-                        <Button fx:id="AddBook_btn" layoutX="653.0" layoutY="375.0" mnemonicParsing="false" text="ADD BOOK" />
-                        <Button fx:id="add_bookURL_btn" layoutX="425.0" layoutY="345.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="..." />
+                        <Button fx:id="AddBook_btn" layoutX="631.0" layoutY="337.0" mnemonicParsing="false" onAction="#addBook" prefHeight="60.0" prefWidth="120.0" styleClass="save-btn" stylesheets="@../../../dashboardDesign.css" text="ADD BOOK" />
+                        <Button fx:id="add_bookURL_btn" layoutX="425.0" layoutY="345.0" mnemonicParsing="false" onAction="#getImageURL" prefHeight="30.0" prefWidth="30.0" text="..." />
                      </children></AnchorPane>
                   <AnchorPane fx:id="addUser_form" layoutX="260.0" layoutY="140.0" prefHeight="592.0" prefWidth="920.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -318,9 +318,9 @@
                         <TextField fx:id="add_ID" layoutX="180.0" layoutY="110.0" prefHeight="30.0" prefWidth="250.0" />
                         <TextField fx:id="add_pass" layoutX="180.0" layoutY="225.0" prefHeight="30.0" prefWidth="250.0" />
                         <TextField fx:id="addUser_URLimage" layoutX="180.0" layoutY="340.0" prefHeight="30.0" prefWidth="250.0" />
-                        <Circle fx:id="add_user_image" fill="#c6c6c6" layoutX="647.0" layoutY="162.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Button fx:id="add_user_btn" layoutX="606.0" layoutY="370.0" mnemonicParsing="false" text="Add User" />
-                        <Button fx:id="add_edit_url" layoutX="430.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="..." />
+                        <Circle fx:id="add_user_image" fill="#c6c6c6" layoutX="650.0" layoutY="160.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Button fx:id="add_user_btn" layoutX="602.0" layoutY="348.0" mnemonicParsing="false" onAction="#addUser" prefHeight="45.0" prefWidth="90.0" styleClass="save-btn" stylesheets="@../../../dashboardDesign.css" text="Add User" />
+                        <Button fx:id="add_edit_url" layoutX="430.0" layoutY="340.0" mnemonicParsing="false" onAction="#getAvaURL" prefHeight="30.0" prefWidth="30.0" text="..." />
                      </children>
                   </AnchorPane>
                     </children>

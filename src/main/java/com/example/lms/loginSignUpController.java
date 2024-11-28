@@ -74,15 +74,13 @@ public class loginSignUpController implements Initializable {
                     if (result.next()) {
                         getData.studentId = studentid.getText();
                         getData.path = result.getString("image");
-
-                        alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Thông báo");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Đăng nhập thành công");
-                        alert.showAndWait();
-
                         login_Btn.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("userDashboard.fxml"));
+                        Parent root;
+                        if (studentid.getText().equals("admin") && password.getText().equals("admin")) {
+                            root = FXMLLoader.load(getClass().getResource("AdminDashBoard.fxml"));
+                        } else {
+                            root = FXMLLoader.load(getClass().getResource("userDashboard.fxml"));
+                        }
                         Stage stage = new Stage();
                         Scene scene = new Scene(root);
                         root.setOnMousePressed((MouseEvent event) -> {
@@ -122,10 +120,7 @@ public class loginSignUpController implements Initializable {
                 PreparedStatement statement = connect.prepareStatement(sql1);
                 statement.setString(1, studentid.getText());
                 ResultSet resultSet = statement.executeQuery();
-                prepare.setString(1, studentid.getText());
-                prepare.setString(2, password.getText());
-                prepare.setString(3,"E:\\LMS\\src\\main\\resources\\com\\example\\lms\\image\\ava.png");
-                int rowsInserted = prepare.executeUpdate();
+
                 if (resultSet.next()) {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Thông báo");
@@ -137,6 +132,12 @@ public class loginSignUpController implements Initializable {
                     alert.setTitle("Thông báo");
                     alert.setHeaderText(null);
                     alert.setContentText("Tài khoản quá ngắn");
+                    alert.showAndWait();
+                } else if (!studentid.getText().matches("\\d+")) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Thông báo");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Tài khoản chỉ được chứa chữ số");
                     alert.showAndWait();
                 } else if (studentid.getText().contains(" ")) {
                     alert = new Alert(Alert.AlertType.ERROR);
@@ -156,12 +157,18 @@ public class loginSignUpController implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Mật khẩu quá ngắn");
                     alert.showAndWait();
-                } else if (rowsInserted >= 1) {
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Thông báo");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Tạo Tài Khoản Thành Công");
-                    alert.showAndWait();
+                } else {
+                    prepare.setString(1, studentid.getText());
+                    prepare.setString(2, password.getText());
+                    prepare.setString(3, "E:\\LMS\\src\\main\\resources\\com\\example\\lms\\image\\ava.png");
+                    int rowsInserted = prepare.executeUpdate();
+                    if (rowsInserted > 0) {
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Thông báo");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Tạo Tài Khoản Thành Công");
+                        alert.showAndWait();
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
