@@ -9,9 +9,9 @@
 </p>
 
 # ♠️ Contributer:
-1. Nguyễn Văn Trung - 23021745  <img width="55%" align="right" alt="Github" src="https://raw.githubusercontent.com/onimur/.github/master/.resources/git-header.svg" />
-2. Nguyễn Trung Dũng - 21020724        
-3. Phạm Minh Quang - 21020601
+### 1. Nguyễn Văn Trung - 23021745  <img width="55%" align="right" alt="Github" src="https://raw.githubusercontent.com/onimur/.github/master/.resources/git-header.svg" />
+### 2. Nguyễn Trung Dũng - 21020724        
+### 3. Phạm Minh Quang - 21020601
 
 <br> <br>
 
