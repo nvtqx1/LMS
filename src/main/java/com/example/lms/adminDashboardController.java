@@ -1042,46 +1042,55 @@ public class adminDashboardController implements Initializable {
         }
     }
 
+    public void clearFindData() {
+        add_title.setText("");
+        add_author.setText("");
+        add_bookType.setText("");
+        add_date.setText("");
+        add_imageURL.setText("");
+        add_imageView.setImage(null);
+    }
+
     public void findBook(ActionEvent event) {
+        clearFindData();
+        // Tạo một instance của GoogleBooksAPI
+        GoogleBooksAPI googleBooksAPI = new GoogleBooksAPI();
+        try {
+            JsonObject googleBookData = googleBooksAPI.searchBook(find_Api.getText());
+            JsonArray items = googleBookData.getAsJsonArray("items");
 
-                    // Tạo một instance của GoogleBooksAPI
-                    GoogleBooksAPI googleBooksAPI = new GoogleBooksAPI();
-                    try {
-                        JsonObject googleBookData = googleBooksAPI.searchBook(find_Api.getText());
-                        JsonArray items = googleBookData.getAsJsonArray("items");
+            // Nếu tìm thấy sách trên Google Books
+            if (items.size() > 0) {
+                JsonObject bookInfo = items.get(0).getAsJsonObject().getAsJsonObject("volumeInfo");
 
-                        // Nếu tìm thấy sách trên Google Books
-                        if (items.size() > 0) {
-                            JsonObject bookInfo = items.get(0).getAsJsonObject().getAsJsonObject("volumeInfo");
+                // Lấy các thông tin về sách
+                String title = bookInfo.get("title").getAsString();
+                String author = bookInfo.getAsJsonArray("authors").get(0).getAsString();
+                String genre = bookInfo.getAsJsonArray("categories").get(0).getAsString();
+                String publishedDate = bookInfo.get("publishedDate").getAsString();
 
-                            // Lấy các thông tin về sách
-                            String title = bookInfo.get("title").getAsString();
-                            String author = bookInfo.getAsJsonArray("authors").get(0).getAsString();
-                            String genre = bookInfo.getAsJsonArray("categories").get(0).getAsString();
-                            String publishedDate = bookInfo.get("publishedDate").getAsString();
+                // Hiển thị thông tin sách
+                add_title.setText(title);
+                add_author.setText(author);
+                add_bookType.setText(genre);
+                add_date.setText(publishedDate);
 
-                            // Hiển thị thông tin sách
-                            add_title.setText(title);
-                            add_author.setText(author);
-                            add_bookType.setText(genre);
-                            add_date.setText(publishedDate);
-
-                            // Lấy ảnh bìa từ Google Books API
-                            if (bookInfo.has("imageLinks")) {
-                                String imageUrl = bookInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
-                                add_imageURL.setText(imageUrl);
-                                image = new Image(imageUrl, 150, 200, false, true);
-                                add_imageView.setImage(image);
-                            }
-                        } else {
-                            // Nếu không tìm thấy trong Google Books
-                            add_title.setText("Quyển sách này không tồn tại!");
-                        }
-
-                    } catch (Exception apiException) {
-                        apiException.printStackTrace();
-                    }
+                // Lấy ảnh bìa từ Google Books API
+                if (bookInfo.has("imageLinks")) {
+                    String imageUrl = bookInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
+                    add_imageURL.setText(imageUrl);
+                    image = new Image(imageUrl, 150, 200, false, true);
+                    add_imageView.setImage(image);
+                }
+            } else {
+                // Nếu không tìm thấy trong Google Books
+                add_title.setText("Quyển sách này không tồn tại!");
             }
+
+        } catch (Exception apiException) {
+            apiException.printStackTrace();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

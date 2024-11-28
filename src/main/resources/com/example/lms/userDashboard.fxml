@@ -242,7 +242,7 @@
          <center>
             <AnchorPane fx:id="mainCenter_form" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="availableBooks_form" layoutY="-2.0" prefHeight="590.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="availableBooks_form" layoutY="-2.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="390.0" layoutY="5.0" prefHeight="580.0" prefWidth="520.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css">
                            <children>
@@ -403,7 +403,7 @@
                         <Separator layoutX="375.0" layoutY="15.0" orientation="VERTICAL" prefHeight="560.0" prefWidth="12.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="saveBook_form" layoutX="311.0" layoutY="183.0" prefHeight="590.0" prefWidth="920.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="saveBook_form" layoutX="311.0" layoutY="183.0" prefHeight="590.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="300.0" prefWidth="892.0" styleClass="card-form" stylesheets="@../../../dashboardDesign.css">
                            <children>
@@ -427,7 +427,7 @@
                            <children>
                               <ImageView fitHeight="220.0" fitWidth="864.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../image/quotes.jpg" />
+                                    <Image url="@image/quotes.jpg" />
                                  </image>
                               </ImageView>
                            </children>
