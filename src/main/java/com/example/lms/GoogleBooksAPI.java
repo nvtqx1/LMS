@@ -1,36 +1,41 @@
 package com.example.lms;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.JsonArray;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class GoogleBooksAPI {
-    private static final String API_URL = "https://www.googleapis.com/books/v1/volumes?q=";
-    private static final String API_KEY = "AIzaSyAmyeQwZEKJ5YrelDlsLsTD-Wm9vjmLUnk";  // Thay thế API Key của bạn nếu cần
+    private static final String GOOGLE_BOOKS_API_KEY = "AIzaSyB8e66shFWxTuqifrwsxxFd9f2TxygGE54"; // Thay bằng API key của bạn
 
-    // Phương thức tìm kiếm sách
-    public JsonObject searchBook(String query) throws Exception {
-        // Tạo HttpClient
-        HttpClient client = HttpClient.newHttpClient();
+    // Tìm kiếm sách qua Google Books API
+    public JsonObject searchBook(String bookTitle) {
+        String urlString = "https://www.googleapis.com/books/v1/volumes?q=" + bookTitle + "&key=" + GOOGLE_BOOKS_API_KEY;
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.connect();
 
-        // Xây dựng URL với API Key và từ khóa tìm kiếm
-        String fullUrl = API_URL + query + "&key=" + API_KEY;
-
-        // Xây dựng yêu cầu HTTP
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(fullUrl))
-                .build();
-
-        // Gửi yêu cầu và nhận phản hồi
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-        // Parse phản hồi JSON sử dụng Gson
-        String jsonResponse = response.body();
-        JsonObject jsonObject = JsonParser.parseString(jsonResponse).getAsJsonObject();
-
-        return jsonObject;
+            int responseCode = conn.getResponseCode();
+            if (responseCode == 200) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+                reader.close();
+                // Chuyển đổi chuỗi JSON thành JsonObject
+                return new com.google.gson.JsonParser().parse(response.toString()).getAsJsonObject();
+            } else {
+                System.out.println("Error: Unable to fetch data from Google Books API. Response code: " + responseCode);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
