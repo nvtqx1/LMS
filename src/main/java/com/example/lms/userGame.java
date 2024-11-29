@@ -69,7 +69,6 @@ public class userGame extends JPanel {
         Timer timer = new Timer(50, e -> repaint());
         timer.setRepeats(false);
         timer.start();
-
     }
 
     public void resetGame() {
@@ -223,7 +222,6 @@ public class userGame extends JPanel {
             if (i < 3 && oldLine[i].value == oldLine[i + 1].value) {
                 num *= 2;
                 myScore += num;
-                // Cập nhật điểm cao
                 if (myScore > highestScore) {
                     highestScore = myScore;
                     saveHighestScore(); // Lưu điểm cao vào file
@@ -391,4 +389,17 @@ public class userGame extends JPanel {
             e.printStackTrace();
         }
     }
+
+//    public static void main(String[] args) {
+//        JFrame game = new JFrame();
+//        game.setTitle("Game 2048");
+//        game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        game.setSize(340, 400);
+//        game.setResizable(false);
+//
+//        game.add(new userGame());
+//
+//        game.setLocationRelativeTo(null);
+//        game.setVisible(true);
+//    }
 }

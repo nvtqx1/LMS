@@ -315,7 +315,7 @@ public class adminDashboardController implements Initializable {
 
     public void changeProfile() {
 
-        String uri = getData.path;
+        String uri = "file:" + getData.path;
         uri = uri.replace("\\", "\\\\");
 
         String sql = "UPDATE student SET image = '" + uri + "' WHERE studentNumber = '" + getData.studentId + "'";
@@ -1092,8 +1092,17 @@ public class adminDashboardController implements Initializable {
         }
     }
 
+    public void showProfile() {
+        String uri = "file:" + getData.path;
+
+        image = new Image(uri, 180, 114, false, true);
+        circle_image.setFill(new ImagePattern(image));
+        smallCircle_image.setFill(new ImagePattern(image));
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        showProfile();
         showBook();
         showBorrowBooks();
         showUser();

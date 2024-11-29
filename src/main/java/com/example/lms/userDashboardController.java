@@ -37,6 +37,8 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import javax.sound.sampled.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import java.sql.*;
@@ -44,10 +46,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 
 public class userDashboardController implements Initializable {
@@ -352,47 +356,8 @@ public class userDashboardController implements Initializable {
                     take_imageView.setImage(image);
                     check = true;
                 }
-
-                // Nếu không tìm thấy trong cơ sở dữ liệu, dùng Google Books API
                 if (!check) {
-                    // Tạo một instance của GoogleBooksAPI
-                    GoogleBooksAPI googleBooksAPI = new GoogleBooksAPI();
-                    try {
-                        JsonObject googleBookData = googleBooksAPI.searchBook(take_bookTitle.getText());
-                        JsonArray items = googleBookData.getAsJsonArray("items");
-
-                        // Nếu tìm thấy sách trên Google Books
-                        if (items.size() > 0) {
-                            JsonObject bookInfo = items.get(0).getAsJsonObject().getAsJsonObject("volumeInfo");
-
-                            // Lấy các thông tin về sách
-                            String title = bookInfo.get("title").getAsString();
-                            String author = bookInfo.getAsJsonArray("authors").get(0).getAsString();
-                            String genre = bookInfo.getAsJsonArray("categories").get(0).getAsString();
-                            String publishedDate = bookInfo.get("publishedDate").getAsString();
-
-                            // Hiển thị thông tin sách
-                            take_titleLabel.setText(title);
-                            take_authorLabel.setText(author);
-                            take_genreLabel.setText(genre);
-                            take_dateLabel.setText(publishedDate);
-
-                            // Lấy ảnh bìa từ Google Books API
-                            if (bookInfo.has("imageLinks")) {
-                                String imageUrl = bookInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
-                                image = new Image(imageUrl, 150, 200, false, true);
-                                take_imageView.setImage(image);
-                            }
-
-                            check = true;  // Đánh dấu đã tìm thấy sách trên Google Books
-                        } else {
-                            // Nếu không tìm thấy trong Google Books
-                            take_titleLabel.setText("Quyển sách này không tồn tại!");
-                        }
-
-                    } catch (Exception apiException) {
-                        apiException.printStackTrace();
-                    }
+                    take_titleLabel.setText("Sách không có sẵn!");
                 }
             }
         } catch (Exception e) {
@@ -497,7 +462,7 @@ public class userDashboardController implements Initializable {
         if ((num - 1) < -1) {
             return;
         }
-        String uri =  rBook.getImage();
+        String uri = rBook.getImage();
 
 
         image = new Image(uri, 150, 200, false, true);
@@ -622,7 +587,7 @@ public class userDashboardController implements Initializable {
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Admin Message");
                 alert.setHeaderText(null);
-                alert.setContentText("Successfully Saved.");
+                alert.setContentText("Lưu Thành Công");
                 alert.showAndWait();
 
                 showSavedBooks();
@@ -1047,6 +1012,7 @@ public class userDashboardController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        music_off();
     }
 
     public void half_logout(javafx.event.ActionEvent event) {
@@ -1228,6 +1194,5 @@ public class userDashboardController implements Initializable {
         gender();
         showReturnBooks();
         showSavedBooks();
-
     }
 }
