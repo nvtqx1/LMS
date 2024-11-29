@@ -163,6 +163,15 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
 
 ### e. Game 
 
+
+ <p align="center">
+  <a href="#"> <img src="image/2.gif"><a/>
+  <a href="#"><img src="image/0.gif"><a/>
+  <a href="#"><img src="image/4.gif"><a/>
+  <a href="#"><img src="image/8.gif"><a/>
+</p>
+
+
 <img src="image/gamr.png" alt="ảnh login">
 
 ## 3. Chức năng Admin:
