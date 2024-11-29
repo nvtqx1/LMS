@@ -75,11 +75,11 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
 <p align="center">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://img.shields.io/badge/javafx-%23ED8B00.svg?style=for-the-badge&logo=javafx&logoColor=white" alt="JavaFX" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
@@ -91,7 +91,22 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
 4.  Mở IDE Intellij, cài hết thư viện mở rộng.
 5.  Đổi đường dẫn trong file Database.java thành localhost của máy mình.
 6.  Chạy LibraryManagement.java và tận hưởng 🔥.
+   
+<table align="center">
+<tr>
+    <td>
+        <a href="https://www.jetbrains.com/idea/download/?section=windows" target="_blank" rel="noreferrer">
+        <img src="https://user-images.githubusercontent.com/25181517/192108890-200809d1-439c-4e23-90d3-b090cf9a4eea.png" alt="javafx" width="80" height="80" />
+        </a>
+    </td>
+</tr>
+</table>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/IntelliJ%20IDEA-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" alt="IntelliJ IDEA" />
+    
+<br> <br>
+      
 # 🃏 Hướng dẫn sử dụng:
 ### 1. User:
 #### a. Đăng ký và đăng nhập
