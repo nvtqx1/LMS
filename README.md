@@ -203,7 +203,7 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
 <div align="center">
   <a>
     <a href="https://discord.gg/Cp2VmVn6" target="_blank">
-    <img src="image/pngegg.png" height="80" />
+    <img src="image/discord.gif" height="80" />
   </a>
 
 ```bash
