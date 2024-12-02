@@ -87,7 +87,7 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
 # ⚀⚁⚂⚃⚄⚅ Hướng dẫn cài đặt
 1. Yêu cầu IDE cho JAVA, CSS và MySQL.
 2.  Clone dự án về máy tính.
-3.  Mở MySQL Workbench, tạo MySQL Connections mới, tạo tệp Query Tab mới. Copy nội dung file lms.txt để tạo database cho dự án.
+3.  Mở MySQL Workbench, tạo MySQL Connections mới, tạo tệp Query Tab mới. Copy nội dung file lms.sql để tạo database cho dự án.
 4.  Mở IDE Intellij, cài hết thư viện mở rộng.
 5.  Đổi đường dẫn trong file Database.java thành localhost của máy mình.
 6.  Chạy LibraryManagement.java và tận hưởng 🔥.
@@ -116,10 +116,10 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
     + Sau khi hiện bảng thông tin " Tạo tài khoản thành công", người dùng tiến hành đăng nhập như bình thường.
     + Nếu quên mật khẩu, liên hệ Admin để lấy lại mật khẩu.
 #### b. Chức năng của người dùng
-  - **Dashboard**: hiển thị thông tin người dùng, xem các sách hiện có, có thể lưu và mượn luôn ở trang Dashboard.
-  -  **Issue Books**: mượn sách, điền thông tin của người dùng để mượn.
-  -  **Return Books**: hiển thị danh sách đang mượn, và nút trả sách để người dùng trả.
-  -  **Saved Books**: hiển thị danh sách sách đã lưu.
+  - **Available Books**: Xem các sách hiện có, có thể lưu và mượn luôn ở trang Available Books.
+  -  **Issue Books**: Mượn sách, điền thông tin của người dùng để mượn.
+  -  **Return Books**: Hiển thị danh sách đang mượn, và nút trả sách để người dùng trả.
+  -  **Saved Books**: Hiển thị danh sách sách đã lưu.
 <img align="right" src="/image/2048gif.gif" width="300px">
 
 <div align="left">
@@ -132,11 +132,11 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
   - Đăng nhập bằng tài khoản admin có sẵn.
 
 #### b. Chức năng của Admin
-  - **Books Management**: hiển thị thông tin các sách có sẵn.
-  -  **Borrowed Management**: quản lý mượn sách, ở trong đó hiển thị mã sinh viên, tên, loại sách, ngày mượn, trạng thái mượn/trả.
-  -  **Users Management**: hiển thị danh sách người dùng, tên đăng nhập và mật khẩu.
-  -  **Add Books**: thêm sách từ Google Books API.
-  -  **Add Users**: thêm người dùng, mã sinh viên ( tên đăng nhập), mật khẩu và avatar.
+  - **Books Management**: Hiển thị thông tin các sách có sẵn.
+  -  **Borrowed Management**: Quản lý mượn sách, ở trong đó hiển thị mã sinh viên, tên, loại sách, ngày mượn, trạng thái mượn/trả.
+  -  **Users Management**: Hiển thị danh sách người dùng, tên đăng nhập và mật khẩu.
+  -  **Add Books**: Thêm sách từ Google Books API.
+  -  **Add Users**: Thêm người dùng, mã sinh viên ( tên đăng nhập), mật khẩu và avatar.
 
 # 🦖Hình ảnh chức năng và dự án:
 
