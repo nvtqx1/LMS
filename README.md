@@ -196,8 +196,11 @@ Phần mềm quản lý thư viện với giao diện thân thiện và dễ s�
 
 <img src="image/themsachAPI.png" alt="ảnh login">
 
-<div align="center">
-  
+# 🎟️UML Diagram:
+<img src="https://github.com/nvtqx1/LMS/blob/master/uml.png" alt="ảnh login">
+
+<div align="center">  
+
 # 📧Liên hệ
 
 <div align="center">
