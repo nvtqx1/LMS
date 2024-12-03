@@ -7,8 +7,6 @@ package com.example.lms;
 //import com.google.gson.JsonArray;
 //import com.google.gson.JsonObject;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -16,10 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,18 +22,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import javax.sound.sampled.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import java.sql.*;
@@ -51,10 +42,8 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
-
-public class userDashboardController implements Initializable {
+public class userDashboardController extends giaoDienChung implements Initializable {
 
     @FXML
     private Button availableBooks_btn;
@@ -984,30 +973,7 @@ public class userDashboardController implements Initializable {
     public void logout(javafx.event.ActionEvent event) {
         try {
             if (event.getSource() == logout_btn) {
-                Parent root = FXMLLoader.load(getClass().getResource("loginSignUp.fxml"));
-
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-
-                root.setOnMousePressed((MouseEvent e) -> {
-                    x = e.getSceneX();
-                    y = e.getSceneY();
-                });
-
-                root.setOnMouseDragged((MouseEvent e) -> {
-
-                    stage.setX(e.getScreenX() - x);
-                    stage.setY(e.getScreenY() - y);
-
-                });
-
-                stage.initStyle(StageStyle.TRANSPARENT);
-
-                stage.setScene(scene);
-                stage.show();
-
-                logout_btn.getScene().getWindow().hide();
-
+                chuyenCanh(logout_btn,"loginSignUp.fxml");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1018,34 +984,12 @@ public class userDashboardController implements Initializable {
     public void half_logout(javafx.event.ActionEvent event) {
         try {
             if (event.getSource() == half_logout_btn) {
-                Parent root = FXMLLoader.load(getClass().getResource("loginSignUp.fxml"));
-
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-
-                root.setOnMousePressed((MouseEvent e) -> {
-                    x = e.getSceneX();
-                    y = e.getSceneY();
-                });
-
-                root.setOnMouseDragged((MouseEvent e) -> {
-
-                    stage.setX(e.getScreenX() - x);
-                    stage.setY(e.getScreenY() - y);
-
-                });
-
-                stage.initStyle(StageStyle.TRANSPARENT);
-
-                stage.setScene(scene);
-                stage.show();
-
-                half_logout_btn.getScene().getWindow().hide();
-
+                chuyenCanh(half_logout_btn,"loginSignUp.fxml");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        music_off();
     }
 
     public void sliderArrow() {
@@ -1103,6 +1047,7 @@ public class userDashboardController implements Initializable {
         slide.play();
     }
 
+
     Clip clip;
 
     public void audio() {
@@ -1122,21 +1067,23 @@ public class userDashboardController implements Initializable {
     }
 
     public void music_off() {
-        Platform.runLater(() -> {
-            music_on_btn.setVisible(true);
-            music_off_btn.setVisible(false);
-            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-80.0f);
-        });
+//        Platform.runLater(() -> {
+//            music_on_btn.setVisible(true);
+//            music_off_btn.setVisible(false);
+//            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+//            gainControl.setValue(-80.0f);
+//        });
+        tatAm(music_on_btn,music_off_btn,clip);
     }
 
     public void music_on() {
-        Platform.runLater(() -> {
-            music_on_btn.setVisible(false);
-            music_off_btn.setVisible(true);
-            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-15.0f);
-        });
+//        Platform.runLater(() -> {
+//            music_on_btn.setVisible(false);
+//            music_off_btn.setVisible(true);
+//            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+//            gainControl.setValue(-15.0f);
+//        });
+        batAm(music_on_btn,music_off_btn,clip);
     }
 
     public void exit() {

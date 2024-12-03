@@ -21,7 +21,7 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class loginSignUpController implements Initializable {
+public class loginSignUpController extends giaoDienChung implements Initializable {
 
     @FXML
     private Button close;
@@ -77,28 +77,11 @@ public class loginSignUpController implements Initializable {
                         login_Btn.getScene().getWindow().hide();
                         Parent root;
                         if (studentid.getText().equals("admin") && password.getText().equals("admin")) {
-                            root = FXMLLoader.load(getClass().getResource("AdminDashBoard.fxml"));
+                            chuyenCanhStatic("AdminDashBoard.fxml");
                         } else {
-                            root = FXMLLoader.load(getClass().getResource("userDashboard.fxml"));
+                            chuyenCanhStatic("userDashboard.fxml");
                         }
-                        Stage stage = new Stage();
-                        Scene scene = new Scene(root);
-                        root.setOnMousePressed((MouseEvent event) -> {
-
-                            x = event.getSceneX();
-                            y = event.getSceneY();
-
-                        });
-                        root.setOnMouseDragged((MouseEvent event) -> {
-
-                            stage.setX(event.getScreenX() - x);
-                            stage.setY(event.getScreenY() - y);
-                        });
-
-                        stage.initStyle(StageStyle.TRANSPARENT);
-                        stage.setScene(scene);
-                        stage.show();
-                    } else {
+                    }else {
                         alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Thông báo");
                         alert.setHeaderText(null);

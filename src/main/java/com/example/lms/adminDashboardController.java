@@ -30,7 +30,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 
-public class adminDashboardController implements Initializable {
+public class adminDashboardController extends giaoDienChung implements Initializable {
 
     @FXML
     private Button AddBook_btn;
@@ -260,30 +260,7 @@ public class adminDashboardController implements Initializable {
     public void half_logout(javafx.event.ActionEvent event) {
         try {
             if (event.getSource() == half_logout_btn) {
-                Parent root = FXMLLoader.load(getClass().getResource("loginSignUp.fxml"));
-
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-
-                root.setOnMousePressed((MouseEvent e) -> {
-                    x = e.getSceneX();
-                    y = e.getSceneY();
-                });
-
-                root.setOnMouseDragged((MouseEvent e) -> {
-
-                    stage.setX(e.getScreenX() - x);
-                    stage.setY(e.getScreenY() - y);
-
-                });
-
-                stage.initStyle(StageStyle.TRANSPARENT);
-
-                stage.setScene(scene);
-                stage.show();
-
-                half_logout_btn.getScene().getWindow().hide();
-
+                chuyenCanh(half_logout_btn,"loginSignUp.fxml");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -337,30 +314,7 @@ public class adminDashboardController implements Initializable {
     public void logout(javafx.event.ActionEvent event) {
         try {
             if (event.getSource() == logout_btn) {
-                Parent root = FXMLLoader.load(getClass().getResource("loginSignUp.fxml"));
-
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-
-                root.setOnMousePressed((MouseEvent e) -> {
-                    x = e.getSceneX();
-                    y = e.getSceneY();
-                });
-
-                root.setOnMouseDragged((MouseEvent e) -> {
-
-                    stage.setX(e.getScreenX() - x);
-                    stage.setY(e.getScreenY() - y);
-
-                });
-
-                stage.initStyle(StageStyle.TRANSPARENT);
-
-                stage.setScene(scene);
-                stage.show();
-
-                logout_btn.getScene().getWindow().hide();
-
+                chuyenCanh(logout_btn,"loginSignUp.fxml");
             }
         } catch (Exception e) {
             e.printStackTrace();
